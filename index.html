@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Mouhssine El Boumshouli — Software Developer &amp; Founder</title>
-<meta name="description" id="metaDesc" content="Portfolio of Mouhssine El Boumshouli — AI &amp; digital engineering student at EIDIA (UEMF, Fes, Morocco), founder of Convoroute LLC, builder of software in C, Python and on the web.">
+<title>Mouhssine El Boumshouli — AI Engineering Student &amp; Software Developer</title>
+<meta name="description" id="metaDesc" content="Portfolio of Mouhssine El Boumshouli — AI engineering student and software developer building full-stack, data and AI systems.">
 <meta name="author" content="Mouhssine El Boumshouli">
 <meta name="theme-color" content="#F3EFE7">
-<meta property="og:title" content="Mouhssine El Boumshouli — Software Developer &amp; Founder">
-<meta property="og:description" content="AI &amp; digital engineering student, founder of Convoroute LLC. Software, systems and web projects.">
+<meta property="og:title" content="Mouhssine El Boumshouli — AI Engineering Student &amp; Software Developer">
+<meta property="og:description" content="AI engineering student and software developer building full-stack, data and AI systems.">
 <meta property="og:type" content="profile">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F3EFE7'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23A8401E'/%3E%3C/svg%3E">
 <link rel="alternate" hreflang="en" href="?lang=en">
@@ -186,6 +186,10 @@ h2 em{font-style:italic; color:var(--rust);}
 .card p{margin:0 0 16px; font-size:14.5px; color:var(--ink-2); line-height:1.55;}
 .card .stack{margin-top:auto; font-family:var(--mono); font-size:10px; letter-spacing:.08em; color:var(--ink-3); text-transform:uppercase;}
 .card .more{margin-top:12px;}
+.card.has-media{grid-column:span 2; padding:0; min-height:440px;}
+.card-media{display:block; width:100%; aspect-ratio:2.1/1; overflow:hidden; border-bottom:1px solid var(--rule); background:var(--paper-2);}
+.card-media img{display:block; width:100%; height:100%; object-fit:cover; object-position:top center;}
+.card-content{display:flex; flex-direction:column; flex:1; padding:24px;}
 .empty{padding:40px 24px; background:var(--paper); font-size:15px; color:var(--ink-3); grid-column:1/-1;}
 
 /* ---------- toolkit ---------- */
@@ -266,6 +270,14 @@ footer{padding:26px 0 40px;}
 .slink:hover{background:var(--ink); color:var(--paper);}
 .slink.muted{border-color:var(--rule); color:var(--ink-3); cursor:default;}
 .slink.muted:hover{background:transparent; color:var(--ink-3);}
+.sheet.has-visuals{width:min(860px,100%);}
+.sheet-gallery{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin:0;}
+.sheet-figure{margin:0; border:1px solid var(--rule); background:var(--paper); min-width:0;}
+.sheet-figure a{display:block; overflow:hidden; background:var(--paper-2);}
+.sheet-figure img{display:block; width:100%; height:auto; object-fit:contain; object-position:top center; transition:transform .35s var(--ease);}
+.sheet-figure a:hover img{transform:scale(1.015);}
+.sheet-figure[data-fit="contain"] img{object-fit:contain; background:#fff;}
+.sheet-figure figcaption{padding:9px 10px 10px; font-family:var(--mono); font-size:9.5px; line-height:1.45; letter-spacing:.06em; color:var(--ink-3);}
 
 /* ==========================================================
    REVEAL
@@ -307,10 +319,12 @@ footer{padding:26px 0 40px;}
   .venture:hover{padding-left:0;}
   .cards{grid-template-columns:1fr;}
   .card{min-height:0;}
+  .card.has-media{grid-column:auto; min-height:0;}
   .kit-row{grid-template-columns:1fr; gap:5px;}
   .course-list{columns:1;}
   section{padding:64px 0;}
   .sheet{width:100%; padding-bottom:80px;}
+  .sheet-gallery{grid-template-columns:1fr;}
   .links{grid-template-columns:1fr;}
 }
 @media (max-width:520px){
@@ -475,17 +489,17 @@ const GH = "https://github.com/MouhssineElBoumshouli";
 
 const T = {
 en:{
-  title:"Mouhssine El Boumshouli — Software Developer & Founder",
-  desc:"Portfolio of Mouhssine El Boumshouli — AI & digital engineering student at EIDIA (UEMF, Fes, Morocco), founder of Convoroute LLC, builder of software in C, Python and on the web.",
+  title:"Mouhssine El Boumshouli — AI Engineering Student & Software Developer",
+  desc:"Portfolio of Mouhssine El Boumshouli — AI engineering student and software developer building full-stack, data and AI systems.",
   skip:"Skip to work",
   nav1:"Ventures", nav2:"Projects", nav3:"Toolkit", nav4:"Education", nav5:"Contact", navcv:"CV ↓",
   eyebrow:"Fes, Morocco &nbsp;·&nbsp; AI Engineering, EIDIA — UEMF",
-  lede:"I build software end to end — from <b>data structures in C</b> and computer-vision tooling in Python, to <b>AI chatbots</b> businesses actually pay for, to the websites and campaigns that sell them. Fourth-year engineering student, and founder of a small US software company.",
+  lede:"I build software end to end — from <b>full-stack decision systems</b> and computer-vision tooling in Python, to <b>human-reviewed AI workflows</b> and the web products around them. Fourth-year AI engineering student and software developer; I also run Convoroute LLC.",
   pill1:"Founder — Convoroute LLC", pill2:"4th year, Diplôme d'Ingénieur (AI)", pill3:"AR · EN · FR · ES",
   cta1:"See the work", cta2:"Get in touch",
   s1num:"01 / Ventures & Experience",
   s1title:"Things I run,<br>not just things I built.",
-  s1note:"A company, two commercial websites and a self-directed internship — where the engineering meets customers, pricing and deadlines. Click any of them for the full story.",
+  s1note:"A company, two commercial websites and a software/data internship — where engineering meets customers, purchasing decisions and deadlines. Click any of them for the full story.",
   s2num:"02 / Selected Projects",
   s2title:"Code, from low<br>level to <em>shipped</em>.",
   s2note:"University work, personal builds and experiments. Click a project to open the details, the approach and the links.",
@@ -503,26 +517,26 @@ en:{
   cvLabel:"Download CV",
   footRight:'Fes, Morocco · <a href="cv/Mouhssine_El_Boumshouli_CV_EN.pdf" download>CV (EN)</a> · <a href="cv/Mouhssine_El_Boumshouli_CV_FR.pdf" download>CV (FR)</a>',
   close:"Close ✕", readMore:"Read more", filterAll:"All",
-  lOverview:"Overview", lHighlights:"Highlights", lStack:"Stack", lLinks:"Links",
+  lOverview:"Overview", lVisuals:"Selected views", lHighlights:"Highlights", lStack:"Stack", lLinks:"Links", openVisual:"Open full-size image",
   noRepo:"Code available on request", emailAbout:"Ask me about this",
   empty:"Nothing in this category yet.",
   courses:["Data structures & algorithms","C / C++ programming","Object-oriented programming","Databases","Probability & statistics","Linear algebra","Machine learning & clustering","Cybersecurity","Analog electronics","FPGA & digital systems","Signal processing","Technical & academic French"],
-  kitA:[["Languages","C, C++, Python, Java, R, SQL, MATLAB, HTML/CSS"],["Libraries","OpenCV, Shapely, NumPy, Streamlit, Qt (Qt Creator), Next.js"],["AI","LLM integration, prompt design, chatbot architecture, AI-assisted development workflows"]],
-  kitB:[["Platforms","Git & GitHub, Linux, WordPress & Elementor, REST APIs, VPS & cPanel, GitHub Pages"],["Security","Wireshark, Suricata / Zeek, Wi-Fi and VLAN fundamentals"],["Hardware","Proteus, Arduino, FPGA basics, analog electronics"]],
+  kitA:[["Programming","Python, TypeScript, JavaScript, C, C++, Java, SQL, R"],["Frontend","React, Next.js, HTML/CSS"],["Backend & data","FastAPI, SQLAlchemy, Pydantic, PostgreSQL, Prisma, REST APIs"]],
+  kitB:[["Infrastructure","Docker, Nginx, Git/GitHub, Linux, Vercel"],["AI & data","LLM integration, human-in-the-loop AI workflows, OpenCV, NumPy"],["Quality","pytest, Vitest, Ruff, mypy, ESLint"]],
   langs:[["Arabic","Native · incl. Darija"],["English","Fluent · TOEFL iBT 112/120"],["French","Full comprehension · working proficiency"],["Spanish","Beginner"]]
 },
 fr:{
-  title:"Mouhssine El Boumshouli — Développeur logiciel & Fondateur",
-  desc:"Portfolio de Mouhssine El Boumshouli — étudiant-ingénieur en IA à l'EIDIA (UEMF, Fès, Maroc), fondateur de Convoroute LLC, développeur en C, Python et sur le web.",
+  title:"Mouhssine El Boumshouli — Étudiant-ingénieur en IA & Développeur logiciel",
+  desc:"Portfolio de Mouhssine El Boumshouli — étudiant-ingénieur en IA et développeur logiciel spécialisé dans les systèmes full-stack, data et IA.",
   skip:"Aller aux projets",
   nav1:"Activités", nav2:"Projets", nav3:"Outils", nav4:"Formation", nav5:"Contact", navcv:"CV ↓",
   eyebrow:"Fès, Maroc &nbsp;·&nbsp; Ingénierie IA, EIDIA — UEMF",
-  lede:"Je construis des logiciels de bout en bout — des <b>structures de données en C</b> et des outils de vision par ordinateur en Python, aux <b>chatbots IA</b> que des entreprises paient réellement, jusqu'aux sites et campagnes qui les vendent. Étudiant en quatrième année de cycle ingénieur, et fondateur d'une petite société de logiciels aux États-Unis.",
+  lede:"Je construis des logiciels de bout en bout — des <b>systèmes décisionnels full-stack</b> et outils de vision par ordinateur en Python, aux <b>workflows IA avec validation humaine</b> et aux produits web qui les entourent. Étudiant-ingénieur en IA en quatrième année et développeur logiciel ; je dirige aussi Convoroute LLC.",
   pill1:"Fondateur — Convoroute LLC", pill2:"4ᵉ année, Diplôme d'Ingénieur (IA)", pill3:"AR · EN · FR · ES",
   cta1:"Voir les projets", cta2:"Me contacter",
   s1num:"01 / Activités & Expérience",
   s1title:"Ce que je dirige,<br>pas seulement ce<br>que j'ai codé.",
-  s1note:"Une société, deux sites commerciaux et un stage entièrement auto-dirigé — là où l'ingénierie rencontre les clients, les prix et les délais. Cliquez pour le détail.",
+  s1note:"Une société, deux sites commerciaux et un stage logiciel/data — là où l'ingénierie rencontre les clients, les décisions d'achat et les délais. Cliquez pour le détail.",
   s2num:"02 / Projets sélectionnés",
   s2title:"Du bas niveau<br>jusqu'au <em>livré</em>.",
   s2note:"Travaux universitaires, projets personnels et expérimentations. Cliquez sur un projet pour ouvrir le détail, la démarche et les liens.",
@@ -540,12 +554,12 @@ fr:{
   cvLabel:"Télécharger le CV",
   footRight:'Fès, Maroc · <a href="cv/Mouhssine_El_Boumshouli_CV_EN.pdf" download>CV (EN)</a> · <a href="cv/Mouhssine_El_Boumshouli_CV_FR.pdf" download>CV (FR)</a>',
   close:"Fermer ✕", readMore:"En savoir plus", filterAll:"Tout",
-  lOverview:"Aperçu", lHighlights:"Points clés", lStack:"Technologies", lLinks:"Liens",
+  lOverview:"Aperçu", lVisuals:"Vues sélectionnées", lHighlights:"Points clés", lStack:"Technologies", lLinks:"Liens", openVisual:"Ouvrir l'image en plein format",
   noRepo:"Code disponible sur demande", emailAbout:"Me poser une question",
   empty:"Rien dans cette catégorie pour l'instant.",
   courses:["Structures de données & algorithmique","Programmation C / C++","Programmation orientée objet","Bases de données","Probabilités & statistiques","Algèbre linéaire","Apprentissage automatique & clustering","Cybersécurité","Électronique analogique","FPGA & systèmes numériques","Traitement du signal","Français technique & académique"],
-  kitA:[["Langages","C, C++, Python, Java, R, SQL, MATLAB, HTML/CSS"],["Bibliothèques","OpenCV, Shapely, NumPy, Streamlit, Qt (Qt Creator), Next.js"],["IA","Intégration de LLM, conception de prompts, architecture de chatbots, développement assisté par IA"]],
-  kitB:[["Plateformes","Git & GitHub, Linux, WordPress & Elementor, API REST, VPS & cPanel, GitHub Pages"],["Sécurité","Wireshark, Suricata / Zeek, fondamentaux Wi-Fi et VLAN"],["Matériel","Proteus, Arduino, bases FPGA, électronique analogique"]],
+  kitA:[["Programmation","Python, TypeScript, JavaScript, C, C++, Java, SQL, R"],["Frontend","React, Next.js, HTML/CSS"],["Backend & données","FastAPI, SQLAlchemy, Pydantic, PostgreSQL, Prisma, API REST"]],
+  kitB:[["Infrastructure","Docker, Nginx, Git/GitHub, Linux, Vercel"],["IA & données","Intégration de LLM, workflows IA avec validation humaine, OpenCV, NumPy"],["Qualité","pytest, Vitest, Ruff, mypy, ESLint"]],
   langs:[["Arabe","Maternelle · dont le darija"],["Anglais","Courant · TOEFL iBT 112/120"],["Français","Compréhension totale · bon niveau"],["Espagnol","Débutant"]]
 }};
 
@@ -621,32 +635,62 @@ const VENTURES = [
   id:"bounaim",
   when:{en:"Jul — Aug 2026", fr:"Juil. — août 2026"},
   name:"Bounaim Auto",
-  role:{en:"Summer Intern, Software & Data · Beni Mellal, Morocco", fr:"Stagiaire d'été, Logiciel & Données · Beni Mellal, Maroc"},
-  tags:{en:["Python","Streamlit","Data modelling","Self-directed"], fr:["Python","Streamlit","Modélisation","Auto-dirigé"]},
-  kind:{en:"Internship · Car parts import/export", fr:"Stage · Import/export de pièces auto"},
+  role:{en:"Software / Data Intern · Beni Mellal, Morocco", fr:"Stagiaire logiciel / data · Beni Mellal, Maroc"},
+  tags:{en:["React","TypeScript","FastAPI","PostgreSQL","Docker"], fr:["React","TypeScript","FastAPI","PostgreSQL","Docker"]},
+  kind:{en:"Internship · Automotive procurement", fr:"Stage · Achats automobiles"},
   teaser:{
-    en:["An internship with no assigned brief and no access to internal systems. So I wrote my own: a parts cross-reference and fitment matching engine for the Moroccan market."],
-    fr:["Un stage sans sujet imposé ni accès aux systèmes internes. J'ai donc défini le mien : un moteur de correspondance de références et de compatibilité pour le marché marocain."]},
+    en:["I independently designed and built SmartImport, a full-stack decision-support platform for comparing international automotive supplier quotations."],
+    fr:["J'ai conçu et développé en autonomie SmartImport, une plateforme full-stack d'aide à la décision pour comparer les devis de fournisseurs automobiles internationaux."]},
   body:{
-    en:["The supervisor signed the agreement and told me I could do whatever I wanted, or go home. There was no data access, no system to shadow, no task list. That left two options: invent an experience that never happened, or define a real problem and solve it with what was publicly available.",
-        "I took the second. The work had to stand on its own — documented well enough that someone could disagree with it."],
-    fr:["Le maître de stage a signé la convention et m'a dit de faire ce que je voulais, ou de rentrer. Aucun accès aux données, aucun système à observer, aucune liste de tâches. Restaient deux options : inventer une expérience qui n'a pas eu lieu, ou définir un vrai problème et le résoudre avec ce qui était public.",
-        "J'ai choisi la seconde. Le travail devait tenir seul — assez documenté pour qu'on puisse le contester."]},
+    en:["SmartImport turns heterogeneous PDF and XLSX quotations into structured, completeness-aware comparisons against the same purchasing requirement. It normalizes currencies and separates commercial landed cost from estimated cash requirements.",
+        "Its AI workflow is deliberately bounded: AI proposes fields or matches with supporting evidence, the user reviews them, and deterministic backend rules remain authoritative for financial calculations and saved records."],
+    fr:["SmartImport transforme des devis PDF et XLSX hétérogènes en comparaisons structurées, tenant compte de la complétude par rapport au même besoin d'achat. La plateforme normalise les devises et distingue le coût rendu commercial du besoin de trésorerie estimé.",
+        "Le rôle de l'IA est volontairement encadré : elle propose des champs ou des correspondances avec leurs preuves, l'utilisateur les vérifie, et les règles déterministes du backend restent l'autorité pour les calculs financiers et les données enregistrées."]},
   bullets:{
-    en:["Parts cross-reference and fitment matching engine pairing OEM and aftermarket references for the Moroccan market — the centrepiece of the internship.",
-        "Earlier direction: a vehicle-fleet demand model estimating parts demand from public Moroccan registration data.",
-        "Every assumption pulled out into a documented registry, alongside a written methodology and a test suite, so the model could be argued with rather than believed.",
-        "Deliverables include the written report and project presentation required by the university."],
-    fr:["Moteur de correspondance entre références constructeur et adaptables pour le marché marocain — la pièce maîtresse du stage.",
-        "Première direction explorée : un modèle de demande fondé sur le parc automobile, à partir des données publiques d'immatriculation.",
-        "Chaque hypothèse sortie dans un registre documenté, avec une méthodologie écrite et un jeu de tests, pour que le modèle puisse être discuté plutôt que cru sur parole.",
-        "Livrables comprenant le rapport écrit et la soutenance exigés par l'université."]},
-  stack:"Python · Streamlit · YAML · pytest",
+    en:["Structures purchasing requirements, staged document imports, supplier baskets and readiness before comparison.",
+        "Calculates multi-currency commercial landed cost and estimated cash needs with visible assumptions.",
+        "Synthetic evaluation: 98.99% aggregate document-field F1; 100% product-line extraction F1 on 23 tested lines; 92.31% top-1 matching on eligible unique-match cases."],
+    fr:["Structure les besoins d'achat, l'import de documents par étapes, les paniers fournisseurs et leur état de préparation avant comparaison.",
+        "Calcule le coût rendu commercial multi-devise et le besoin de trésorerie estimé, avec des hypothèses visibles.",
+        "Évaluation synthétique : F1 agrégé de 98,99 % sur les champs documentaires ; F1 de 100 % sur l'extraction de 23 lignes produit testées ; top-1 de 92,31 % sur les cas éligibles à correspondance unique."]},
+  stack:"React · TypeScript · FastAPI · Python · PostgreSQL · SQLAlchemy · Alembic · Docker · Nginx · pypdf/pdfplumber · optional OpenAI",
   links:[]
 }
 ];
 
 const PROJECTS = [
+{
+  id:"smartimport", cat:"ai", year:"2026",
+  kind:{en:"AI · Full-stack · Data", fr:"IA · Full-stack · Données"},
+  name:{en:"SmartImport — Supplier Decision Platform", fr:"SmartImport — Plateforme de comparaison fournisseurs"},
+  teaser:{
+    en:"A full-stack procurement decision platform that turns heterogeneous supplier quotations into completeness-aware, explainable cost comparisons.",
+    fr:"Une plateforme full-stack d'aide aux achats qui transforme des devis fournisseurs hétérogènes en comparaisons de coûts explicables, en tenant compte de la complétude des offres."},
+  body:{
+    en:["SmartImport compares international automotive supplier quotations against one structured purchasing requirement. PDF and XLSX files enter a staged preview; supplier baskets remain visible even when incomplete, but only calculation-ready offers receive factual findings.",
+        "The financial engine normalizes stored exchange-rate assumptions and keeps commercial landed cost separate from estimated cash need. AI may propose extracted fields or requirement matches with evidence; a person reviews every suggestion, while deterministic backend logic remains authoritative."],
+    fr:["SmartImport compare des devis de fournisseurs automobiles internationaux par rapport à un même besoin d'achat structuré. Les fichiers PDF et XLSX passent par un aperçu intermédiaire ; les paniers incomplets restent visibles, mais seuls les devis prêts au calcul reçoivent des conclusions factuelles.",
+        "Le moteur financier normalise les hypothèses de taux de change enregistrées et distingue le coût rendu commercial du besoin de trésorerie estimé. L'IA peut proposer des champs extraits ou des correspondances avec leurs preuves ; chaque suggestion est vérifiée par une personne, tandis que la logique déterministe du backend reste l'autorité."]},
+  bullets:{
+    en:["Same-basket completeness and readiness logic prevents partial quotations from appearing artificially cheaper.",
+        "Multi-currency cost analysis separates goods, additional costs, landed cost and estimated cash requirements.",
+        "React/TypeScript frontend, FastAPI/Python services, PostgreSQL persistence, and Docker/Nginx infrastructure, backed by automated tests.",
+        "Synthetic evaluation only: 98.99% aggregate document-field F1; 100% product-line extraction F1 on 23 tested lines; 92.31% top-1 matching on eligible unique-match cases."],
+    fr:["La logique de complétude et de préparation sur un panier identique évite qu'un devis partiel paraisse artificiellement moins cher.",
+        "L'analyse multi-devise sépare les marchandises, les frais additionnels, le coût rendu et le besoin de trésorerie estimé.",
+        "Frontend React/TypeScript, services FastAPI/Python, persistance PostgreSQL et infrastructure Docker/Nginx, avec des tests automatisés.",
+        "Évaluation synthétique uniquement : F1 agrégé de 98,99 % sur les champs documentaires ; F1 de 100 % sur 23 lignes produit testées ; top-1 de 92,31 % sur les cas éligibles à correspondance unique."]},
+  stack:"React · TypeScript · FastAPI · Python · PostgreSQL · SQLAlchemy · Alembic · Docker · Nginx · pytest · Vitest",
+  preview:{src:"assets/projects/smartimport/dashboard.png", width:2160, height:1020, alt:{en:"SmartImport purchasing dashboard with supplier quotation readiness", fr:"Tableau de bord SmartImport présentant l'état des devis fournisseurs"}},
+  visuals:[
+    {src:"assets/projects/smartimport/dashboard.png", width:2160, height:1020, alt:{en:"SmartImport dashboard", fr:"Tableau de bord SmartImport"}, caption:{en:"Purchasing workspace and supplier readiness", fr:"Espace d'achat et état de préparation des fournisseurs"}},
+    {src:"assets/projects/smartimport/supplier-comparison.png", width:2160, height:1215, alt:{en:"SmartImport supplier comparison matrix", fr:"Matrice de comparaison des fournisseurs dans SmartImport"}, caption:{en:"Completeness-aware supplier comparison", fr:"Comparaison fournisseurs tenant compte de la complétude"}},
+    {src:"assets/projects/smartimport/cost-analysis.png", width:2160, height:1215, alt:{en:"SmartImport explainable cost analysis", fr:"Analyse détaillée des coûts dans SmartImport"}, caption:{en:"Landed cost and estimated cash need", fr:"Coût rendu et besoin de trésorerie estimé"}},
+    {src:"assets/projects/smartimport/architecture.png", width:1400, height:800, fit:"contain", alt:{en:"SmartImport system architecture", fr:"Architecture du système SmartImport"}, caption:{en:"React, FastAPI, PostgreSQL and Docker architecture", fr:"Architecture React, FastAPI, PostgreSQL et Docker"}}
+  ],
+  // Add the public repository link to this array after SmartImport is published.
+  links:[]
+},
 {
   id:"medskel", cat:"ai", year:"2026",
   kind:{en:"Computer vision", fr:"Vision par ordinateur"},
@@ -711,50 +755,6 @@ const PROJECTS = [
         "Couvre les fondamentaux du Wi-Fi, la segmentation VLAN, l'analyse de trafic sous Wireshark et l'outillage IDS.",
         "Projet d'équipe sur six semaines, livré avec README, rapport et diapositives."]},
   stack:"Linux · Wireshark · Suricata / Zeek · VLAN",
-  links:[]
-},
-{
-  id:"fitment", cat:"data", year:"2026",
-  kind:{en:"Applied data", fr:"Données appliquées"},
-  name:{en:"Parts fitment matching engine", fr:"Moteur de correspondance de pièces"},
-  teaser:{
-    en:"Reference matching between OEM and aftermarket car parts for the Moroccan market — the centrepiece of a self-defined summer internship project.",
-    fr:"Correspondance entre références constructeur et adaptables pour le marché marocain — la pièce maîtresse d'un stage entièrement auto-défini."},
-  body:{
-    en:["Ask a parts counter for a part and the honest answer is often a question: which engine, which year, which trim. The same physical component carries a manufacturer reference, several aftermarket equivalents and a set of vehicles it fits — and none of those three lists agree on formatting.",
-        "The engine's job is to make that lookup deterministic instead of dependent on whoever is behind the counter that day."],
-    fr:["Demandez une pièce à un comptoir et la réponse honnête est souvent une question : quel moteur, quelle année, quelle finition. Le même composant porte une référence constructeur, plusieurs équivalents adaptables et une liste de véhicules compatibles — et aucune de ces listes n'utilise le même format.",
-        "Le rôle du moteur est de rendre cette recherche déterministe plutôt que dépendante de la personne au comptoir ce jour-là."]},
-  bullets:{
-    en:["Normalisation and matching between OEM and aftermarket reference formats.",
-        "Fitment logic linking a part to the vehicles it actually belongs on.",
-        "Built for a real import/export business context, with no access to their internal systems — public and reconstructed data only."],
-    fr:["Normalisation et correspondance entre les formats de références constructeur et adaptables.",
-        "Logique de compatibilité reliant une pièce aux véhicules auxquels elle correspond réellement.",
-        "Conçu dans un contexte réel d'import/export, sans accès aux systèmes internes — uniquement des données publiques et reconstituées."]},
-  stack:"Python · Matching · Domain modelling",
-  links:[]
-},
-{
-  id:"fleet", cat:"data", year:"2026",
-  kind:{en:"Modelling", fr:"Modélisation"},
-  name:{en:"Vehicle-fleet demand model", fr:"Modèle de demande du parc automobile"},
-  teaser:{
-    en:"A Streamlit dashboard estimating car parts demand from public Moroccan vehicle registration data — with every assumption written down so the model can be challenged.",
-    fr:"Un tableau de bord Streamlit estimant la demande de pièces à partir des données publiques d'immatriculation au Maroc — chaque hypothèse écrite pour que le modèle soit contestable."},
-  body:{
-    en:["If you know which cars are actually registered in a country, and roughly how often each one needs a given part, you can estimate demand without any internal sales data. The estimate is only as good as its assumptions — so the assumptions were made the visible part of the project.",
-        "Every one of them lives in a registry file rather than buried in code, next to a written methodology explaining what the model does and does not claim."],
-    fr:["Si l'on sait quelles voitures sont réellement immatriculées dans un pays, et à quelle fréquence chacune nécessite une pièce donnée, on peut estimer la demande sans aucune donnée de vente interne. L'estimation ne vaut que ses hypothèses — celles-ci sont donc devenues la partie visible du projet.",
-        "Chacune figure dans un fichier de registre plutôt qu'enfouie dans le code, aux côtés d'une méthodologie écrite précisant ce que le modèle affirme et n'affirme pas."]},
-  bullets:{
-    en:["Streamlit dashboard over a Python model, driven by public registration data.",
-        "assumptions.yaml registry — every parameter named, sourced and changeable without touching code.",
-        "METHOD.md documenting the reasoning, plus a test suite covering the calculations."],
-    fr:["Tableau de bord Streamlit au-dessus d'un modèle Python, alimenté par les données publiques d'immatriculation.",
-        "Registre assumptions.yaml — chaque paramètre nommé, sourcé et modifiable sans toucher au code.",
-        "METHOD.md documentant le raisonnement, plus un jeu de tests couvrant les calculs."]},
-  stack:"Python · Streamlit · YAML · pytest",
   links:[]
 },
 {
@@ -886,12 +886,14 @@ function renderCards(){
   const list = PROJECTS.filter(p => filter === "all" || p.cat === filter);
   if (!list.length){ $("#cards").innerHTML = `<p class="empty">${esc(T[lang].empty)}</p>`; return; }
   $("#cards").innerHTML = list.map((p,i)=>`
-    <button class="card rv" type="button" data-open="p:${p.id}" style="transition-delay:${Math.min(i,5)*60}ms">
+    <button class="card rv${p.preview?' has-media':''}" type="button" data-open="p:${p.id}" style="transition-delay:${Math.min(i,5)*60}ms">
+      ${p.preview?`<span class="card-media"><img src="${p.preview.src}" width="${p.preview.width}" height="${p.preview.height}" loading="lazy" decoding="async" alt="${esc(pick(p.preview.alt))}"></span><span class="card-content">`:''}
       <span class="card-top"><span class="card-kind">${esc(pick(p.kind))}</span><span class="card-year">${esc(p.year)}</span></span>
       <h3>${esc(pick(p.name))}</h3>
       <p>${esc(pick(p.teaser))}</p>
       <span class="stack">${esc(p.stack)}</span>
       <span class="more">${esc(T[lang].readMore)} <span class="arw">→</span></span>
+      ${p.preview?'</span>':''}
     </button>`).join("");
   document.querySelectorAll("#cards .rv").forEach(el=>{
     io.observe(el);
@@ -910,6 +912,11 @@ function sheetHTML(it){
   let h = "";
   h += `<span class="sheet-label">${esc(t.lOverview)}</span>`;
   h += pick(it.body).map(p=>`<p>${esc(p)}</p>`).join("");
+  if ((it.visuals||[]).length){
+    h += `<span class="sheet-label">${esc(t.lVisuals)}</span><div class="sheet-gallery">`;
+    h += it.visuals.map(v=>`<figure class="sheet-figure"${v.fit?` data-fit="${v.fit}"`:''}><a href="${v.src}" target="_blank" rel="noopener" aria-label="${esc(t.openVisual)}: ${esc(pick(v.caption))}"><img src="${v.src}" width="${v.width}" height="${v.height}" loading="lazy" decoding="async" alt="${esc(pick(v.alt))}"></a><figcaption>${esc(pick(v.caption))}</figcaption></figure>`).join("");
+    h += `</div>`;
+  }
   h += `<span class="sheet-label">${esc(t.lHighlights)}</span><ul>${pick(it.bullets).map(b=>`<li>${esc(b)}</li>`).join("")}</ul>`;
   h += `<span class="sheet-label">${esc(t.lStack)}</span><p>${esc(it.stack)}</p>`;
   h += `<span class="sheet-label">${esc(t.lLinks)}</span><div class="sheet-links">`;
@@ -935,6 +942,7 @@ function openSheet(id){
     ? esc(pick(it.when)) + " &nbsp;·&nbsp; " + esc(pick(it.role))
     : esc(it.year) + " &nbsp;·&nbsp; " + esc(pick(it.kind));
   $("#sheetBody").innerHTML = sheetHTML(it);
+  $(".sheet").classList.toggle("has-visuals", Boolean((it.visuals||[]).length));
   overlay.hidden = false;
   requestAnimationFrame(()=> overlay.classList.add("open"));
   document.body.classList.add("locked");
