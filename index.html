@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Mouhssine El Boumshouli — AI Engineering Student &amp; Software Developer</title>
-<meta name="description" id="metaDesc" content="Portfolio of Mouhssine El Boumshouli — AI engineering student and software developer building full-stack, data and AI systems.">
+<title>Mouhssine El Boumshouli — AI Engineering Student · LLM Agents &amp; Evaluation</title>
+<meta name="description" id="metaDesc" content="Portfolio of Mouhssine El Boumshouli, a fourth-year AI engineering student building and evaluating LLM agents, computer-vision systems and full-stack software.">
 <meta name="author" content="Mouhssine El Boumshouli">
 <meta name="theme-color" content="#F3EFE7">
-<meta property="og:title" content="Mouhssine El Boumshouli — AI Engineering Student &amp; Software Developer">
-<meta property="og:description" content="AI engineering student and software developer building full-stack, data and AI systems.">
+<meta property="og:title" content="Mouhssine El Boumshouli — AI Engineering Student · LLM Agents &amp; Evaluation">
+<meta property="og:description" content="Fourth-year AI engineering student building and evaluating LLM agents, computer-vision systems and full-stack software.">
 <meta property="og:type" content="profile">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F3EFE7'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23A8401E'/%3E%3C/svg%3E">
 <link rel="alternate" hreflang="en" href="?lang=en">
@@ -87,13 +87,13 @@ header.stuck{border-bottom-color:var(--rule);}
 .lang{display:flex; border:1px solid var(--ink); border-radius:2px; overflow:hidden; flex-shrink:0;}
 .lang button{
   font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
-  padding:7px 11px; border:0; background:transparent; color:var(--ink-2); cursor:pointer;
+  min-width:44px; min-height:44px; padding:7px 11px; border:0; background:transparent; color:var(--ink-2); cursor:pointer;
   transition:background .25s var(--ease), color .25s var(--ease);
 }
 .lang button+button{border-left:1px solid var(--ink);}
 .lang button:hover{background:var(--paper-2);}
 .lang button[aria-pressed="true"]{background:var(--ink); color:var(--paper);}
-.burger{display:none; background:none; border:1px solid var(--rule); border-radius:2px; padding:9px 10px; cursor:pointer;}
+.burger{display:none; min-width:44px; min-height:44px; background:none; border:1px solid var(--rule); border-radius:2px; padding:9px 10px; cursor:pointer;}
 .burger span{display:block; width:18px; height:1.5px; background:var(--ink); transition:.3s var(--ease);}
 .burger span+span{margin-top:5px;}
 .burger[aria-expanded="true"] span:first-child{transform:translateY(3.2px) rotate(45deg);}
@@ -169,7 +169,7 @@ h2 em{font-style:italic; color:var(--rust);}
 /* ---------- project cards ---------- */
 .filters{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:30px;}
 .filter{font-family:var(--mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase;
-  padding:9px 15px; border:1px solid var(--rule); background:transparent; border-radius:2px; color:var(--ink-3);
+  min-height:44px; padding:9px 15px; border:1px solid var(--rule); background:transparent; border-radius:2px; color:var(--ink-3);
   cursor:pointer; transition:all .3s var(--ease);}
 .filter:hover{border-color:var(--ink-2); color:var(--ink);}
 .filter[aria-pressed="true"]{background:var(--ink); border-color:var(--ink); color:var(--paper);}
@@ -187,8 +187,11 @@ h2 em{font-style:italic; color:var(--rust);}
 .card .stack{margin-top:auto; font-family:var(--mono); font-size:10px; letter-spacing:.08em; color:var(--ink-3); text-transform:uppercase;}
 .card .more{margin-top:12px;}
 .card.has-media{grid-column:span 2; padding:0; min-height:440px;}
+.card.has-media.is-featured{grid-column:1/-1; display:grid; grid-template-columns:minmax(0,1.7fr) minmax(300px,1fr);}
 .card-media{display:block; width:100%; aspect-ratio:2.1/1; overflow:hidden; border-bottom:1px solid var(--rule); background:var(--paper-2);}
 .card-media img{display:block; width:100%; height:100%; object-fit:cover; object-position:top center;}
+.card.is-featured .card-media{height:100%; aspect-ratio:auto; border-right:1px solid var(--rule); border-bottom:0; background:#fff;}
+.card.is-featured .card-media img{object-fit:contain; object-position:center;}
 .card-content{display:flex; flex-direction:column; flex:1; padding:24px;}
 .empty{padding:40px 24px; background:var(--paper); font-size:15px; color:var(--ink-3); grid-column:1/-1;}
 
@@ -251,6 +254,7 @@ footer{padding:26px 0 40px;}
   position:sticky; top:-32px; padding:32px 0 14px; margin-top:-32px; background:var(--paper-3); z-index:2;}
 .sheet-kind{font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--rust);}
 .closeb{border:1px solid var(--rule); background:transparent; border-radius:2px; padding:8px 12px; cursor:pointer;
+  min-height:44px;
   font-family:var(--mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-2);
   transition:all .3s var(--ease); flex-shrink:0;}
 .closeb:hover{background:var(--ink); color:var(--paper); border-color:var(--ink);}
@@ -272,6 +276,7 @@ footer{padding:26px 0 40px;}
 .slink.muted:hover{background:transparent; color:var(--ink-3);}
 .sheet.has-visuals{width:min(860px,100%);}
 .sheet-gallery{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin:0;}
+.sheet-gallery.single{grid-template-columns:1fr;}
 .sheet-figure{margin:0; border:1px solid var(--rule); background:var(--paper); min-width:0;}
 .sheet-figure a{display:block; overflow:hidden; background:var(--paper-2);}
 .sheet-figure img{display:block; width:100%; height:auto; object-fit:contain; object-position:top center; transition:transform .35s var(--ease);}
@@ -320,6 +325,8 @@ footer{padding:26px 0 40px;}
   .cards{grid-template-columns:1fr;}
   .card{min-height:0;}
   .card.has-media{grid-column:auto; min-height:0;}
+  .card.has-media.is-featured{display:flex;}
+  .card.is-featured .card-media{height:auto; aspect-ratio:2.1/1; border-right:0; border-bottom:1px solid var(--rule);}
   .kit-row{grid-template-columns:1fr; gap:5px;}
   .course-list{columns:1;}
   section{padding:64px 0;}
@@ -352,7 +359,7 @@ footer{padding:26px 0 40px;}
       </div>
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
       <nav class="nav-links" id="menu">
-        <a href="#ventures" data-i18n="nav1">Ventures</a>
+        <a href="#ventures" data-i18n="nav1">Experience</a>
         <a href="#projects" data-i18n="nav2">Projects</a>
         <a href="#toolkit" data-i18n="nav3">Toolkit</a>
         <a href="#education" data-i18n="nav4">Education</a>
@@ -378,7 +385,8 @@ footer{padding:26px 0 40px;}
     </div>
     <div class="hero-cta rv">
       <a href="#projects" class="btn solid"><span data-i18n="cta1"></span> <span class="arw">→</span></a>
-      <a href="mailto:mouhssine.elboumshouli@eidia.ueuromed.org" class="btn ghost" data-i18n="cta2"></a>
+      <a href="https://github.com/MouhssineElBoumshouli" target="_blank" rel="noopener" class="btn ghost"><span data-i18n="cta2"></span> <span class="arw">↗</span></a>
+      <a href="mailto:mouhssine.elboumshouli@eidia.ueuromed.org" class="btn ghost" data-i18n="cta3"></a>
     </div>
   </div>
 </section>
@@ -428,8 +436,10 @@ footer{padding:26px 0 40px;}
       <div class="edu-card">
         <h3 data-i18n="eduName"></h3>
         <p class="edu-sub" data-i18n="eduUni"></p>
-        <p class="edu-sub" data-i18n="eduDeg"></p>
-        <p class="edu-when" data-i18n="eduWhen"></p>
+        <p class="edu-sub" data-i18n="eduPrep"></p>
+        <p class="edu-when" data-i18n="eduPrepWhen"></p>
+        <p class="edu-sub" data-i18n="eduDegree"></p>
+        <p class="edu-when" data-i18n="eduDegreeWhen"></p>
         <ul class="course-list" id="courseList"></ul>
       </div>
       <div id="langList"></div>
@@ -489,28 +499,30 @@ const GH = "https://github.com/MouhssineElBoumshouli";
 
 const T = {
 en:{
-  title:"Mouhssine El Boumshouli — AI Engineering Student & Software Developer",
-  desc:"Portfolio of Mouhssine El Boumshouli — AI engineering student and software developer building full-stack, data and AI systems.",
+  title:"Mouhssine El Boumshouli — AI Engineering Student · LLM Agents & Evaluation",
+  desc:"Portfolio of Mouhssine El Boumshouli, a fourth-year AI engineering student building and evaluating LLM agents, computer-vision systems and full-stack software.",
   skip:"Skip to work",
-  nav1:"Ventures", nav2:"Projects", nav3:"Toolkit", nav4:"Education", nav5:"Contact", navcv:"CV ↓",
+  nav1:"Experience", nav2:"Projects", nav3:"Toolkit", nav4:"Education", nav5:"Contact", navcv:"CV ↓",
   eyebrow:"Fes, Morocco &nbsp;·&nbsp; AI Engineering, EIDIA — UEMF",
-  lede:"I build software end to end — from <b>full-stack decision systems</b> and computer-vision tooling in Python, to <b>human-reviewed AI workflows</b> and the web products around them. Fourth-year AI engineering student and software developer; I also run Convoroute LLC.",
-  pill1:"Founder — Convoroute LLC", pill2:"4th year, Diplôme d'Ingénieur (AI)", pill3:"AR · EN · FR · ES",
-  cta1:"See the work", cta2:"Get in touch",
-  s1num:"01 / Ventures & Experience",
-  s1title:"Things I run,<br>not just things I built.",
-  s1note:"A company, two commercial websites and a software/data internship — where engineering meets customers, purchasing decisions and deadlines. Click any of them for the full story.",
+  lede:"<b>I build and evaluate AI systems.</b> I’m a fourth-year AI engineering student at EIDIA working across LLM agents, AI evaluation, computer vision and full-stack software. Recent work includes a 240-run DARE-Bench agent reliability study and production-style software developed during my engineering internship.",
+  pill1:"AI Engineering Student", pill2:"LLM Agents · AI Evaluation", pill3:"Software Engineering · Computer Vision",
+  cta1:"View projects", cta2:"GitHub", cta3:"Contact",
+  s1num:"01 / Experience",
+  s1title:"Engineering in<br><em>practice</em>.",
+  s1note:"Two roles where I own technical decisions end to end: an engineering internship centred on SmartImport, and the software work behind Convoroute.",
   s2num:"02 / Selected Projects",
-  s2title:"Code, from low<br>level to <em>shipped</em>.",
-  s2note:"University work, personal builds and experiments. Click a project to open the details, the approach and the links.",
+  s2title:"Agents, vision,<br>systems <em>shipped</em>.",
+  s2note:"Research, engineering builds and deployed systems. Click a project for the question, implementation, evidence and links.",
   s3num:"03 / Toolkit", s3title:"What I reach for.",
-  s3note:"Ordered by how much I actually use them, not by how good they look in a list.",
-  s4num:"04 / Education & Languages", s4title:"Five years,<br>halfway through.",
-  s4note:"A French-style engineering degree — <em>Diplôme d'Ingénieur</em> — in artificial intelligence and digital engineering.",
+  s3note:"A focused toolkit shaped by AI evaluation, computer vision and production-style full-stack work.",
+  s4num:"04 / Education & Languages", s4title:"An engineering path,<br>now in year <em>four</em>.",
+  s4note:"Fourth-year AI engineering student in 2026–2027, following a five-year <em>Diplôme d'Ingénieur</em> path.",
   eduName:"École d'Ingénierie Digitale et d'Intelligence Artificielle — EIDIA",
   eduUni:"Université Euro-Méditerranéenne de Fès (UEMF) · Fes, Morocco",
-  eduDeg:"Diplôme d'Ingénieur — Artificial Intelligence & Digital Engineering",
-  eduWhen:"Sep 2023 — Jul 2028 (expected) &nbsp;·&nbsp; admitted to 4th year for 2026–2027",
+  eduPrep:"Preparatory Cycle in Digital Engineering",
+  eduPrepWhen:"2023 — 2025",
+  eduDegree:"Engineering Degree in Artificial Intelligence",
+  eduDegreeWhen:"2025 — expected 2028 &nbsp;·&nbsp; fourth year in 2026–2027",
   s5num:"05 / Contact",
   contactBig:'Have something<br>worth building?<br><a href="mailto:'+EMAIL+'">Write to me.</a>',
   lEmail:"Email", lPhone:"Phone",
@@ -521,33 +533,35 @@ en:{
   noRepo:"Code available on request", emailAbout:"Ask me about this",
   empty:"Nothing in this category yet.",
   courses:["Data structures & algorithms","C / C++ programming","Object-oriented programming","Databases","Probability & statistics","Linear algebra","Machine learning & clustering","Cybersecurity","Analog electronics","FPGA & digital systems","Signal processing","Technical & academic French"],
-  kitA:[["Programming","Python, TypeScript, JavaScript, C, C++, Java, SQL, R"],["Frontend","React, Next.js, HTML/CSS"],["Backend & data","FastAPI, SQLAlchemy, Pydantic, PostgreSQL, Prisma, REST APIs"]],
-  kitB:[["Infrastructure","Docker, Nginx, Git/GitHub, Linux, Vercel"],["AI & data","LLM integration, human-in-the-loop AI workflows, OpenCV, NumPy"],["Quality","pytest, Vitest, Ruff, mypy, ESLint"]],
-  langs:[["Arabic","Native · incl. Darija"],["English","Fluent · TOEFL iBT 112/120"],["French","Full comprehension · working proficiency"],["Spanish","Beginner"]]
+  kitA:[["AI & Data","LLM Agents, AI Evaluation, OpenAI API, scikit-learn, pandas, NumPy, OpenCV, Shapely"],["Programming","Python, TypeScript, JavaScript, C, C++, Java, SQL"]],
+  kitB:[["Web & Backend","FastAPI, React, Next.js, PostgreSQL, SQLAlchemy, Pydantic, Prisma, REST APIs"],["Engineering","Docker, Git/GitHub, Linux, pytest, Alembic"]],
+  langs:[["Arabic","Native · incl. Darija"],["English","C1 — TOEFL iBT 112/120"],["French","Working proficiency"],["Spanish","Beginner"]]
 },
 fr:{
-  title:"Mouhssine El Boumshouli — Étudiant-ingénieur en IA & Développeur logiciel",
-  desc:"Portfolio de Mouhssine El Boumshouli — étudiant-ingénieur en IA et développeur logiciel spécialisé dans les systèmes full-stack, data et IA.",
+  title:"Mouhssine El Boumshouli — Étudiant-ingénieur en IA · Agents LLM & Évaluation",
+  desc:"Portfolio de Mouhssine El Boumshouli, étudiant-ingénieur en IA en quatrième année, spécialisé dans les agents LLM, l’évaluation de l’IA, la vision par ordinateur et le développement full-stack.",
   skip:"Aller aux projets",
-  nav1:"Activités", nav2:"Projets", nav3:"Outils", nav4:"Formation", nav5:"Contact", navcv:"CV ↓",
+  nav1:"Expérience", nav2:"Projets", nav3:"Outils", nav4:"Formation", nav5:"Contact", navcv:"CV ↓",
   eyebrow:"Fès, Maroc &nbsp;·&nbsp; Ingénierie IA, EIDIA — UEMF",
-  lede:"Je construis des logiciels de bout en bout — des <b>systèmes décisionnels full-stack</b> et outils de vision par ordinateur en Python, aux <b>workflows IA avec validation humaine</b> et aux produits web qui les entourent. Étudiant-ingénieur en IA en quatrième année et développeur logiciel ; je dirige aussi Convoroute LLC.",
-  pill1:"Fondateur — Convoroute LLC", pill2:"4ᵉ année, Diplôme d'Ingénieur (IA)", pill3:"AR · EN · FR · ES",
-  cta1:"Voir les projets", cta2:"Me contacter",
-  s1num:"01 / Activités & Expérience",
-  s1title:"Ce que je dirige,<br>pas seulement ce<br>que j'ai codé.",
-  s1note:"Une société, deux sites commerciaux et un stage logiciel/data — là où l'ingénierie rencontre les clients, les décisions d'achat et les délais. Cliquez pour le détail.",
+  lede:"<b>Je conçois et j’évalue des systèmes d’IA.</b> Étudiant-ingénieur en quatrième année à l’EIDIA, je travaille sur les agents LLM, l’évaluation de l’IA, la vision par ordinateur et le développement full-stack. Mes travaux récents comprennent une étude de fiabilité de 240 exécutions sur DARE-Bench et un logiciel conçu avec des standards de production durant mon stage d’ingénierie.",
+  pill1:"Étudiant-ingénieur en IA", pill2:"Agents LLM · Évaluation de l’IA", pill3:"Génie logiciel · Vision par ordinateur",
+  cta1:"Voir les projets", cta2:"GitHub", cta3:"Contact",
+  s1num:"01 / Expérience",
+  s1title:"L’ingénierie<br>en <em>pratique</em>.",
+  s1note:"Deux expériences où j’assume les choix techniques de bout en bout : un stage d’ingénierie centré sur SmartImport et le développement logiciel de Convoroute.",
   s2num:"02 / Projets sélectionnés",
-  s2title:"Du bas niveau<br>jusqu'au <em>livré</em>.",
-  s2note:"Travaux universitaires, projets personnels et expérimentations. Cliquez sur un projet pour ouvrir le détail, la démarche et les liens.",
+  s2title:"Agents, vision,<br>systèmes <em>livrés</em>.",
+  s2note:"Recherche, projets d’ingénierie et systèmes déployés. Cliquez sur un projet pour découvrir la question, la réalisation, les résultats et les liens.",
   s3num:"03 / Outils", s3title:"Ce que j'utilise.",
-  s3note:"Classés selon ce que j'utilise vraiment, pas selon ce qui fait bien dans une liste.",
-  s4num:"04 / Formation & Langues", s4title:"Cinq ans,<br>à mi-parcours.",
-  s4note:"Un cycle ingénieur — <em>Diplôme d'Ingénieur</em> — en intelligence artificielle et ingénierie digitale.",
+  s3note:"Un ensemble d’outils resserré, façonné par l’évaluation de l’IA, la vision par ordinateur et le développement full-stack.",
+  s4num:"04 / Formation & Langues", s4title:"Un parcours ingénieur,<br>en <em>quatrième année</em>.",
+  s4note:"Étudiant-ingénieur en IA en 2026–2027, dans un cursus de cinq ans menant au <em>Diplôme d’Ingénieur</em>.",
   eduName:"École d'Ingénierie Digitale et d'Intelligence Artificielle — EIDIA",
   eduUni:"Université Euro-Méditerranéenne de Fès (UEMF) · Fès, Maroc",
-  eduDeg:"Diplôme d'Ingénieur — Intelligence Artificielle & Ingénierie Digitale",
-  eduWhen:"Sep. 2023 — juil. 2028 (prévu) &nbsp;·&nbsp; admis en 4ᵉ année pour 2026–2027",
+  eduPrep:"Cycle préparatoire en ingénierie digitale",
+  eduPrepWhen:"2023 — 2025",
+  eduDegree:"Diplôme d’Ingénieur en Intelligence Artificielle",
+  eduDegreeWhen:"2025 — 2028 (prévu) &nbsp;·&nbsp; quatrième année en 2026–2027",
   s5num:"05 / Contact",
   contactBig:'Un projet qui<br>mérite d\'exister ?<br><a href="mailto:'+EMAIL+'">Écrivez-moi.</a>',
   lEmail:"E-mail", lPhone:"Téléphone",
@@ -558,16 +572,16 @@ fr:{
   noRepo:"Code disponible sur demande", emailAbout:"Me poser une question",
   empty:"Rien dans cette catégorie pour l'instant.",
   courses:["Structures de données & algorithmique","Programmation C / C++","Programmation orientée objet","Bases de données","Probabilités & statistiques","Algèbre linéaire","Apprentissage automatique & clustering","Cybersécurité","Électronique analogique","FPGA & systèmes numériques","Traitement du signal","Français technique & académique"],
-  kitA:[["Programmation","Python, TypeScript, JavaScript, C, C++, Java, SQL, R"],["Frontend","React, Next.js, HTML/CSS"],["Backend & données","FastAPI, SQLAlchemy, Pydantic, PostgreSQL, Prisma, API REST"]],
-  kitB:[["Infrastructure","Docker, Nginx, Git/GitHub, Linux, Vercel"],["IA & données","Intégration de LLM, workflows IA avec validation humaine, OpenCV, NumPy"],["Qualité","pytest, Vitest, Ruff, mypy, ESLint"]],
-  langs:[["Arabe","Maternelle · dont le darija"],["Anglais","Courant · TOEFL iBT 112/120"],["Français","Compréhension totale · bon niveau"],["Espagnol","Débutant"]]
+  kitA:[["IA & données","Agents LLM, évaluation de l’IA, API OpenAI, scikit-learn, pandas, NumPy, OpenCV, Shapely"],["Programmation","Python, TypeScript, JavaScript, C, C++, Java, SQL"]],
+  kitB:[["Web & backend","FastAPI, React, Next.js, PostgreSQL, SQLAlchemy, Pydantic, Prisma, API REST"],["Ingénierie","Docker, Git/GitHub, Linux, pytest, Alembic"]],
+  langs:[["Arabe","Maternelle · dont le darija"],["Anglais","C1 — TOEFL iBT 112/120"],["Français","Niveau de travail"],["Espagnol","Débutant"]]
 }};
 
 /* ============================================================
    2. CATEGORIES + ITEMS
    ============================================================ */
 const CATS = [
-  {id:"ai",       en:"AI & Vision",           fr:"IA & Vision"},
+  {id:"ai",       en:"AI, Evaluation & Vision", fr:"IA, évaluation & vision"},
   {id:"systems",  en:"Systems & Algorithms",  fr:"Systèmes & Algorithmes"},
   {id:"data",     en:"Data",                  fr:"Données"},
   {id:"security", en:"Security",              fr:"Sécurité"},
@@ -579,27 +593,25 @@ const VENTURES = [
   id:"convoroute",
   when:{en:"Jun 2026 — Present", fr:"Juin 2026 — aujourd'hui"},
   name:"Convoroute LLC",
-  role:{en:"Founder & Developer · United States (remote)", fr:"Fondateur & Développeur · États-Unis (à distance)"},
-  tags:{en:["B2B SaaS","LLM integration","Stripe","Product","Sales"], fr:["SaaS B2B","Intégration LLM","Stripe","Produit","Vente"]},
+  role:{en:"Founder & Software Developer · Remote", fr:"Fondateur & Développeur logiciel · À distance"},
+  tags:{en:["B2B SaaS","LLM integration","Stripe","Architecture","Deployment"], fr:["SaaS B2B","Intégration LLM","Stripe","Architecture","Déploiement"]},
   kind:{en:"Company · B2B SaaS", fr:"Société · SaaS B2B"},
   teaser:{
-    en:["A single-member US company selling AI chatbots that businesses embed on their own websites — handling customer support, answering FAQs and capturing leads on a recurring monthly subscription."],
-    fr:["Une société américaine à associé unique qui vend des chatbots IA que les entreprises intègrent à leur propre site — support client, réponses aux questions fréquentes et collecte de prospects, en abonnement mensuel."]},
+    en:["A B2B SaaS product for embedded AI chatbots that support customer service, FAQ automation and lead capture."],
+    fr:["Un produit SaaS B2B de chatbots IA intégrés aux sites clients pour le support, l’automatisation des FAQ et la collecte de prospects."]},
   body:{
-    en:["Convoroute exists because most small businesses want the outcome of a chatbot — fewer repetitive emails, leads that don't go cold overnight — and none of the work of building one. The product sells that outcome as a monthly subscription rather than a project fee.",
-        "I own every part of it. Not just the code: the positioning, the pricing, the payment infrastructure, the conversations with clients, and the decision about what the product refuses to do."],
-    fr:["Convoroute existe parce que la plupart des petites entreprises veulent le résultat d'un chatbot — moins d'e-mails répétitifs, des prospects qui ne refroidissent pas pendant la nuit — sans le travail de construction. Le produit vend ce résultat en abonnement mensuel plutôt qu'au forfait.",
-        "J'en gère chaque partie. Pas seulement le code : le positionnement, les prix, l'infrastructure de paiement, les échanges avec les clients, et le choix de ce que le produit refuse de faire."]},
+    en:["Convoroute packages embedded AI chatbots as a recurring B2B service. The product focuses on practical website workflows: answering recurring questions, supporting customers and capturing qualified enquiries.",
+        "I work across the LLM integration, product architecture, Stripe billing, deployment and client implementation."],
+    fr:["Convoroute propose des chatbots IA intégrés sous forme de service B2B récurrent. Le produit cible des usages concrets sur les sites web : répondre aux questions récurrentes, assister les clients et recueillir des demandes qualifiées.",
+        "Je travaille sur l’intégration LLM, l’architecture produit, la facturation Stripe, le déploiement et l’implémentation chez les clients."]},
   bullets:{
-    en:["Single-member LLC, registered in the United States and operated remotely from Morocco.",
-        "Chatbot architecture: an LLM handles intent, strict rules handle anything that touches real data or takes an action.",
-        "Payments and subscriptions through Stripe; pricing, packaging and client communication all mine.",
-        "Delivery is deliberately concierge for now — each chatbot is designed and deployed personally, which keeps me close to what customers actually struggle with while the self-serve platform is refined."],
-    fr:["LLC à associé unique, immatriculée aux États-Unis et gérée à distance depuis le Maroc.",
-        "Architecture du chatbot : un LLM comprend l'intention, des règles strictes exécutent tout ce qui touche à de vraies données ou déclenche une action.",
-        "Paiements et abonnements via Stripe ; tarification, offres et relation client entièrement gérées par moi.",
-        "La livraison est volontairement sur-mesure pour l'instant — chaque chatbot est conçu et déployé personnellement, ce qui me garde proche des vraies difficultés des clients pendant que la plateforme en libre-service se peaufine."]},
-  stack:"LLM APIs · Prompt design · Stripe · Web integration",
+    en:["Embedded chatbot architecture with LLM-based responses and controlled website integrations.",
+        "Recurring subscription and billing flows through Stripe.",
+        "Product architecture, deployment and client implementation handled end to end."],
+    fr:["Architecture de chatbots intégrés avec réponses fondées sur un LLM et intégrations web encadrées.",
+        "Abonnements récurrents et facturation via Stripe.",
+        "Architecture produit, déploiement et implémentation client gérés de bout en bout."]},
+  stack:"LLM APIs · Product architecture · Stripe · Web integration · Deployment",
   links:[]
 },
 {
@@ -635,23 +647,25 @@ const VENTURES = [
   id:"bounaim",
   when:{en:"Jul — Aug 2026", fr:"Juil. — août 2026"},
   name:"Bounaim Auto",
-  role:{en:"Software / Data Intern · Beni Mellal, Morocco", fr:"Stagiaire logiciel / data · Beni Mellal, Maroc"},
+  role:{en:"Software & AI Engineering Intern · Beni Mellal, Morocco", fr:"Stagiaire en ingénierie logicielle & IA · Beni Mellal, Maroc"},
   tags:{en:["React","TypeScript","FastAPI","PostgreSQL","Docker"], fr:["React","TypeScript","FastAPI","PostgreSQL","Docker"]},
   kind:{en:"Internship · Automotive procurement", fr:"Stage · Achats automobiles"},
   teaser:{
-    en:["I independently designed and built SmartImport, a full-stack decision-support platform for comparing international automotive supplier quotations."],
-    fr:["J'ai conçu et développé en autonomie SmartImport, une plateforme full-stack d'aide à la décision pour comparer les devis de fournisseurs automobiles internationaux."]},
+    en:["I independently designed and delivered SmartImport, a full-stack procurement decision-support system for comparing international automotive supplier quotations."],
+    fr:["J’ai conçu et livré en autonomie SmartImport, un système full-stack d’aide à la décision pour comparer les devis de fournisseurs automobiles internationaux."]},
   body:{
     en:["SmartImport turns heterogeneous PDF and XLSX quotations into structured, completeness-aware comparisons against the same purchasing requirement. It normalizes currencies and separates commercial landed cost from estimated cash requirements.",
         "Its AI workflow is deliberately bounded: AI proposes fields or matches with supporting evidence, the user reviews them, and deterministic backend rules remain authoritative for financial calculations and saved records."],
     fr:["SmartImport transforme des devis PDF et XLSX hétérogènes en comparaisons structurées, tenant compte de la complétude par rapport au même besoin d'achat. La plateforme normalise les devises et distingue le coût rendu commercial du besoin de trésorerie estimé.",
         "Le rôle de l'IA est volontairement encadré : elle propose des champs ou des correspondances avec leurs preuves, l'utilisateur les vérifie, et les règles déterministes du backend restent l'autorité pour les calculs financiers et les données enregistrées."]},
   bullets:{
-    en:["Structures purchasing requirements, staged document imports, supplier baskets and readiness before comparison.",
+    en:["Structures purchasing requirements, staged PDF/XLSX imports, supplier baskets and readiness before comparison.",
         "Calculates multi-currency commercial landed cost and estimated cash needs with visible assumptions.",
+        "Delivered with 139 backend tests across the decision, ingestion and financial workflows.",
         "Synthetic evaluation: 98.99% aggregate document-field F1; 100% product-line extraction F1 on 23 tested lines; 92.31% top-1 matching on eligible unique-match cases."],
-    fr:["Structure les besoins d'achat, l'import de documents par étapes, les paniers fournisseurs et leur état de préparation avant comparaison.",
+    fr:["Structure les besoins d’achat, l’import progressif de fichiers PDF/XLSX, les paniers fournisseurs et leur état de préparation avant comparaison.",
         "Calcule le coût rendu commercial multi-devise et le besoin de trésorerie estimé, avec des hypothèses visibles.",
+        "Livré avec 139 tests backend couvrant les workflows de décision, d’ingestion et de calcul financier.",
         "Évaluation synthétique : F1 agrégé de 98,99 % sur les champs documentaires ; F1 de 100 % sur l'extraction de 23 lignes produit testées ; top-1 de 92,31 % sur les cas éligibles à correspondance unique."]},
   stack:"React · TypeScript · FastAPI · Python · PostgreSQL · SQLAlchemy · Alembic · Docker · Nginx · pypdf/pdfplumber · optional OpenAI",
   links:[]
@@ -659,6 +673,36 @@ const VENTURES = [
 ];
 
 const PROJECTS = [
+{
+  id:"dare-bench", cat:"ai", year:"2026", featured:true,
+  kind:{en:"LLM Agents · AI Evaluation · Research", fr:"Agents LLM · Évaluation de l’IA · Recherche"},
+  name:{en:"DARE-Bench Agent Reliability Study", fr:"Étude de fiabilité des agents sur DARE-Bench"},
+  teaser:{
+    en:"An independent repeated-run study of how a larger agent turn budget changed capability and repeatability on a fixed DARE-Bench subset.",
+    fr:"Une étude indépendante à exécutions répétées sur l’effet d’un budget de tours plus élevé sur la performance et la répétabilité, pour un sous-ensemble fixe de DARE-Bench."},
+  body:{
+    en:["Research question: when the same deterministic instruction-following task is given repeatedly to the same LLM agent, how consistently does it succeed? This is an independent study built on DARE-Bench, not a new benchmark.",
+        "The study fixed one model (gpt-4.1-mini-2025-04-14), 24 tasks (12 classification and 12 regression), two budgets (3 and 5 turns), and five independent repeats per task-condition: 240 final runs. Repeated-run reliability distinguishes always-pass, never-pass and mixed — or flaky — task outcomes.",
+        "More turns improved average capability without uniformly improving repeatability. The result is descriptive for this model and fixed subset; it makes no formal significance claim and should not be generalized beyond that scope."],
+    fr:["Question de recherche : lorsqu’une même tâche déterministe de suivi d’instructions est répétée avec le même agent LLM, avec quelle régularité réussit-il ? Il s’agit d’une étude indépendante fondée sur DARE-Bench, et non d’un nouveau benchmark.",
+        "L’étude fixe un modèle (gpt-4.1-mini-2025-04-14), 24 tâches (12 de classification et 12 de régression), deux budgets (3 et 5 tours) et cinq répétitions indépendantes par condition : 240 exécutions finales. La fiabilité distingue les tâches toujours réussies, toujours échouées et mixtes — dites instables.",
+        "Davantage de tours a amélioré la performance moyenne sans améliorer uniformément la répétabilité. Ce résultat est descriptif pour ce modèle et ce sous-ensemble fixe ; aucune significativité formelle ni généralisation au-delà de ce périmètre n’est revendiquée."]},
+  bullets:{
+    en:["Official exact-match success increased from 34.2% to 50.0% between the 3-turn and 5-turn conditions.",
+        "Flaky-task rate moved from 29.2% to 41.7%, while mean pairwise disagreement moved from 15.0% to 21.7%.",
+        "Of 139 failed runs, 94 were mechanically classified as code errors; the taxonomy describes preserved evidence, not unsupported causes.",
+        "Frozen task selection and execution settings, independently rescored runs, integrity checks, derived tables, figure manifests and regeneration scripts support reproducibility."],
+    fr:["Le succès officiel exact-match est passé de 34,2 % à 50,0 % entre les conditions à 3 et 5 tours.",
+        "Le taux de tâches instables est passé de 29,2 % à 41,7 %, et le désaccord moyen par paires de 15,0 % à 21,7 %.",
+        "Sur 139 exécutions échouées, 94 ont été classées mécaniquement comme erreurs de code ; la taxonomie décrit les preuves conservées, sans attribuer de causes non étayées.",
+        "Sélection des tâches et paramètres d’exécution figés, réévaluation indépendante, contrôles d’intégrité, tables dérivées, manifestes des figures et scripts de régénération assurent la reproductibilité."]},
+  stack:"Python · OpenAI API · Docker · Statistical Evaluation",
+  preview:{src:"assets/projects/dare-bench/main-result.png", width:2671, height:1354, alt:{en:"DARE-Bench study main result comparing success, flaky-task rate and pairwise disagreement at three and five turns", fr:"Résultat principal de l’étude DARE-Bench comparant le succès, les tâches instables et le désaccord par paires à trois et cinq tours"}},
+  visuals:[
+    {src:"assets/projects/dare-bench/main-result.png", width:2671, height:1354, alt:{en:"Success and run-to-run variability on a shared percentage scale", fr:"Succès et variabilité entre exécutions sur une même échelle en pourcentage"}, caption:{en:"Main result: capability improved while measured variability also rose", fr:"Résultat principal : la performance s’améliore tandis que la variabilité mesurée augmente également"}}
+  ],
+  links:[{en:"View study repository ↗", fr:"Voir le dépôt de l’étude ↗", href:"https://github.com/MouhssineElBoumshouli/dare-agent-reliability", ext:true}]
+},
 {
   id:"smartimport", cat:"ai", year:"2026",
   kind:{en:"AI · Full-stack · Data", fr:"IA · Full-stack · Données"},
@@ -674,11 +718,11 @@ const PROJECTS = [
   bullets:{
     en:["Same-basket completeness and readiness logic prevents partial quotations from appearing artificially cheaper.",
         "Multi-currency cost analysis separates goods, additional costs, landed cost and estimated cash requirements.",
-        "React/TypeScript frontend, FastAPI/Python services, PostgreSQL persistence, and Docker/Nginx infrastructure, backed by automated tests.",
+        "React/TypeScript frontend, FastAPI/Python services, PostgreSQL persistence, and Docker/Nginx infrastructure, backed by 139 backend tests.",
         "Synthetic evaluation only: 98.99% aggregate document-field F1; 100% product-line extraction F1 on 23 tested lines; 92.31% top-1 matching on eligible unique-match cases."],
     fr:["La logique de complétude et de préparation sur un panier identique évite qu'un devis partiel paraisse artificiellement moins cher.",
         "L'analyse multi-devise sépare les marchandises, les frais additionnels, le coût rendu et le besoin de trésorerie estimé.",
-        "Frontend React/TypeScript, services FastAPI/Python, persistance PostgreSQL et infrastructure Docker/Nginx, avec des tests automatisés.",
+        "Frontend React/TypeScript, services FastAPI/Python, persistance PostgreSQL et infrastructure Docker/Nginx, avec 139 tests backend.",
         "Évaluation synthétique uniquement : F1 agrégé de 98,99 % sur les champs documentaires ; F1 de 100 % sur 23 lignes produit testées ; top-1 de 92,31 % sur les cas éligibles à correspondance unique."]},
   stack:"React · TypeScript · FastAPI · Python · PostgreSQL · SQLAlchemy · Alembic · Docker · Nginx · pytest · Vitest",
   preview:{src:"assets/projects/smartimport/dashboard.png", width:2160, height:1020, alt:{en:"SmartImport purchasing dashboard with supplier quotation readiness", fr:"Tableau de bord SmartImport présentant l'état des devis fournisseurs"}},
@@ -704,13 +748,39 @@ const PROJECTS = [
         "Le pipeline est court à décrire et désagréable en pratique : image en entrée, points de contour exacts, points reliés en polygone valide, squelette calculé, résultat affiché."]},
   bullets:{
     en:["Contour extraction with OpenCV, polygon construction and medial-axis computation with Shapely.",
+        "On 28 retinal images, inter-observer vessel-length variation decreased from 9.3% to 3.2% versus pixel thinning (p < 0.0001).",
         "Most of the real work was degenerate geometry: zero-length vectors, invalid GEOS endpoints, and skeletons that come back as multi-segment lines instead of one clean path.",
         "Finished in August 2026 and published as a public repository."],
     fr:["Extraction des contours avec OpenCV, construction du polygone et calcul de l'axe médian avec Shapely.",
+        "Sur 28 images rétiniennes, la variation inter-observateurs de la longueur vasculaire est passée de 9,3 % à 3,2 % par rapport à l’amincissement des pixels (p < 0,0001).",
         "L'essentiel du travail portait sur la géométrie dégénérée : vecteurs de longueur nulle, extrémités GEOS invalides, et squelettes renvoyés en lignes multi-segments plutôt qu'en un tracé propre.",
         "Terminé en août 2026 et publié en dépôt public."]},
   stack:"Python · OpenCV · Shapely · NumPy",
   links:[{en:"View repository ↗", fr:"Voir le dépôt ↗", href:"https://github.com/MouhssineElBoumshouli/medskel", ext:true}]
+},
+{
+  id:"uemf-presence", cat:"web", year:"2026",
+  kind:{en:"Full-stack · Systems", fr:"Full-stack · Systèmes"},
+  name:{en:"UEMF Presence — Smart Attendance System", fr:"UEMF Présence — Système intelligent de présence"},
+  teaser:{
+    en:"A full-stack attendance system combining recurring schedules, GPS check-in and rapidly rotating signed QR tokens with review and reporting workflows.",
+    fr:"Un système full-stack de gestion des présences combinant plannings récurrents, pointage GPS et jetons QR signés à rotation rapide, avec validation et reporting."},
+  body:{
+    en:["UEMF Presence models recurring class schedules and turns each session into a time-bound attendance workflow. Students check in through location and short-lived QR evidence; professors retain the final review step.",
+        "The system pairs a Next.js interface with PostgreSQL and Prisma persistence, then surfaces anomalies and exportable records without treating any single anti-fraud signal as unquestionable."],
+    fr:["UEMF Présence modélise les emplois du temps récurrents et transforme chaque séance en workflow de présence limité dans le temps. Les étudiants valident leur présence par localisation et preuve QR éphémère ; les enseignants conservent l’étape finale de vérification.",
+        "Le système associe une interface Next.js à une persistance PostgreSQL/Prisma, puis présente les anomalies et les données exportables sans considérer un seul signal antifraude comme incontestable."]},
+  bullets:{
+    en:["Recurring schedules, GPS check-in and HMAC-SHA256 QR tokens rotating every 10 seconds.",
+        "Anti-fraud checks feed a professor review workflow rather than making irreversible automated decisions.",
+        "CSV reporting and an anomaly dashboard support follow-up and record review.",
+        "Deployed with Next.js, React, TypeScript, PostgreSQL, Prisma and Vercel."],
+    fr:["Plannings récurrents, pointage GPS et jetons QR HMAC-SHA256 renouvelés toutes les 10 secondes.",
+        "Les contrôles antifraude alimentent une validation par l’enseignant plutôt que des décisions automatisées irréversibles.",
+        "Exports CSV et tableau de bord des anomalies pour le suivi et la vérification des données.",
+        "Déployé avec Next.js, React, TypeScript, PostgreSQL, Prisma et Vercel."]},
+  stack:"Next.js · React · TypeScript · PostgreSQL · Prisma · Vercel · HMAC-SHA256",
+  links:[{en:"View repository ↗", fr:"Voir le dépôt ↗", href:"https://github.com/MouhssineElBoumshouli/Student-Attendance-System", ext:true}]
 },
 {
   id:"autocomplete", cat:"systems", year:"2026",
@@ -859,7 +929,10 @@ function renderStatic(){
 }
 
 function renderVentures(){
-  $("#ventureList").innerHTML = VENTURES.map(v=>`
+  const featured = ["bounaim","convoroute"]
+    .map(id => VENTURES.find(v => v.id === id))
+    .filter(Boolean);
+  $("#ventureList").innerHTML = featured.map(v=>`
     <button class="venture" type="button" data-open="v:${v.id}">
       <span class="v-left">
         <span class="v-when">${esc(pick(v.when))}</span>
@@ -885,7 +958,7 @@ function renderCards(){
   const list = PROJECTS.filter(p => filter === "all" || p.cat === filter);
   if (!list.length){ $("#cards").innerHTML = `<p class="empty">${esc(T[lang].empty)}</p>`; return; }
   $("#cards").innerHTML = list.map((p,i)=>`
-    <button class="card rv${p.preview?' has-media':''}" type="button" data-open="p:${p.id}" style="transition-delay:${Math.min(i,5)*60}ms">
+    <button class="card rv${p.preview?' has-media':''}${p.featured?' is-featured':''}" type="button" data-open="p:${p.id}" style="transition-delay:${Math.min(i,5)*60}ms">
       ${p.preview?`<span class="card-media"><img src="${p.preview.src}" width="${p.preview.width}" height="${p.preview.height}" loading="lazy" decoding="async" alt="${esc(pick(p.preview.alt))}"></span><span class="card-content">`:''}
       <span class="card-top"><span class="card-kind">${esc(pick(p.kind))}</span><span class="card-year">${esc(p.year)}</span></span>
       <h3>${esc(pick(p.name))}</h3>
@@ -912,7 +985,7 @@ function sheetHTML(it){
   h += `<span class="sheet-label">${esc(t.lOverview)}</span>`;
   h += pick(it.body).map(p=>`<p>${esc(p)}</p>`).join("");
   if ((it.visuals||[]).length){
-    h += `<span class="sheet-label">${esc(t.lVisuals)}</span><div class="sheet-gallery">`;
+    h += `<span class="sheet-label">${esc(t.lVisuals)}</span><div class="sheet-gallery${it.visuals.length===1?' single':''}">`;
     h += it.visuals.map(v=>`<figure class="sheet-figure"${v.fit?` data-fit="${v.fit}"`:''}><a href="${v.src}" target="_blank" rel="noopener" aria-label="${esc(t.openVisual)}: ${esc(pick(v.caption))}"><img src="${v.src}" width="${v.width}" height="${v.height}" loading="lazy" decoding="async" alt="${esc(pick(v.alt))}"></a><figcaption>${esc(pick(v.caption))}</figcaption></figure>`).join("");
     h += `</div>`;
   }
