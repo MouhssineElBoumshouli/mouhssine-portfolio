@@ -49,6 +49,7 @@ const SLUGS: Record<string, string> = {
   opencv: "opencv",
   numpy: "numpy",
   pandas: "pandas",
+  scipy: "scipy",
   scikitlearn: "scikitlearn",
   fastapi: "fastapi",
   sqlalchemy: "sqlalchemy",

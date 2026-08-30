@@ -8,6 +8,10 @@ import { TechIcon, slugForTech } from "@/components/common/tech-icon"
 import { chipClass } from "@/lib/button-styles"
 import type { Project } from "@/lib/content/projects"
 import { cn } from "@/lib/utils"
+import {
+  ProjectDialog,
+  ProjectDialogTrigger,
+} from "@/components/projects/project-dialog"
 
 /** The skill badge, trimmed a little to sit on the title's line. */
 const projectButtonClass = cn(chipClass, "gap-1 px-1.5 py-0.5")
@@ -60,9 +64,8 @@ function Preview({ project, priority = false }: { project: Project; priority?: b
  * sitting inside that read as a widget bolted on from somewhere else.
  * The only framed thing here is the screenshot.
  *
- * The two links sit on the title's line rather than in a footer strip,
- * which is what the subheading used to occupy. They have to live outside
- * the media anchor - a link inside a link is invalid markup.
+ * The image and title open the shared project detail dialog. The two
+ * explicit links stay on the title's line and continue to open directly.
  */
 export function ProjectCard({
   project,
@@ -72,58 +75,60 @@ export function ProjectCard({
   priority?: boolean
 }) {
   const { website, github } = project.links
-  const primaryHref = website ?? github
 
   return (
     <div className="group/card relative flex flex-1 flex-col gap-2">
-      <a
-        href={primaryHref}
-        target="_blank"
-        rel="noopener noreferrer"
-        // `group/media` and not the card's own group: the drift should
-        // answer the pointer being on the picture, not anywhere on the
-        // entry. `overflow-hidden` is what keeps the scale inside the frame.
-        className="group/media border-border focus-visible:ring-ring/50 block overflow-hidden rounded-md border outline-none focus-visible:ring-[3px]"
-      >
-            <Preview project={project} priority={priority} />
-      </a>
-
-      <div className="flex items-center justify-between gap-3">
-        <h3 className="min-w-0 truncate text-[15px] leading-snug font-semibold">
-          <a
-            href={primaryHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-primary focus-visible:ring-ring/50 rounded-sm outline-none transition-colors focus-visible:ring-[3px]"
+      <ProjectDialog project={project}>
+        <ProjectDialogTrigger asChild>
+          <button
+            type="button"
+            aria-label={`View details for ${project.title}`}
+            // `group/media` and not the card's own group: the drift should
+            // answer the pointer being on the picture, not anywhere on the
+            // entry. `overflow-hidden` keeps the scale inside the frame.
+            className="group/media border-border focus-visible:ring-ring/50 block w-full cursor-pointer overflow-hidden rounded-md border bg-transparent p-0 text-left outline-none focus-visible:ring-[3px]"
           >
-            {project.title}
-          </a>
-        </h3>
+            <Preview project={project} priority={priority} />
+          </button>
+        </ProjectDialogTrigger>
 
-        <div className="flex shrink-0 items-center gap-1.5">
-          {website && (
-            <a
-              href={website}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={projectButtonClass}
-            >
-              Live
-            </a>
-          )}
-          {github && (
-            <a
-              href={github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={projectButtonClass}
-            >
-              <GitHubIcon className="size-3 shrink-0" aria-hidden />
-              Code
-            </a>
-          )}
+        <div className="flex items-center justify-between gap-3">
+          <h3 className="min-w-0 truncate text-[15px] leading-snug font-semibold">
+            <ProjectDialogTrigger asChild>
+              <button
+                type="button"
+                className="hover:text-primary focus-visible:ring-ring/50 max-w-full truncate rounded-sm bg-transparent p-0 text-left outline-none transition-colors focus-visible:ring-[3px]"
+              >
+                {project.title}
+              </button>
+            </ProjectDialogTrigger>
+          </h3>
+
+          <div className="flex shrink-0 items-center gap-1.5">
+            {website && (
+              <a
+                href={website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={projectButtonClass}
+              >
+                Live
+              </a>
+            )}
+            {github && (
+              <a
+                href={github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={projectButtonClass}
+              >
+                <GitHubIcon className="size-3 shrink-0" aria-hidden />
+                Code
+              </a>
+            )}
+          </div>
         </div>
-      </div>
+      </ProjectDialog>
 
       {/* One line only - the full copy lives on the project page. */}
       <p className="text-muted-foreground truncate text-[13px] leading-snug">

@@ -7,12 +7,12 @@ import { profile } from "@/lib/content/profile"
 import { cn } from "@/lib/utils"
 
 /**
- * The portrait plus a switch that flips between the drawn avatar and the
- * real photo. Both images stay mounted and cross-fade, so the swap costs
- * no network round trip and never flashes an empty frame.
+ * The portrait plus a switch that flips between the provided photo and the
+ * public GitHub avatar. Both images stay mounted and cross-fade, so the swap
+ * costs no network round trip and never flashes an empty frame.
  */
 export function AvatarSwitch() {
-  const [showPhoto, setShowPhoto] = useState(false)
+  const [showGithubPhoto, setShowGithubPhoto] = useState(false)
   return (
     <div className="flex w-fit flex-col items-center gap-2">
       <div className="border-border w-fit rounded-[8px] border p-[2.7px] dark:border-neutral-700">
@@ -24,8 +24,8 @@ export function AvatarSwitch() {
             height={120}
             priority
             className={cn(
-              "box-border size-full scale-110 rounded-[5px] object-cover transition-opacity duration-300",
-              showPhoto && "opacity-0"
+              "box-border size-full rounded-[5px] object-cover object-[50%_24%] transition-opacity duration-300",
+              showGithubPhoto && "opacity-0"
             )}
           />
           <Image
@@ -33,10 +33,10 @@ export function AvatarSwitch() {
             alt={`${profile.name} - photo`}
             width={120}
             height={120}
-            aria-hidden={!showPhoto}
+            aria-hidden={!showGithubPhoto}
             className={cn(
               "absolute inset-1 box-border size-[calc(100%-0.5rem)] rounded-[5px] object-cover transition-opacity duration-300",
-              showPhoto ? "opacity-100" : "opacity-0"
+              showGithubPhoto ? "opacity-100" : "opacity-0"
             )}
           />
         </div>
@@ -45,12 +45,12 @@ export function AvatarSwitch() {
       <button
         type="button"
         role="switch"
-        aria-checked={showPhoto}
-        aria-label="Show real photo"
-        onClick={() => setShowPhoto((value) => !value)}
+        aria-checked={showGithubPhoto}
+        aria-label="Show GitHub profile photo"
+        onClick={() => setShowGithubPhoto((value) => !value)}
         className={cn(
           "focus-visible:ring-ring/50 relative h-[18px] w-8 shrink-0 cursor-pointer rounded-full border transition-colors outline-none focus-visible:ring-[3px]",
-          showPhoto
+          showGithubPhoto
             ? "border-transparent bg-neutral-800 dark:bg-neutral-200"
             : "border-border bg-neutral-200 dark:bg-neutral-800"
         )}
@@ -59,7 +59,7 @@ export function AvatarSwitch() {
           aria-hidden
           className={cn(
             "absolute top-1/2 size-3 -translate-y-1/2 rounded-full bg-white shadow-sm transition-[left] duration-200 dark:bg-neutral-900",
-            showPhoto ? "left-[15px]" : "left-[2px]"
+            showGithubPhoto ? "left-[15px]" : "left-[2px]"
           )}
         />
       </button>

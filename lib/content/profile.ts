@@ -12,8 +12,8 @@ export const profile = {
   meta: "Fès, MAR",
   location: "Fès, Morocco",
   timezone: "Africa/Casablanca",
-  /** The hero switch flips between this neutral mark and the public GitHub avatar. */
-  avatar: "/mouhssine-avatar.svg",
+  /** The hero defaults to the provided portrait and can switch to GitHub. */
+  avatar: "/profile/mouhssine-profile.jpg",
   avatarPhoto: "/mouhssine-github-avatar.png",
   email: "mouhssine.elboumshouli@eidia.ueuromed.org",
   githubUrl: "https://github.com/MouhssineElBoumshouli",
