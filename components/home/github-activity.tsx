@@ -56,9 +56,6 @@ function rangeLabel(activities: Activity[]) {
 export function GitHubActivity() {
   const [activities, setActivities] = useState<Activity[] | null>(null)
   const [total, setTotal] = useState(0)
-  const [source, setSource] = useState<"contributions" | "public-events">(
-    "contributions"
-  )
   const [failed, setFailed] = useState(false)
   const [hovered, setHovered] = useState<HoveredDay | null>(null)
 
@@ -81,7 +78,6 @@ export function GitHubActivity() {
           )
         )
         setTotal(data.totalContributions)
-        setSource(data.source === "public-events" ? "public-events" : "contributions")
       } catch {
         if (!cancelled) setFailed(true)
       }
@@ -120,13 +116,10 @@ export function GitHubActivity() {
     () =>
       activities
         ? {
-            totalCount:
-              source === "public-events"
-                ? "{{count}} public activities in " + rangeLabel(activities)
-                : "{{count}} contributions in " + rangeLabel(activities),
+            totalCount: "{{count}} contributions in " + rangeLabel(activities),
           }
         : undefined,
-    [activities, source]
+    [activities]
   )
 
   if (failed) return null
@@ -142,13 +135,9 @@ export function GitHubActivity() {
             className="bg-foreground text-background pointer-events-none absolute z-20 -translate-x-1/2 -translate-y-full rounded-md px-2 py-1 text-xs font-medium whitespace-nowrap shadow-md"
             style={{ left: hovered.x, top: hovered.y - 6 }}
           >
-            {source === "public-events"
-              ? hovered.count === 1
-                ? "1 public activity"
-                : `${hovered.count} public activities`
-              : hovered.count === 1
-                ? "1 contribution"
-                : `${hovered.count} contributions`}
+            {hovered.count === 1
+              ? "1 contribution"
+              : `${hovered.count} contributions`}
             {" on "}
             {hovered.label}
           </div>

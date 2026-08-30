@@ -1,4 +1,4 @@
-import { ArrowUpRight, Mail } from "lucide-react"
+import { ArrowUpRight, Calendar } from "lucide-react"
 
 import { PageHeader } from "@/components/layout/page-header"
 import { SectionHeading } from "@/components/layout/section-heading"
@@ -10,12 +10,12 @@ import { cn } from "@/lib/utils"
 
 const directRoutes = [
   {
-    name: "Email me directly",
-    detail: profile.email,
-    href: "mailto:" + profile.email,
-    icon: Mail,
+    name: "Schedule a 30-minute call",
+    detail: "Calendly - pick any open slot",
+    href: profile.calendlyUrl,
+    icon: Calendar,
     primary: true,
-    external: false,
+    external: true,
   },
   {
     name: "Connect on LinkedIn",

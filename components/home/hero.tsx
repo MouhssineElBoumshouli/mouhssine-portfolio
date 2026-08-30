@@ -1,9 +1,8 @@
-import { Mail } from "lucide-react"
+import { Mail, Video } from "lucide-react"
 
 import { AvatarSwitch } from "@/components/home/avatar-switch"
 import { MagneticButton } from "@/components/common/magnetic-button"
 import { RoleCycle } from "@/components/home/role-cycle"
-import { GitHubIcon } from "@/components/icons/brand"
 import { profile } from "@/lib/content/profile"
 
 /**
@@ -28,9 +27,14 @@ export function Hero() {
 
         <div className="mt-2 flex flex-wrap items-center gap-2">
           <MagneticButton
-            href={profile.githubUrl}
-            label="View GitHub"
-            icon={<GitHubIcon className="size-3.5 shrink-0" aria-hidden />}
+            href={profile.calendlyUrl}
+            label="Book a call"
+            icon={
+              <Video
+                className="size-3.5 shrink-0 text-yellow-400 dark:text-yellow-600"
+                aria-hidden
+              />
+            }
           />
           <MagneticButton
             href={"mailto:" + profile.email}

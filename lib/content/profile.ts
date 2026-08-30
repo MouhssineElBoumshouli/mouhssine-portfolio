@@ -7,7 +7,7 @@ export const profile = {
   roles: [
     "AI Engineering Student",
     "Full-Stack & AI Developer",
-    "LLM Agents & Computer Vision",
+    "Applied AI & Computer Vision",
   ],
   meta: "Fès, MAR",
   location: "Fès, Morocco",
@@ -18,6 +18,7 @@ export const profile = {
   email: "mouhssine.elboumshouli@eidia.ueuromed.org",
   githubUrl: "https://github.com/MouhssineElBoumshouli",
   linkedinUrl: "https://www.linkedin.com/in/mouhssine-bms/",
+  calendlyUrl: "https://calendly.com/elboumshouli-mouhssine/30min",
   resumeUrl: "/cv/Mouhssine_El_Boumshouli_CV_EN.pdf",
   frenchResumeUrl: "/cv/Mouhssine_El_Boumshouli_CV_FR.pdf",
 } as const

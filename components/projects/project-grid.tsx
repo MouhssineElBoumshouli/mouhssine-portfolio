@@ -30,7 +30,7 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
           return (
             <Fragment key={project.slug}>
               <div className="relative flex flex-col p-4">
-                <ProjectCard project={project} />
+                <ProjectCard project={project} priority={index === 0} />
               </div>
 
               {index % 2 === 1 && !isLast && (

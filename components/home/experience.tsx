@@ -1,7 +1,11 @@
 import Image from "next/image"
 
 import { SectionHeading } from "@/components/layout/section-heading"
-import { experiences, type Experience } from "@/lib/content/experience"
+import {
+  companyNaLogo,
+  experiences,
+  type Experience,
+} from "@/lib/content/experience"
 import { sectionIds } from "@/lib/content/site"
 
 /**
@@ -10,20 +14,18 @@ import { sectionIds } from "@/lib/content/site"
  * carries the long form.
  */
 function ExperienceRow({ experience }: { experience: Experience }) {
+  const logo = experience.logo || companyNaLogo
+
   return (
     <li className="flex items-center gap-3">
       <span className="flex size-10 shrink-0 items-center justify-center select-none">
-        {experience.logo ? (
-          <Image
-            src={experience.logo}
-            alt=""
-            width={40}
-            height={40}
-            className="size-10 rounded-[10px] object-cover"
-          />
-        ) : (
-          <span className="size-10 rounded-[10px] bg-neutral-200 dark:bg-neutral-800" />
-        )}
+        <Image
+          src={logo}
+          alt={`${experience.company} logo`}
+          width={40}
+          height={40}
+          className="size-10 rounded-[10px] object-contain"
+        />
       </span>
 
       {/* Two lines at every width: company and dates share the first,

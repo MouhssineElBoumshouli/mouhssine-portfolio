@@ -10,6 +10,8 @@ export type Experience = {
   isCurrent?: boolean
 }
 
+export const companyNaLogo = "/logos/company-na-logo.png"
+
 export const experiences: Experience[] = [
   {
     id: "convoroute",
@@ -17,6 +19,7 @@ export const experiences: Experience[] = [
     role: "Founder & Developer",
     location: "United States · Remote",
     period: { start: "Jun 2026" },
+    logo: "/logos/convoroute-logo.png",
     isCurrent: true,
   },
   {
@@ -25,5 +28,6 @@ export const experiences: Experience[] = [
     role: "Software & AI Engineering Intern",
     location: "Beni Mellal, Morocco",
     period: { start: "Jul 2026", end: "Aug 2026" },
+    logo: companyNaLogo,
   },
 ]

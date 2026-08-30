@@ -1,9 +1,9 @@
 import { profile } from "./profile"
 
-/** Use the verified current public site as the fallback; set this in Vercel when a custom domain is available. */
+/** NEXT_PUBLIC_SITE_URL is authoritative in deployment; localhost is safe during development. */
 export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
-  "https://mouhssineelboumshouli.github.io/mouhssine-portfolio"
+  "http://localhost:3000"
 
 export const siteDescription =
   "Portfolio of Mouhssine El Boumshouli, an AI engineering student building full-stack software, LLM agent evaluations, procurement systems and computer-vision research tools."

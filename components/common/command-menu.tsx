@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { useTheme } from "next-themes"
 import {
   ArrowUpRight,
+  Calendar,
   FileText,
   Home,
   Laptop,
@@ -49,6 +50,11 @@ const external = [
     name: "LinkedIn",
     href: profile.linkedinUrl,
     icon: LinkedInIcon,
+  },
+  {
+    name: "Schedule a call",
+    href: profile.calendlyUrl,
+    icon: Calendar,
   },
   { name: "Resume", href: profile.resumeUrl, icon: FileText },
   { name: "Email", href: `mailto:${profile.email}`, icon: Mail },

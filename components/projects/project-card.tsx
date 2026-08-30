@@ -16,7 +16,7 @@ const projectButtonClass = cn(chipClass, "gap-1 px-1.5 py-0.5")
  * Projects with a clip show it in place of the still on hover or focus.
  * The still is the poster, so nothing loads until the visitor asks.
  */
-function Preview({ project }: { project: Project }) {
+function Preview({ project, priority = false }: { project: Project; priority?: boolean }) {
   const videoRef = useRef<HTMLVideoElement | null>(null)
   // The frame lives on the wrapper, not here, so the border stays put
   // while the picture inside it drifts in. 3% over half a second is
@@ -31,6 +31,7 @@ function Preview({ project }: { project: Project }) {
         alt=""
         width={1200}
         height={630}
+        priority={priority}
         className={shared}
       />
     )
@@ -63,7 +64,13 @@ function Preview({ project }: { project: Project }) {
  * which is what the subheading used to occupy. They have to live outside
  * the media anchor - a link inside a link is invalid markup.
  */
-export function ProjectCard({ project }: { project: Project }) {
+export function ProjectCard({
+  project,
+  priority = false,
+}: {
+  project: Project
+  priority?: boolean
+}) {
   const { website, github } = project.links
   const primaryHref = website ?? github
 
@@ -78,7 +85,7 @@ export function ProjectCard({ project }: { project: Project }) {
         // entry. `overflow-hidden` is what keeps the scale inside the frame.
         className="group/media border-border focus-visible:ring-ring/50 block overflow-hidden rounded-md border outline-none focus-visible:ring-[3px]"
       >
-        <Preview project={project} />
+            <Preview project={project} priority={priority} />
       </a>
 
       <div className="flex items-center justify-between gap-3">

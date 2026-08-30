@@ -16,9 +16,9 @@ export const milestones: Milestone[] = [
     description: "Started building a B2B SaaS for embedded AI customer-service chatbots.",
   },
   {
-    title: "Delivered SmartImport",
+    title: "Started building SmartImport",
     date: "2026",
-    description: "Built an auditable procurement decision-support platform during a software and AI engineering internship.",
+    description: "Started building an auditable procurement decision-support platform during a software and AI engineering internship.",
   },
   {
     title: "Completed a DARE-Bench reliability study",

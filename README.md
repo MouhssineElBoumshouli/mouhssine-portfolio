@@ -8,7 +8,7 @@ Personal portfolio of Mouhssine El Boumshouli, an AI engineering student and ful
 - Tailwind CSS v4 with light and dark theme tokens
 - Framer Motion, Lenis and reduced-motion support
 - Nodemailer server route for the contact form
-- Server-side GitHub activity route with a public-events fallback
+- Server-side GitHub GraphQL activity route with a graceful unavailable state
 
 ## Structure
 
@@ -41,12 +41,12 @@ Open http://localhost:3000.
 
 Copy .env.example to .env.local. SMTP values are required for the contact
 form to send messages. GITHUB_TOKEN is optional: when present it is used only
-on the server for the full contribution calendar; without it, the site uses
-public GitHub events and never exposes a token to the browser.
+on the server for the full contribution calendar; without it, the activity
+section stays unavailable and no token is exposed to the browser.
 
-NEXT_PUBLIC_SITE_URL should be set to the deployed origin so canonical,
-OpenGraph and sitemap URLs point to the production site. The fallback is the
-existing GitHub Pages URL.
+NEXT_PUBLIC_SITE_URL must be set to the deployed Vercel origin so canonical,
+OpenGraph, sitemap and robots URLs point to production. The local fallback is
+http://localhost:3000 and is not suitable for deployment.
 
 ## Deployment
 
@@ -58,9 +58,8 @@ Vercel:
 3. Add the variables from .env.example in the Vercel project settings.
 4. Set NEXT_PUBLIC_SITE_URL to the final public URL.
 
-GitHub Pages is suitable only for the static files in the original repository;
-it cannot run the Nodemailer contact route or server-side GitHub activity
-fallback, so Vercel is the recommended host.
+GitHub Pages cannot run the Nodemailer contact route or server-side GitHub
+activity route, so Vercel is the recommended host.
 
 ## Keyboard shortcuts
 

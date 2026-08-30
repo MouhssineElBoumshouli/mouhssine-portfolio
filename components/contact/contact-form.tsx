@@ -13,6 +13,8 @@ type FormState = "idle" | "loading" | "success" | "error"
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const MIN_MESSAGE = 10
+const MAX_EMAIL_LENGTH = 254
+const MAX_MESSAGE_LENGTH = 5000
 
 /** Posts to /api/contact, which relays over SMTP. */
 export function ContactForm() {
@@ -20,6 +22,7 @@ export function ContactForm() {
   const [feedback, setFeedback] = useState<string | null>(null)
   const [email, setEmail] = useState("")
   const [body, setBody] = useState("")
+  const [honeypot, setHoneypot] = useState("")
   const canSubmit = useMemo(
     () => EMAIL_RE.test(email.trim()) && body.trim().length >= MIN_MESSAGE,
     [email, body]
@@ -36,7 +39,11 @@ export function ContactForm() {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim(), message: body.trim() }),
+        body: JSON.stringify({
+          email: email.trim(),
+          message: body.trim(),
+          website: honeypot,
+        }),
       })
 
       if (!response.ok) {
@@ -58,6 +65,16 @@ export function ContactForm() {
 
   return (
     <form onSubmit={onSubmit} className="space-y-5" noValidate>
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        value={honeypot}
+        onChange={(event) => setHoneypot(event.target.value)}
+        className="absolute -left-[9999px] h-px w-px opacity-0"
+      />
       <div className="space-y-2">
         <Label htmlFor="contact-email">Your email</Label>
         <Input
@@ -66,6 +83,7 @@ export function ContactForm() {
           name="email"
           autoComplete="email"
           placeholder="you@example.com"
+          maxLength={MAX_EMAIL_LENGTH}
           value={email}
           onChange={(event) => setEmail(event.target.value)}
           required
@@ -80,6 +98,7 @@ export function ContactForm() {
           rows={6}
           placeholder="What are you building, and where do you want help?"
           className="min-h-32 resize-none"
+          maxLength={MAX_MESSAGE_LENGTH}
           value={body}
           onChange={(event) => setBody(event.target.value)}
           required
