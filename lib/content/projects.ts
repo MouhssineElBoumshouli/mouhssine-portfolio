@@ -30,7 +30,7 @@ export const projects: Project[] = [
     subheading: "LLM agents, evaluation & repeatability",
     description:
       "A reproducible 240-run study comparing agent turn budgets on a fixed DARE-Bench subset, with official rescoring and failure-taxonomy analysis.",
-    image: "/dare-bench-result.png",
+    image: "/projects/dare-bench/preview.webp",
     links: {
       github: "https://github.com/MouhssineElBoumshouli/dare-agent-reliability",
     },
@@ -63,7 +63,7 @@ export const projects: Project[] = [
     subheading: "Procurement decision support",
     description:
       "A full-stack platform that compares international automotive supplier quotations, landed costs and purchase completeness with human-reviewed AI assistance.",
-    image: "/projects/smartimport/dashboard.png",
+    image: "/projects/smartimport/preview.webp",
     links: {
       github: "https://github.com/MouhssineElBoumshouli/smartimport-procurement",
     },
@@ -97,7 +97,7 @@ export const projects: Project[] = [
     subheading: "Medical-image skeletonisation",
     description:
       "A Python implementation and evaluation of bisector skeletonisation for 2D medical segmentations, compared with pixel thinning on 28 retinal images.",
-    image: "/projects/medskel/interobserver.png",
+    image: "/projects/medskel/preview.webp",
     links: {
       github: "https://github.com/MouhssineElBoumshouli/medskel",
     },
@@ -138,7 +138,7 @@ export const projects: Project[] = [
     subheading: "GPS + rotating QR attendance",
     description:
       "A deployed university attendance system with recurring schedules, GPS check-in, rotating HMAC-SHA256 QR tokens, review workflows and anomaly reporting.",
-    image: "/projects/attendance/preview.png",
+    image: "/projects/attendance/preview.webp",
     links: {
       website: "https://student-attendance-system-amber.vercel.app",
       github: "https://github.com/MouhssineElBoumshouli/Student-Attendance-System",
