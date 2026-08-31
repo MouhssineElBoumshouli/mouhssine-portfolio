@@ -16,6 +16,7 @@ export const profile = {
   avatar: "/profile/mouhssine-profile.jpg",
   avatarPhoto: "/mouhssine-github-avatar.png",
   email: "mouhssine.elboumshouli@eidia.ueuromed.org",
+  contactInbox: "elboumshouli.mouhssine@gmail.com",
   githubUrl: "https://github.com/MouhssineElBoumshouli",
   linkedinUrl: "https://www.linkedin.com/in/mouhssine-bms/",
   calendlyUrl: "https://calendly.com/elboumshouli-mouhssine/30min",
