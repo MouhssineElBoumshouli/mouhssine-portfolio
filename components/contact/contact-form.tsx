@@ -152,7 +152,7 @@ export function ContactForm() {
           <p className="text-muted-foreground ml-auto">
             Goes straight to{" "}
             <span className="text-foreground font-medium">
-              {profile.contactInbox}
+              {profile.email}
             </span>
           </p>
         </div>
