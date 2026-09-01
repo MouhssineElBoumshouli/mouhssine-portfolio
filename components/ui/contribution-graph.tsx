@@ -36,6 +36,7 @@ export type Labels = {
   months?: string[];
   weekdays?: string[];
   totalCount?: string;
+  title?: string;
   legend?: {
     less?: string;
     more?: string;
@@ -393,7 +394,7 @@ export const ContributionGraphCalendar = ({
         viewBox={`0 0 ${width} ${height}`}
         width={width}
       >
-        <title>Contribution Graph</title>
+        <title>{labels.title || "Contribution Graph"}</title>
         {!hideMonthLabels && (
           <g className="fill-current">
             {monthLabels.map(({ label, weekIndex }) => (

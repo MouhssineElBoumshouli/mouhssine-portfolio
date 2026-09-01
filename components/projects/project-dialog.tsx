@@ -18,12 +18,9 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import type { Project } from "@/lib/content/projects"
 import { cn } from "@/lib/utils"
-
-const statusLabels: Record<Project["status"], string> = {
-  live: "Live",
-  building: "In progress",
-  research: "Research",
-}
+import type { Locale } from "@/lib/i18n/config"
+import { getLocalizedProject } from "@/lib/i18n/content"
+import { getMessages } from "@/lib/i18n/messages"
 
 type ProjectDialogContextValue = {
   open: boolean
@@ -67,15 +64,17 @@ function ProjectSection({
   )
 }
 
-function ProjectDialogBody({ project }: { project: Project }) {
-  const { details } = project
+function ProjectDialogBody({ project, locale }: { project: Project; locale: Locale }) {
+  const copy = getLocalizedProject(project, locale)
+  const { details } = copy
+  const messages = getMessages(locale)
 
   return (
     <div className="flex max-h-[calc(100dvh-1rem)] min-h-0 flex-col overflow-hidden sm:max-h-[min(85dvh,52rem)]">
       <div className="border-border relative aspect-[16/9] shrink-0 overflow-hidden border-b bg-neutral-100 dark:bg-neutral-900">
         <Image
           src={project.image}
-          alt={`${project.title} project preview`}
+          alt={messages.projectDialog.previewAlt(copy.title)}
           fill
           sizes="(max-width: 640px) calc(100vw - 2rem), 672px"
           className="object-cover object-top"
@@ -90,44 +89,44 @@ function ProjectDialogBody({ project }: { project: Project }) {
               variant="outline"
               className={cn(
                 "font-mono text-[10px] tracking-wide uppercase",
-                project.status === "live" &&
+                copy.status === "live" &&
                   "border-live/40 text-live dark:border-live/50",
-                project.status === "building" &&
+                copy.status === "building" &&
                   "border-building/50 text-building dark:border-building/60",
-                project.status === "research" &&
+                copy.status === "research" &&
                   "text-muted-foreground border-border"
               )}
             >
-              {statusLabels[project.status]}
+              {messages.projectDialog.status[copy.status]}
             </Badge>
-            {project.subheading && (
+            {copy.subheading && (
               <span className="text-muted-foreground text-xs">
-                {project.subheading}
+                {copy.subheading}
               </span>
             )}
           </div>
           <DialogTitle className="text-xl leading-tight sm:text-2xl">
-            {project.title}
+            {copy.title}
           </DialogTitle>
           <DialogDescription className="text-sm leading-relaxed">
-            {project.description}
+            {copy.description}
           </DialogDescription>
         </DialogHeader>
 
         <div className="mt-6 space-y-5">
-          <ProjectSection label="Why I built it" text={details.motivation} />
-          <ProjectSection label="What I built" items={details.built} />
-          <ProjectSection label="Key capabilities" items={details.capabilities} />
+          <ProjectSection label={messages.projectDialog.whyBuilt} text={details.motivation} />
+          <ProjectSection label={messages.projectDialog.whatBuilt} items={details.built} />
+          <ProjectSection label={messages.projectDialog.capabilities} items={details.capabilities} />
           <ProjectSection
-            label="Technical details"
+            label={messages.projectDialog.technicalDetails}
             items={details.technicalDetails}
           />
-          <ProjectSection label="My contribution" text={details.role} />
-          <ProjectSection label="Outcome / current status" text={details.outcome} />
+          <ProjectSection label={messages.projectDialog.contribution} text={details.role} />
+          <ProjectSection label={messages.projectDialog.outcome} text={details.outcome} />
 
           <section className="space-y-2">
             <h3 className="text-muted-foreground font-mono text-[11px] font-medium tracking-[0.16em] uppercase">
-              Technologies
+              {messages.projectDialog.technologies}
             </h3>
             <ul className="flex flex-wrap gap-1.5">
               {project.technologies.map((technology) => (
@@ -145,29 +144,29 @@ function ProjectDialogBody({ project }: { project: Project }) {
           </section>
         </div>
 
-        {(project.links.website || project.links.github) && (
+        {(copy.links.website || copy.links.github) && (
           <DialogFooter className="border-border mt-6 flex-col gap-2 border-t pt-4 sm:flex-row sm:justify-start">
-            {project.links.website && (
+            {copy.links.website && (
               <Button asChild size="sm">
                 <a
-                  href={project.links.website}
+                  href={copy.links.website}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <ExternalLink aria-hidden />
-                  Live Demo
+                  {messages.projectDialog.liveDemo}
                 </a>
               </Button>
             )}
-            {project.links.github && (
+            {copy.links.github && (
               <Button asChild size="sm" variant="outline">
                 <a
-                  href={project.links.github}
+                  href={copy.links.github}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <GitHubIcon aria-hidden />
-                  View Code
+                  {messages.projectDialog.viewCode}
                   <ArrowUpRight aria-hidden />
                 </a>
               </Button>
@@ -182,10 +181,13 @@ function ProjectDialogBody({ project }: { project: Project }) {
 export function ProjectDialog({
   project,
   children,
+  locale,
 }: {
   project: Project
   children: React.ReactNode
+  locale?: Locale
 }) {
+  const resolvedLocale = locale ?? "en"
   const lastTriggerRef = React.useRef<HTMLElement | null>(null)
   const [open, setOpen] = React.useState(false)
 
@@ -204,9 +206,10 @@ export function ProjectDialog({
             event.preventDefault()
             lastTriggerRef.current?.focus()
           }}
+          closeLabel={getMessages(resolvedLocale).accessibility.closeDialog}
           className="max-h-[calc(100dvh-1rem)] max-w-[calc(100%-1rem)] overflow-hidden p-0 sm:max-w-2xl"
         >
-          <ProjectDialogBody project={project} />
+          <ProjectDialogBody project={project} locale={resolvedLocale} />
         </DialogContent>
       </Dialog>
     </ProjectDialogContext.Provider>

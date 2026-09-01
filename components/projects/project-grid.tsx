@@ -2,16 +2,26 @@ import { Fragment } from "react"
 
 import { ProjectCard } from "@/components/projects/project-card"
 import type { Project } from "@/lib/content/projects"
+import type { Locale } from "@/lib/i18n/config"
+import { getMessages } from "@/lib/i18n/messages"
 
 /**
  * Two-up on desktop, stacked on mobile, with the twin centre rules and
  * full-bleed row separators the rest of the site uses.
  */
-export function ProjectGrid({ projects }: { projects: Project[] }) {
+export function ProjectGrid({
+  projects,
+  locale = "en",
+}: {
+  projects: Project[]
+  locale?: Locale
+}) {
+  const messages = getMessages(locale)
+
   if (projects.length === 0) {
     return (
       <p className="text-muted-foreground px-4 py-12 text-center text-sm">
-        No projects match that search.
+        {messages.projectsPage.empty}
       </p>
     )
   }
@@ -30,7 +40,11 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
           return (
             <Fragment key={project.slug}>
               <div className="relative flex flex-col p-4">
-                <ProjectCard project={project} priority={index === 0} />
+                <ProjectCard
+                  project={project}
+                  priority={index === 0}
+                  locale={locale}
+                />
               </div>
 
               {index % 2 === 1 && !isLast && (

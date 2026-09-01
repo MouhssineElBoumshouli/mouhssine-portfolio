@@ -8,6 +8,8 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { profile } from "@/lib/content/profile"
+import { useLocale } from "@/components/i18n/locale-provider"
+import { getMessages } from "@/lib/i18n/messages"
 
 type FormState = "idle" | "loading" | "success" | "error"
 
@@ -18,6 +20,8 @@ const MAX_MESSAGE_LENGTH = 5000
 
 /** Posts to /api/contact, which relays over SMTP. */
 export function ContactForm() {
+  const locale = useLocale()
+  const messages = getMessages(locale)
   const [state, setState] = useState<FormState>("idle")
   const [feedback, setFeedback] = useState<string | null>(null)
   const [email, setEmail] = useState("")
@@ -47,19 +51,19 @@ export function ContactForm() {
       })
 
       if (!response.ok) {
-        const data = await response.json().catch(() => ({}))
+        await response.json().catch(() => ({}))
         setState("error")
-        setFeedback(data?.error || "That didn't send. Try again in a moment.")
+        setFeedback(messages.contactForm.genericError)
         return
       }
 
       setState("success")
-      setFeedback("Message sent. I'll get back to you soon.")
+      setFeedback(messages.contactForm.sent)
       setEmail("")
       setBody("")
     } catch {
       setState("error")
-      setFeedback("No connection. Check your network and try again.")
+      setFeedback(messages.contactForm.connectionError)
     }
   }
 
@@ -76,13 +80,13 @@ export function ContactForm() {
         className="absolute -left-[9999px] h-px w-px opacity-0"
       />
       <div className="space-y-2">
-        <Label htmlFor="contact-email">Your email</Label>
+        <Label htmlFor="contact-email">{messages.contactForm.emailLabel}</Label>
         <Input
           id="contact-email"
           type="email"
           name="email"
           autoComplete="email"
-          placeholder="you@example.com"
+          placeholder={messages.contactForm.emailPlaceholder}
           maxLength={MAX_EMAIL_LENGTH}
           value={email}
           onChange={(event) => setEmail(event.target.value)}
@@ -91,12 +95,12 @@ export function ContactForm() {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="contact-message">Your message</Label>
+        <Label htmlFor="contact-message">{messages.contactForm.messageLabel}</Label>
         <Textarea
           id="contact-message"
           name="message"
           rows={6}
-          placeholder="What are you building, and where do you want help?"
+          placeholder={messages.contactForm.messagePlaceholder}
           className="min-h-32 resize-none"
           maxLength={MAX_MESSAGE_LENGTH}
           value={body}
@@ -104,7 +108,7 @@ export function ContactForm() {
           required
         />
         <p className="text-muted-foreground text-xs">
-          At least {MIN_MESSAGE} characters so I know what you need.
+          {messages.contactForm.minimumMessage(MIN_MESSAGE)}
         </p>
       </div>
 
@@ -121,12 +125,12 @@ export function ContactForm() {
           {state === "loading" ? (
             <>
               <Loader2 className="animate-spin" aria-hidden />
-              Sending
+              {messages.contactForm.sending}
             </>
           ) : (
             <>
               <Send aria-hidden />
-              Send message
+              {messages.contactForm.sendMessage}
             </>
           )}
         </Button>
@@ -150,7 +154,7 @@ export function ContactForm() {
           ) : null}
 
           <p className="text-muted-foreground ml-auto">
-            Goes straight to{" "}
+            {messages.contactForm.goesStraightTo}{" "}
             <span className="text-foreground font-medium">
               {profile.email}
             </span>

@@ -18,11 +18,6 @@ export const socialPreviewImage = {
   alt: "Mouhssine El Boumshouli portfolio homepage",
 }
 
-export const navLinks = [
-  { name: "Projects", href: "/projects" },
-  { name: "Contact", href: "/contact" },
-]
-
 /** In-page anchors, kept in one place so the nav and the sections agree. */
 export const sectionIds = {
   about: "about",
@@ -43,10 +38,4 @@ export const skillsVenn = {
     right: "Applied Research",
     bottom: "Product Delivery\\n& User Empathy",
   },
-}
-
-export const footer = {
-  text: "Designed and developed by",
-  developer: profile.name,
-  note: "Built in the open.",
 }

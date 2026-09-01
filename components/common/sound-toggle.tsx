@@ -6,10 +6,13 @@ import { Volume2, VolumeX } from "lucide-react"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { useUiFeedback } from "@/hooks/use-ui-feedback"
 import { cn } from "@/lib/utils"
+import { useLocale } from "@/components/i18n/locale-provider"
+import { getMessages } from "@/lib/i18n/messages"
 
 /** Mutes the interface click without touching the haptic tap. */
 export function SoundToggle({ className }: { className?: string }) {
   const { soundEnabled, toggleSound } = useUiFeedback()
+  const messages = getMessages(useLocale())
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => setMounted(true), [])
@@ -25,7 +28,7 @@ export function SoundToggle({ className }: { className?: string }) {
           type="button"
           role="switch"
           aria-checked={mounted ? soundEnabled : true}
-          aria-label={muted ? "Unmute interface sound" : "Mute interface sound"}
+          aria-label={muted ? messages.accessibility.unmuteSound : messages.accessibility.muteSound}
           onClick={toggleSound}
           className={cn(
             "focus-visible:ring-ring/50 text-foreground/75 flex size-7 cursor-pointer items-center justify-center rounded-full outline-none transition-colors hover:bg-black/5 focus-visible:ring-[3px] dark:hover:bg-white/10",
@@ -39,7 +42,7 @@ export function SoundToggle({ className }: { className?: string }) {
           )}
         </button>
       </TooltipTrigger>
-      <TooltipContent>{muted ? "Unmute" : "Mute"}</TooltipContent>
+      <TooltipContent>{muted ? messages.accessibility.unmute : messages.accessibility.mute}</TooltipContent>
     </Tooltip>
   )
 }

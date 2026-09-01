@@ -4,18 +4,21 @@ import { chipClass } from "@/lib/button-styles"
 import { stack } from "@/lib/content/stack"
 import { sectionIds } from "@/lib/content/site"
 import { cn } from "@/lib/utils"
+import type { Locale } from "@/lib/i18n/config"
+import { getMessages } from "@/lib/i18n/messages"
 
 /**
  * One wrapped run of chips, each carrying its brand mark. The category
  * grouping still lives in the content file and orders this list, so the
  * layers read left to right even though the labels are not drawn.
  */
-export function Stack() {
+export function Stack({ locale }: { locale: Locale }) {
+  const messages = getMessages(locale)
   const skills = stack.flatMap((category) => category.skills)
 
   return (
     <section aria-labelledby={sectionIds.stack}>
-      <SectionHeading id={sectionIds.stack}>Skills</SectionHeading>
+      <SectionHeading id={sectionIds.stack}>{messages.home.skills}</SectionHeading>
 
       <ul className="flex flex-wrap gap-2 px-4 py-5 sm:px-5">
         {skills.map((skill) => (

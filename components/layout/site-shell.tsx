@@ -1,6 +1,8 @@
 import { Container } from "@/components/layout/container"
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
+import { LocaleProvider } from "@/components/i18n/locale-provider"
+import { SkipToContent } from "@/components/common/skip-to-content"
 
 /**
  * The frame every page sits in: a full-bleed sticky nav, then the 715px
@@ -10,32 +12,28 @@ import { Footer } from "@/components/layout/footer"
 export function SiteShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-dvh">
-      <a
-        href="#main"
-        className="focus:bg-background focus:ring-ring/50 sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:rounded-md focus:border focus:px-3 focus:py-2 focus:text-sm focus:ring-[3px]"
-      >
-        Skip to content
-      </a>
+      <LocaleProvider>
+        <SkipToContent />
+        <Navbar />
 
-      <Navbar />
+        <Container>
+          <div className="relative">
+            <div
+              aria-hidden
+              className="border-border pointer-events-none absolute top-0 bottom-0 z-0 hidden border-r md:-left-6 md:block md:w-6 dark:opacity-60"
+            />
+            <div
+              aria-hidden
+              className="border-border pointer-events-none absolute top-0 bottom-0 z-0 hidden border-l md:-right-6 md:block md:w-6 dark:opacity-60"
+            />
 
-      <Container>
-        <div className="relative">
-          <div
-            aria-hidden
-            className="border-border pointer-events-none absolute top-0 bottom-0 z-0 hidden border-r md:-left-6 md:block md:w-6 dark:opacity-60"
-          />
-          <div
-            aria-hidden
-            className="border-border pointer-events-none absolute top-0 bottom-0 z-0 hidden border-l md:-right-6 md:block md:w-6 dark:opacity-60"
-          />
-
-          <div id="main" className="relative z-10">
-            {children}
-            <Footer />
+            <div id="main" className="relative z-10">
+              {children}
+              <Footer />
+            </div>
           </div>
-        </div>
-      </Container>
+        </Container>
+      </LocaleProvider>
 
       {/* Softens the bottom edge so content fades out rather than clipping. */}
       <div

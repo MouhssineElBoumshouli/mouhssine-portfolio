@@ -1,6 +1,8 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { useLocale } from "@/components/i18n/locale-provider"
+import { getMessages } from "@/lib/i18n/messages"
 
 /**
  * Local wall-clock for a fixed timezone. Renders nothing until mounted
@@ -14,6 +16,7 @@ export function TimeCounter({
   timeZone?: string
 }) {
   const [time, setTime] = useState<string | null>(null)
+  const messages = getMessages(useLocale())
 
   useEffect(() => {
     const format = () =>
@@ -31,7 +34,7 @@ export function TimeCounter({
   }, [timeZone])
 
   return (
-    <span className={className} aria-label="My local time">
+    <span className={className} aria-label={messages.accessibility.localTime}>
       {/* Reserve the width so the line never reflows on mount. */}
       {time ?? "--:--:--"}
     </span>

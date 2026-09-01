@@ -3,17 +3,19 @@ import Image from "next/image"
 import { SectionHeading } from "@/components/layout/section-heading"
 import {
   companyNaLogo,
-  experiences,
   type Experience,
 } from "@/lib/content/experience"
 import { sectionIds } from "@/lib/content/site"
+import type { Locale } from "@/lib/i18n/config"
+import { getLocalizedExperiences } from "@/lib/i18n/content"
+import { getMessages } from "@/lib/i18n/messages"
 
 /**
  * One line per role: logo, company, "role • location", and the dates
  * pushed to the trailing edge. Deliberately free of detail - the resume
  * carries the long form.
  */
-function ExperienceRow({ experience }: { experience: Experience }) {
+function ExperienceRow({ experience, present }: { experience: Experience; present: string }) {
   const logo = experience.logo || companyNaLogo
 
   return (
@@ -50,7 +52,7 @@ function ExperienceRow({ experience }: { experience: Experience }) {
           </h3>
 
           <p className="text-muted-foreground shrink-0 text-xs tabular-nums">
-            {experience.period.start} - {experience.period.end ?? "Present"}
+            {experience.period.start} - {experience.period.end ?? present}
           </p>
         </div>
 
@@ -62,15 +64,22 @@ function ExperienceRow({ experience }: { experience: Experience }) {
   )
 }
 
-export function ExperienceSection() {
+export function ExperienceSection({ locale }: { locale: Locale }) {
+  const messages = getMessages(locale)
+  const localizedExperiences = getLocalizedExperiences(locale)
+
   return (
     <section aria-labelledby={sectionIds.experience}>
       <SectionHeading id={sectionIds.experience} className="pb-2">
-        Experience
+        {messages.home.experience}
       </SectionHeading>
       <ul className="space-y-5 px-4 py-5 sm:px-6">
-        {experiences.map((experience) => (
-          <ExperienceRow key={experience.id} experience={experience} />
+        {localizedExperiences.map((experience) => (
+          <ExperienceRow
+            key={experience.id}
+            experience={experience}
+            present={messages.home.present}
+          />
         ))}
       </ul>
     </section>

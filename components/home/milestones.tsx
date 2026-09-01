@@ -1,6 +1,8 @@
 import { SectionHeading } from "@/components/layout/section-heading"
-import { milestones } from "@/lib/content/milestones"
 import { sectionIds } from "@/lib/content/site"
+import type { Locale } from "@/lib/i18n/config"
+import { getLocalizedMilestones } from "@/lib/i18n/content"
+import { getMessages } from "@/lib/i18n/messages"
 
 function Row({
   title,
@@ -37,10 +39,13 @@ function Row({
   )
 }
 
-export function Achievements() {
+export function Achievements({ locale }: { locale: Locale }) {
+  const messages = getMessages(locale)
+  const milestones = getLocalizedMilestones(locale)
+
   return (
     <section aria-labelledby={sectionIds.milestones}>
-      <SectionHeading id={sectionIds.milestones}>Milestones</SectionHeading>
+      <SectionHeading id={sectionIds.milestones}>{messages.home.milestones}</SectionHeading>
       <ul className="pt-px">
         {milestones.map((item) => (
           <Row

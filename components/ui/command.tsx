@@ -35,18 +35,21 @@ function CommandDialog({
   children,
   className,
   showCloseButton = true,
+  closeLabel = "Close",
   ...props
 }: React.ComponentProps<typeof Dialog> & {
   title?: string
   description?: string
   className?: string
   showCloseButton?: boolean
+  closeLabel?: string
   }) {
   return (
     <Dialog {...props}>
       <DialogContent
         className={cn("overflow-hidden p-0", className)}
         showCloseButton={showCloseButton}
+        closeLabel={closeLabel}
       >
         <DialogHeader className="sr-only">
           <DialogTitle>{title}</DialogTitle>

@@ -13,10 +13,14 @@ export function PageHeader({
   eyebrow,
   title,
   action,
+  homeLabel = "Home",
+  homeHref = "/",
 }: {
   eyebrow: string
   title: string
   action?: React.ReactNode
+  homeLabel?: string
+  homeHref?: string
 }) {
   return (
     <>
@@ -27,11 +31,11 @@ export function PageHeader({
       </h1>
       <div className="screen-line-bottom relative flex items-center justify-between gap-3 p-2">
         <Link
-          href="/"
+          href={homeHref}
           className="text-muted-foreground hover:text-foreground focus-visible:ring-ring/50 inline-flex h-7 shrink-0 items-center gap-2 rounded-md px-1 text-sm font-medium outline-none transition-colors focus-visible:ring-[3px]"
         >
           <ArrowLeft className="size-4" aria-hidden />
-          Home
+          {homeLabel}
         </Link>
         {action}
       </div>

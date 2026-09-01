@@ -33,32 +33,10 @@ import { useUiFeedback } from "@/hooks/use-ui-feedback"
 import { profile } from "@/lib/content/profile"
 import { projects } from "@/lib/content/projects"
 import { cn } from "@/lib/utils"
-
-const pages = [
-  { name: "Home", href: "/", icon: Home },
-  { name: "Projects", href: "/projects", icon: Laptop },
-  { name: "Contact", href: "/contact", icon: Send },
-]
-
-const external = [
-  {
-    name: "GitHub",
-    href: profile.githubUrl,
-    icon: GitHubIcon,
-  },
-  {
-    name: "LinkedIn",
-    href: profile.linkedinUrl,
-    icon: LinkedInIcon,
-  },
-  {
-    name: "Schedule a call",
-    href: profile.calendlyUrl,
-    icon: Calendar,
-  },
-  { name: "Resume", href: profile.resumeUrl, icon: FileText },
-  { name: "Email", href: `mailto:${profile.email}`, icon: Mail },
-]
+import { useLocale } from "@/components/i18n/locale-provider"
+import { localizedPath } from "@/lib/i18n/config"
+import { getLocalizedProject } from "@/lib/i18n/content"
+import { getMessages } from "@/lib/i18n/messages"
 
 /**
  * ⌘K / Ctrl+K palette. Rendered once in the shell; the trigger button
@@ -74,6 +52,24 @@ export function CommandMenu({
   const router = useRouter()
   const { setTheme, resolvedTheme } = useTheme()
   const { soundEnabled, toggleSound } = useUiFeedback()
+  const locale = useLocale()
+  const messages = getMessages(locale)
+  const pages = [
+    { name: messages.nav.home, href: localizedPath("/", locale), icon: Home },
+    { name: messages.nav.projects, href: localizedPath("/projects", locale), icon: Laptop },
+    { name: messages.nav.contact, href: localizedPath("/contact", locale), icon: Send },
+  ]
+  const external = [
+    { name: messages.command.github, href: profile.githubUrl, icon: GitHubIcon },
+    { name: messages.command.linkedin, href: profile.linkedinUrl, icon: LinkedInIcon },
+    { name: messages.command.schedule, href: profile.calendlyUrl, icon: Calendar },
+    { name: messages.command.resume, href: profile.resumeUrl, icon: FileText },
+    { name: messages.command.email, href: `mailto:${profile.email}`, icon: Mail },
+  ]
+  const localizedProjects = projects.map((project) => ({
+    project,
+    copy: getLocalizedProject(project, locale),
+  }))
 
   const run = useCallback(
     (action: () => void) => {
@@ -87,17 +83,18 @@ export function CommandMenu({
     <CommandDialog
       open={open}
       onOpenChange={onOpenChange}
-      title="Command menu"
-      description="Jump to a page, open a link, or change a setting."
+      title={messages.command.title}
+      description={messages.command.description}
+      closeLabel={messages.accessibility.closeDialog}
       // The panel needs its own elevation: at these token values a plain
       // border disappears against the dimmed page in dark mode.
       className="bg-popover border-border/80 gap-0 p-0 shadow-2xl ring-1 ring-black/5 sm:max-w-lg dark:ring-white/10"
     >
-      <CommandInput placeholder="Jump to a page or link…" />
+      <CommandInput placeholder={messages.command.inputPlaceholder} />
       <CommandList className="max-h-[min(65vh,26rem)]">
-        <CommandEmpty>Nothing matches that.</CommandEmpty>
+        <CommandEmpty>{messages.command.empty}</CommandEmpty>
 
-        <CommandGroup heading="Pages">
+        <CommandGroup heading={messages.command.pages}>
           {pages.map((page) => (
             <CommandItem
               key={page.href}
@@ -112,11 +109,11 @@ export function CommandMenu({
 
         <CommandSeparator />
 
-        <CommandGroup heading="Projects">
-          {projects.map((project) => (
+        <CommandGroup heading={messages.command.projects}>
+          {localizedProjects.map(({ project, copy }) => (
             <CommandItem
               key={project.slug}
-              value={`project ${project.title} ${project.technologies.join(" ")}`}
+              value={`project ${copy.title} ${copy.technologies.join(" ")}`}
               onSelect={() =>
                 run(() => {
                   const href = project.links.website ?? project.links.github
@@ -125,9 +122,9 @@ export function CommandMenu({
               }
             >
               <ArrowUpRight className="text-muted-foreground" />
-              {project.title}
+              {copy.title}
               <span className="text-muted-foreground ml-auto text-xs">
-                {project.subheading}
+                {copy.subheading}
               </span>
             </CommandItem>
           ))}
@@ -135,7 +132,7 @@ export function CommandMenu({
 
         <CommandSeparator />
 
-        <CommandGroup heading="Links">
+        <CommandGroup heading={messages.command.links}>
           {external.map((link) => (
             <CommandItem
               key={link.name}
@@ -152,7 +149,7 @@ export function CommandMenu({
 
         <CommandSeparator />
 
-        <CommandGroup heading="Settings">
+        <CommandGroup heading={messages.command.settings}>
           <CommandItem
             value="setting theme appearance dark light"
             onSelect={() =>
@@ -164,7 +161,9 @@ export function CommandMenu({
             ) : (
               <Moon className="text-muted-foreground" />
             )}
-            Switch to {resolvedTheme === "dark" ? "light" : "dark"} theme
+            {messages.command.switchToTheme(
+              resolvedTheme === "dark" ? messages.command.light : messages.command.dark
+            )}
             <span className="text-muted-foreground ml-auto text-xs tracking-widest">
               D
             </span>
@@ -181,7 +180,9 @@ export function CommandMenu({
             ) : (
               <Volume2 className="text-muted-foreground" />
             )}
-            {soundEnabled ? "Turn off interface sound" : "Turn on interface sound"}
+            {soundEnabled
+              ? messages.command.turnOffSound
+              : messages.command.turnOnSound}
           </CommandItem>
         </CommandGroup>
       </CommandList>
@@ -197,18 +198,21 @@ export function CommandTrigger({
   onClick: () => void
   className?: string
 }) {
+  const locale = useLocale()
+  const messages = getMessages(locale)
+
   return (
     <button
       type="button"
       onClick={onClick}
-      aria-label="Open command menu"
+      aria-label={messages.accessibility.openCommandMenu}
       className={cn(
         "text-muted-foreground hover:text-foreground hover:border-foreground/20 focus-visible:ring-ring/50 border-border bg-background inline-flex h-7 items-center gap-2 rounded-full border px-2.5 text-xs transition-colors outline-none focus-visible:ring-[3px]",
         className
       )}
     >
       <Search className="size-3.5" aria-hidden />
-      <span>Search</span>
+      <span>{messages.command.search}</span>
       <kbd className="bg-muted text-muted-foreground rounded px-1 py-px font-mono text-[10px] leading-4">
         ⌘K
       </kbd>
@@ -218,6 +222,9 @@ export function CommandTrigger({
 
 /** Floating trigger for touch devices, where there is no keyboard shortcut. */
 export function CommandFloatingButton({ onClick }: { onClick: () => void }) {
+  const locale = useLocale()
+  const messages = getMessages(locale)
+
   return (
     <div className="fixed inset-x-0 bottom-6 z-50 mx-auto w-fit md:hidden">
       <Button
@@ -226,7 +233,7 @@ export function CommandFloatingButton({ onClick }: { onClick: () => void }) {
         className="bg-background/95 gap-2 rounded-full border px-5 shadow-lg backdrop-blur-md transition-transform active:scale-95"
       >
         <Search className="size-4" aria-hidden />
-        <span>Search</span>
+        <span>{messages.command.search}</span>
       </Button>
     </div>
   )

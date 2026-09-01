@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next"
+import { headers } from "next/headers"
 import { GeistMono } from "geist/font/mono"
 import { Pixelify_Sans } from "next/font/google"
 import { Analytics } from "@vercel/analytics/react"
@@ -12,7 +13,6 @@ import { ErrorBoundary } from "@/components/error-boundary"
 import { LenisSmoothScroll } from "@/components/lenis-smooth-scroll"
 import { UserCursor } from "@/components/common/user-cursor"
 import { SiteShell } from "@/components/layout/site-shell"
-import StructuredData from "@/components/structured-data"
 import {
   siteUrl,
   siteDescription,
@@ -62,7 +62,10 @@ export const metadata: Metadata = {
   generator: "Next.js",
   applicationName: profile.name + " Portfolio",
   referrer: "origin-when-cross-origin",
-  alternates: { canonical: siteUrl },
+  alternates: {
+    canonical: siteUrl,
+    languages: { en: siteUrl, fr: `${siteUrl}/fr` },
+  },
   robots: {
     index: true,
     follow: true,
@@ -119,12 +122,14 @@ export const viewport: Viewport = {
   ],
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const locale = (await headers()).get("x-portfolio-locale") === "fr" ? "fr" : "en"
+
   return (
     <html
-      lang="en"
+      lang={locale}
       suppressHydrationWarning
       className={`${GeistMono.variable} ${pixelifySans.variable}`}
     >
@@ -144,7 +149,6 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://api.fontshare.com/v2/css?f%5B%5D=satoshi@variable&display=swap"
         />
-        <StructuredData />
       </head>
       <body className="min-h-dvh font-sans antialiased">
         <ErrorBoundary>

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation"
 import { Menu } from "lucide-react"
 
 import { Container } from "@/components/layout/container"
+import { LanguageSwitch } from "@/components/common/language-switch"
 import { SoundToggle } from "@/components/common/sound-toggle"
 import { ThemeToggle } from "@/components/common/theme-toggle"
 import {
@@ -20,13 +21,22 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { navLinks } from "@/lib/content/site"
 import { profile } from "@/lib/content/profile"
+import { localizedPath } from "@/lib/i18n/config"
+import { useLocale } from "@/components/i18n/locale-provider"
+import { getMessages } from "@/lib/i18n/messages"
 import { cn } from "@/lib/utils"
 
 export function Navbar() {
   const pathname = usePathname()
+  const locale = useLocale()
+  const messages = getMessages(locale)
   const { open, setOpen } = useCommandMenu()
+  const navLinks = [
+    { name: messages.nav.projects, href: localizedPath("/projects", locale) },
+    { name: messages.nav.contact, href: localizedPath("/contact", locale) },
+  ]
+  const homeHref = localizedPath("/", locale)
 
   return (
     <>
@@ -35,18 +45,18 @@ export function Navbar() {
         <Container>
           <div className="screen-line-top screen-line-bottom relative mt-1 flex w-full items-center justify-between gap-2 px-4 py-1.5">
             <Link
-              href="/"
+              href={homeHref}
               className="focus-visible:ring-ring/50 rounded-sm outline-none focus-visible:ring-[3px]"
             >
               <span className="font-pixel text-2xl leading-none tracking-wide uppercase">
                 {profile.wordmark}
               </span>
-              <span className="sr-only">- home</span>
+              <span className="sr-only">- {messages.nav.home.toLowerCase()}</span>
             </Link>
 
             <div className="flex items-center gap-2 md:gap-4">
               <nav
-                aria-label="Main"
+                aria-label={messages.nav.main}
                 className="hidden items-center gap-4 md:flex"
               >
                 {navLinks.map((link) => {
@@ -70,6 +80,8 @@ export function Navbar() {
                 <CommandTrigger onClick={() => setOpen(true)} />
               </nav>
 
+              <LanguageSwitch />
+
               <span
                 className="bg-border hidden h-4 w-px md:block"
                 aria-hidden
@@ -87,15 +99,15 @@ export function Navbar() {
                       variant="ghost"
                       size="icon"
                       className="size-8 rounded-full"
-                      aria-label="Open menu"
+                      aria-label={messages.accessibility.openMenu}
                     >
                       <Menu className="size-[18px]" aria-hidden />
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end" sideOffset={8} className="w-48">
                     <DropdownMenuItem asChild>
-                      <Link href="/" className="w-full cursor-pointer">
-                        Home
+                      <Link href={homeHref} className="w-full cursor-pointer">
+                        {messages.nav.home}
                       </Link>
                     </DropdownMenuItem>
                     {navLinks.map((link) => (

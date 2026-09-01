@@ -14,6 +14,8 @@ import {
   ContributionGraphTotalCount,
 } from "@/components/ui/contribution-graph"
 import { sectionIds } from "@/lib/content/site"
+import { useLocale } from "@/components/i18n/locale-provider"
+import { getMessages } from "@/lib/i18n/messages"
 
 type ContributionDay = {
   date: string
@@ -33,12 +35,15 @@ const levelByQuartile: Record<string, number> = {
 type HoveredDay = { count: number; label: string; x: number; y: number }
 
 /** "Aug 26, 2026" from the ISO date the cell carries. */
-function dayLabel(iso: string) {
-  return new Date(`${iso}T00:00:00`).toLocaleDateString("en-US", {
+function dayLabel(iso: string, locale: "en" | "fr") {
+  return new Date(`${iso}T00:00:00`).toLocaleDateString(
+    locale === "fr" ? "fr-FR" : "en-US",
+    {
     month: "short",
     day: "numeric",
     year: "numeric",
-  })
+    }
+  )
 }
 
 /** "2025-26" for a range that straddles new year, "2026" for one that doesn't. */
@@ -54,6 +59,8 @@ function rangeLabel(activities: Activity[]) {
  * unavailable rather than showing an error a visitor cannot act on.
  */
 export function GitHubActivity() {
+  const locale = useLocale()
+  const messages = getMessages(locale)
   const [activities, setActivities] = useState<Activity[] | null>(null)
   const [total, setTotal] = useState(0)
   const [failed, setFailed] = useState(false)
@@ -106,27 +113,32 @@ export function GitHubActivity() {
 
     setHovered({
       count: Number(count),
-      label: dayLabel(date),
+      label: dayLabel(date, locale),
       x: cellBox.left + cellBox.width / 2 - containerBox.left,
       y: cellBox.top - containerBox.top,
     })
-  }, [])
+  }, [locale])
 
   const labels = useMemo(
     () =>
       activities
         ? {
-            totalCount: "{{count}} contributions in " + rangeLabel(activities),
+            totalCount: messages.home.totalContributions(rangeLabel(activities)),
+            title: messages.accessibility.contributionGraph,
+            legend: {
+              less: locale === "fr" ? "Moins" : "Less",
+              more: locale === "fr" ? "Plus" : "More",
+            },
           }
         : undefined,
-    [activities]
+    [activities, locale, messages]
   )
 
   if (failed) return null
 
   return (
     <section aria-labelledby={sectionIds.activity}>
-      <SectionHeading id={sectionIds.activity}>Activity</SectionHeading>
+      <SectionHeading id={sectionIds.activity}>{messages.home.activity}</SectionHeading>
 
       <div className="relative px-4 py-5" onMouseLeave={() => setHovered(null)}>
         {hovered && (
@@ -135,11 +147,8 @@ export function GitHubActivity() {
             className="bg-foreground text-background pointer-events-none absolute z-20 -translate-x-1/2 -translate-y-full rounded-md px-2 py-1 text-xs font-medium whitespace-nowrap shadow-md"
             style={{ left: hovered.x, top: hovered.y - 6 }}
           >
-            {hovered.count === 1
-              ? "1 contribution"
-              : `${hovered.count} contributions`}
-            {" on "}
-            {hovered.label}
+            {messages.home.contribution(hovered.count)}{" "}
+            {messages.home.contributionsOn(hovered.label)}
           </div>
         )}
 
@@ -175,7 +184,10 @@ export function GitHubActivity() {
           </ContributionGraph>
         ) : (
           <div className="flex h-[162px] items-center justify-center">
-            <LoaderIcon className="text-foreground animate-spin" aria-label="Loading contributions" />
+            <LoaderIcon
+              className="text-foreground animate-spin"
+              aria-label={messages.home.loadingContributions}
+            />
           </div>
         )}
       </div>

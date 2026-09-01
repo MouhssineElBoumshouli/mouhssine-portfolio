@@ -1,13 +1,18 @@
 import { experiences } from "@/lib/content/experience"
 import { profile } from "@/lib/content/profile"
-import { siteDescription, siteUrl } from "@/lib/content/site"
+import { siteUrl } from "@/lib/content/site"
 import { stack } from "@/lib/content/stack"
+import type { Locale } from "@/lib/i18n/config"
+import { getMessages } from "@/lib/i18n/messages"
 
 /**
  * Rendered on the server so crawlers see the same identity and expertise
  * that the page renders.
  */
-export default function StructuredData() {
+export default function StructuredData({ locale }: { locale: Locale }) {
+  const messages = getMessages(locale)
+  const description = messages.metadata.description
+
   const currentEmployers = experiences
     .filter((experience) => experience.isCurrent)
     .map((experience) => ({
@@ -21,8 +26,9 @@ export default function StructuredData() {
     name: profile.name,
     alternateName: profile.handle,
     jobTitle: profile.title,
-    description: siteDescription,
+    description,
     url: siteUrl,
+    inLanguage: messages.htmlLang,
     image: siteUrl + profile.avatarPhoto,
     email: "mailto:" + profile.email,
     address: {
@@ -47,7 +53,8 @@ export default function StructuredData() {
         "@id": siteUrl + "/#website",
         url: siteUrl,
         name: profile.name + " Portfolio",
-        description: siteDescription,
+        description,
+        inLanguage: messages.htmlLang,
         publisher: { "@id": siteUrl + "/#person" },
       },
     ],

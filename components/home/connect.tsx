@@ -5,8 +5,11 @@ import { GitHubIcon, LinkedInIcon } from "@/components/icons/brand"
 import { SectionHeading } from "@/components/layout/section-heading"
 import { contactButtonClass } from "@/lib/button-styles"
 import { cn } from "@/lib/utils"
-import { socialLinks, type SocialLink } from "@/lib/content/profile"
+import { type SocialLink } from "@/lib/content/profile"
 import { sectionIds } from "@/lib/content/site"
+import type { Locale } from "@/lib/i18n/config"
+import { getMessages } from "@/lib/i18n/messages"
+import { getLocalizedSocialLinks } from "@/lib/i18n/content"
 
 const icons: Record<
   SocialLink["icon"],
@@ -24,10 +27,13 @@ const icons: Record<
  * are deliberately static - the magnetic lean belongs to the two calls
  * to action up top, and six of them moving at once would be noise.
  */
-export function Connect() {
+export function Connect({ locale }: { locale: Locale }) {
+  const messages = getMessages(locale)
+  const socialLinks: SocialLink[] = getLocalizedSocialLinks(locale)
+
   return (
     <section aria-labelledby={sectionIds.connect}>
-      <SectionHeading id={sectionIds.connect}>Connect</SectionHeading>
+      <SectionHeading id={sectionIds.connect}>{messages.home.connect}</SectionHeading>
 
       {/* Three up as two rows on small screens; all six on one row from
           md, where the column reaches its full 715px and the cells are

@@ -8,12 +8,15 @@ import { buttonVariants } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { useUiFeedback } from "@/hooks/use-ui-feedback"
 import { cn } from "@/lib/utils"
+import { useLocale } from "@/components/i18n/locale-provider"
+import { getMessages } from "@/lib/i18n/messages"
 
 /** Also bound to the `D` key, matching the shortcut shown in the tooltip. */
 export function ThemeToggle({ className }: { className?: string }) {
   const { setTheme, resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const { tap } = useUiFeedback()
+  const messages = getMessages(useLocale())
   const wrapperRef = useRef<HTMLSpanElement>(null)
 
   useEffect(() => setMounted(true), [])
@@ -67,9 +70,9 @@ export function ThemeToggle({ className }: { className?: string }) {
             aria-label={
               mounted
                 ? isDark
-                  ? "Switch to light theme"
-                  : "Switch to dark theme"
-                : "Toggle theme"
+                  ? messages.command.switchToTheme(messages.command.light)
+                  : messages.command.switchToTheme(messages.command.dark)
+                : messages.accessibility.toggleTheme
             }
             className={cn(
               buttonVariants({ variant: "ghost", size: "icon" }),
@@ -79,7 +82,7 @@ export function ThemeToggle({ className }: { className?: string }) {
           />
         </span>
       </TooltipTrigger>
-      <TooltipContent>Toggle theme (D)</TooltipContent>
+      <TooltipContent>{messages.command.themeTooltip}</TooltipContent>
     </Tooltip>
   )
 }

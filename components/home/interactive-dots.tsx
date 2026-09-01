@@ -1,6 +1,8 @@
 "use client"
 
 import { useEffect, useRef } from "react"
+import { useLocale } from "@/components/i18n/locale-provider"
+import { getMessages } from "@/lib/i18n/messages"
 
 /** Grid pitch. Fine on purpose - the field should read as a texture. */
 const SPACING = 9
@@ -43,6 +45,7 @@ type Ripple = { x: number; y: number; time: number }
  * arc() calls would not hold a frame budget. Clicking sends a ring.
  */
 export function InteractiveDots({ className }: { className?: string }) {
+  const messages = getMessages(useLocale())
   const hostRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -261,7 +264,7 @@ export function InteractiveDots({ className }: { className?: string }) {
   }, [])
 
   return (
-    <div ref={hostRef} className={className} aria-label="Interactive dot field">
+    <div ref={hostRef} className={className} aria-label={messages.accessibility.interactiveDots}>
       <canvas ref={canvasRef} aria-hidden className="block h-full w-full" />
     </div>
   )

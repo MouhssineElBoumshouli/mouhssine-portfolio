@@ -7,6 +7,9 @@ import { GitHubIcon } from "@/components/icons/brand"
 import { TechIcon, slugForTech } from "@/components/common/tech-icon"
 import { chipClass } from "@/lib/button-styles"
 import type { Project } from "@/lib/content/projects"
+import type { Locale } from "@/lib/i18n/config"
+import { getLocalizedProject } from "@/lib/i18n/content"
+import { getMessages } from "@/lib/i18n/messages"
 import { cn } from "@/lib/utils"
 import {
   ProjectDialog,
@@ -70,19 +73,24 @@ function Preview({ project, priority = false }: { project: Project; priority?: b
 export function ProjectCard({
   project,
   priority = false,
+  locale,
 }: {
   project: Project
   priority?: boolean
+  locale?: Locale
 }) {
+  const resolvedLocale = locale ?? "en"
+  const copy = getLocalizedProject(project, resolvedLocale)
+  const messages = getMessages(resolvedLocale)
   const { website, github } = project.links
 
   return (
     <div className="group/card relative flex flex-1 flex-col gap-2">
-      <ProjectDialog project={project}>
+      <ProjectDialog project={project} locale={resolvedLocale}>
         <ProjectDialogTrigger asChild>
           <button
             type="button"
-            aria-label={`View details for ${project.title}`}
+            aria-label={messages.projectDialog.viewDetails(copy.title)}
             // `group/media` and not the card's own group: the drift should
             // answer the pointer being on the picture, not anywhere on the
             // entry. `overflow-hidden` keeps the scale inside the frame.
@@ -99,7 +107,7 @@ export function ProjectCard({
                 type="button"
                 className="hover:text-primary focus-visible:ring-ring/50 max-w-full truncate rounded-sm bg-transparent p-0 text-left outline-none transition-colors focus-visible:ring-[3px]"
               >
-                {project.title}
+                {copy.title}
               </button>
             </ProjectDialogTrigger>
           </h3>
@@ -112,7 +120,7 @@ export function ProjectCard({
                 rel="noopener noreferrer"
                 className={projectButtonClass}
               >
-                Live
+                {messages.projectDialog.live}
               </a>
             )}
             {github && (
@@ -123,7 +131,7 @@ export function ProjectCard({
                 className={projectButtonClass}
               >
                 <GitHubIcon className="size-3 shrink-0" aria-hidden />
-                Code
+                {messages.projectDialog.code}
               </a>
             )}
           </div>
@@ -132,7 +140,7 @@ export function ProjectCard({
 
       {/* One line only - the full copy lives on the project page. */}
       <p className="text-muted-foreground truncate text-[13px] leading-snug">
-        {project.description}
+        {copy.description}
       </p>
 
       {/* The skill badge with its brand mark, held at the size these

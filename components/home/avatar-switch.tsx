@@ -5,6 +5,8 @@ import Image from "next/image"
 
 import { profile } from "@/lib/content/profile"
 import { cn } from "@/lib/utils"
+import { useLocale } from "@/components/i18n/locale-provider"
+import { getMessages } from "@/lib/i18n/messages"
 
 /**
  * The portrait plus a switch that flips between the provided photo and the
@@ -12,6 +14,8 @@ import { cn } from "@/lib/utils"
  * costs no network round trip and never flashes an empty frame.
  */
 export function AvatarSwitch() {
+  const locale = useLocale()
+  const messages = getMessages(locale)
   const [showGithubPhoto, setShowGithubPhoto] = useState(false)
   return (
     <div className="flex w-fit flex-col items-center gap-2">
@@ -46,7 +50,7 @@ export function AvatarSwitch() {
         type="button"
         role="switch"
         aria-checked={showGithubPhoto}
-        aria-label="Show GitHub profile photo"
+        aria-label={messages.accessibility.showGithubPhoto}
         onClick={() => setShowGithubPhoto((value) => !value)}
         className={cn(
           "focus-visible:ring-ring/50 relative h-[18px] w-8 shrink-0 cursor-pointer rounded-full border transition-colors outline-none focus-visible:ring-[3px]",

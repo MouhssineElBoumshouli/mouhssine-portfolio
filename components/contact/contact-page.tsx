@@ -7,40 +7,45 @@ import { ContactForm } from "@/components/contact/contact-form"
 import { LinkedInIcon } from "@/components/icons/brand"
 import { profile } from "@/lib/content/profile"
 import { cn } from "@/lib/utils"
+import type { Locale } from "@/lib/i18n/config"
+import { getMessages } from "@/lib/i18n/messages"
 
-const directRoutes = [
-  {
-    name: "Schedule a 30-minute call",
-    detail: "Calendly - pick any open slot",
-    href: profile.calendlyUrl,
-    icon: Calendar,
-    primary: true,
-    external: true,
-  },
-  {
-    name: "Connect on LinkedIn",
-    detail: "mouhssine-bms",
-    href: profile.linkedinUrl,
-    icon: LinkedInIcon,
-    primary: false,
-    external: true,
-  },
-]
+export function ContactPage({ locale }: { locale: Locale }) {
+  const messages = getMessages(locale)
+  const directRoutes = [
+    {
+      name: messages.contactPage.scheduleCall,
+      detail: messages.contactPage.calendlyDetail,
+      href: profile.calendlyUrl,
+      icon: Calendar,
+      primary: true,
+      external: true,
+    },
+    {
+      name: messages.contactPage.linkedIn,
+      detail: messages.contactPage.linkedInDetail,
+      href: profile.linkedinUrl,
+      icon: LinkedInIcon,
+      primary: false,
+      external: true,
+    },
+  ]
 
-export function ContactPage() {
   return (
     <main>
       <PageHeader
-        eyebrow="Contact"
-        title="Let's talk about what you're building"
+        eyebrow={messages.contactPage.eyebrow}
+        title={messages.contactPage.title}
+        homeLabel={messages.pageHeader.home}
+        homeHref={locale === "fr" ? "/fr" : "/"}
         action={
           <span className="border-border bg-muted/30 text-muted-foreground rounded-full border px-3 py-1 text-xs font-medium sm:text-sm">
-            Based in Fès
+            {messages.contactPage.basedIn}
           </span>
         }
       />
 
-      <SectionHeading as="h2">Fastest routes</SectionHeading>
+      <SectionHeading as="h2">{messages.contactPage.fastestRoutes}</SectionHeading>
 
       <div className="grid grid-cols-1 gap-2 px-4 py-5 sm:grid-cols-2 sm:px-6">
         {directRoutes.map((route) => (
@@ -92,11 +97,10 @@ export function ContactPage() {
 
       <HatchRule />
 
-      <SectionHeading as="h2">Send a message</SectionHeading>
+      <SectionHeading as="h2">{messages.contactPage.sendMessage}</SectionHeading>
       <div className="px-4 py-5 sm:px-6">
         <p className="text-muted-foreground mb-5 max-w-prose text-sm leading-relaxed">
-          Write here and it lands in my inbox. Roles, collaboration, research,
-          or a question about something I&apos;ve built - all welcome.
+          {messages.contactPage.intro}
         </p>
         <ContactForm />
       </div>

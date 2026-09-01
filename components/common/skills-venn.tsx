@@ -3,6 +3,9 @@ import Image from "next/image"
 import { HatchRule } from "@/components/layout/rules"
 import { skillsVenn } from "@/lib/content/site"
 import { cn } from "@/lib/utils"
+import type { Locale } from "@/lib/i18n/config"
+import { getLocalizedSkillsVenn } from "@/lib/i18n/content"
+import { getMessages } from "@/lib/i18n/messages"
 
 type SkillsVennProps = {
   profileImage?: string
@@ -10,6 +13,7 @@ type SkillsVennProps = {
   className?: string
   /** Rendered inside the same frame, below the circles. */
   children?: React.ReactNode
+  locale?: Locale
 }
 
 /**
@@ -22,12 +26,18 @@ export function SkillsVenn({
   skills = skillsVenn.skills,
   className,
   children,
+  locale = "en",
 }: SkillsVennProps) {
+  const localized = getLocalizedSkillsVenn(locale)
+  const messages = getMessages(locale)
+  const resolvedImage = locale === "en" && profileImage === skillsVenn.image ? localized.image : profileImage
+  const resolvedSkills = locale === "en" && skills === skillsVenn.skills ? localized.skills : skills
+
   return (
     <div>
       <HatchRule />
       <section
-        aria-label="Areas of focus"
+        aria-label={messages.accessibility.areasOfFocus}
         className="border-border screen-line-top screen-line-bottom relative border-x px-5 py-8"
       >
         <div
@@ -56,21 +66,21 @@ export function SkillsVenn({
 
             {/* Each label sits in its own circle's non-overlapping arc. */}
             <span className="text-foreground/50 absolute top-[14%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-[10px] whitespace-nowrap sm:text-xs md:text-sm">
-              {skills.top}
+              {resolvedSkills.top}
             </span>
             <span className="text-foreground/50 absolute top-1/2 left-[15%] -translate-x-1/2 -translate-y-1/2 text-[10px] sm:text-xs md:text-sm">
-              {skills.left}
+              {resolvedSkills.left}
             </span>
             <span className="text-foreground/50 absolute top-1/2 right-[15%] translate-x-1/2 -translate-y-1/2 text-[10px] sm:text-xs md:text-sm">
-              {skills.right}
+              {resolvedSkills.right}
             </span>
             <span className="text-foreground/50 absolute bottom-[14%] left-1/2 translate-y-1/2 -translate-x-1/2 text-center text-[10px] leading-tight whitespace-pre-wrap sm:text-xs md:text-sm">
-              {skills.bottom}
+              {resolvedSkills.bottom}
             </span>
 
             <div className="border-background absolute top-1/2 left-1/2 size-14 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full border-2 shadow-md sm:size-16 sm:border-4 md:size-20">
               <Image
-                src={profileImage}
+                src={resolvedImage}
                 alt=""
                 fill
                 sizes="80px"
