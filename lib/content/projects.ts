@@ -36,7 +36,7 @@ export const projects: Project[] = [
     title: "DARE-Bench reliability study",
     subheading: "Repeated tests of a data-science agent",
     summary: "Testing whether an AI agent completes the same task consistently.",
-    description: "An average score can hide inconsistent results. I studied whether giving a data-science agent more turns improves both its success rate and its consistency.",
+    description: "An average score can hide inconsistent results. I studied whether giving a data-science agent more turns improves both its success rate and its consistency. A turn is one cycle of writing code, running it, and reading the result.",
     image: "/projects/dare-bench/preview.webp",
     imageAlt: "Results from the DARE-Bench reliability study",
     links: { github: "https://github.com/MouhssineElBoumshouli/dare-agent-reliability" },
@@ -112,7 +112,7 @@ export const projects: Project[] = [
         "Notes are marked as outdated when their source transcript changes.",
       ],
       role: "I’m developing the mobile app, server, storage, and processing workflows.",
-      outcome: "This is a development prototype, not a released app. Saved recordings and generated notes can be opened offline; transcription and note generation require a connection. Mixed-language transcription still needs further testing, along with additional device checks. The cover is an abstract illustration, not a screenshot of the app.",
+      outcome: "This is a development prototype, not a released app. Saved recordings and generated notes can be opened offline; transcription and note generation require a connection. Mixed-language transcription still needs further testing, along with additional device checks.",
     },
   },
   {
@@ -147,7 +147,7 @@ export const projects: Project[] = [
     title: "UEMF Presence",
     subheading: "University attendance tracking",
     summary: "A university project with GPS and rotating QR attendance check-in.",
-    description: "Built for an Operations Research module at EIDIA, this system combines recurring schedules, GPS and rotating QR check-in, attendance history, and professor review.",
+    description: "Built with three classmates for an Operations Research module at EIDIA, this system combines recurring schedules, GPS and rotating QR check-in, attendance history, and professor review.",
     image: "/projects/attendance/preview.webp",
     imageAlt: "UEMF Presence attendance dashboard with demonstration data",
     links: {

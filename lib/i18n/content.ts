@@ -27,7 +27,7 @@ const frenchProjects: Record<string, ProjectCopy> = {
     title: "Étude de fiabilité DARE-Bench",
     subheading: "Tests répétés d’un agent de science des données",
     summary: "Étudier si un agent IA réussit une même tâche de façon constante.",
-    description: "Un score moyen peut masquer des résultats variables. J’ai étudié si accorder davantage de tours à un agent de science des données améliore à la fois son taux de réussite et la constance de ses résultats.",
+    description: "Un score moyen peut masquer des résultats variables. J’ai étudié si accorder davantage de tours à un agent de science des données améliore à la fois son taux de réussite et la constance de ses résultats. Un tour correspond à un cycle où l’agent écrit du code, l’exécute et examine le résultat.",
     imageAlt: "Résultats de l’étude de fiabilité DARE-Bench",
     details: {
       headings: { motivation: "Question de recherche", built: "Protocole de l’étude", technicalDetails: "Dispositif d’évaluation", outcome: "Résultats et limites" },
@@ -87,7 +87,7 @@ const frenchProjects: Record<string, ProjectCopy> = {
         "Les notes sont signalées comme obsolètes lorsque leur transcription source change.",
       ],
       role: "Je développe l’application mobile, le serveur, le stockage et les traitements.",
-      outcome: "Il s’agit d’un prototype en développement, pas d’une application publiée. Les enregistrements et les notes déjà générées sont accessibles hors ligne ; la transcription et la génération de notes nécessitent une connexion. La transcription de conversations mêlant plusieurs langues nécessite encore des tests, ainsi que des vérifications supplémentaires sur appareil. Le visuel est une illustration abstraite, pas une capture de l’application.",
+      outcome: "Il s’agit d’un prototype en développement, pas d’une application publiée. Les enregistrements et les notes déjà générées sont accessibles hors ligne ; la transcription et la génération de notes nécessitent une connexion. La transcription de conversations mêlant plusieurs langues nécessite encore des tests, ainsi que des vérifications supplémentaires sur appareil.",
     },
   },
   medskel: {
@@ -116,7 +116,7 @@ const frenchProjects: Record<string, ProjectCopy> = {
     title: "UEMF Presence",
     subheading: "Suivi des présences à l’université",
     summary: "Un projet universitaire avec pointage GPS et QR renouvelé régulièrement.",
-    description: "Réalisé pour un module de recherche opérationnelle à l’EIDIA, ce système associe emplois du temps récurrents, pointage GPS et QR renouvelé régulièrement, historique des présences et vérification par les enseignants.",
+    description: "Réalisé avec trois camarades de classe pour un module de recherche opérationnelle à l’EIDIA, ce système associe emplois du temps récurrents, pointage GPS et QR renouvelé régulièrement, historique des présences et vérification par les enseignants.",
     imageAlt: "Tableau de bord UEMF Presence avec des données de démonstration",
     details: {
       headings: { built: "Gestion des présences", technicalDetails: "Pointage et vérification", outcome: "Portée de la démo" },

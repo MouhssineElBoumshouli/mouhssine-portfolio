@@ -66,6 +66,10 @@ test("every project has a short summary, longer explanation, valid status and lo
     for (const project of localized.getLocalizedProjects(locale)) {
       assert.ok(project.summary.length < 100, project.slug)
       assert.ok(project.description.length > project.summary.length)
+      if (project.slug === "uemf-presence") {
+        assert.match(project.description, locale === "en" ? /Built with three classmates/ : /Réalisé avec trois camarades de classe/)
+        assert.equal(project.details.role, undefined, "Do not invent individual team contributions")
+      }
       assert.ok(messages[locale].projectDialog.status[project.status])
       assert.ok(existsSync(path.join(root, "public", project.image)))
       assert.ok(project.links.github.startsWith("https://github.com/MouhssineElBoumshouli/"))
@@ -76,10 +80,12 @@ test("every project has a short summary, longer explanation, valid status and lo
 
 test("DARE findings retain success, mixed-result counts and limited scope in both languages", () => {
   const dare = projects[0]
+  assert.match(dare.description, /A turn is one cycle of writing code, running it, and reading the result/)
   assert.match(dare.details.outcome, /34\.2%.*50%/)
   assert.match(dare.details.outcome, /7 to 10 out of 24/)
   assert.match(dare.details.outcome, /does not show.*always/)
   const fr = localized.getLocalizedProject(dare, "fr")
+  assert.match(fr.description, /Un tour correspond à un cycle où l’agent écrit du code, l’exécute et examine le résultat/)
   assert.match(fr.details.outcome, /34,2 %.*50 %/)
   assert.match(fr.details.outcome, /7 à 10 sur 24/)
   assert.match(fr.details.outcome, /ne démontre pas.*toujours/)
@@ -103,9 +109,12 @@ test("Recall is a prototype with an abstract cover and qualified mixed-language 
   assert.equal(existsSync(path.join(root, "public/projects/recall/cover.svg")), false)
   assert.equal(recall.links.website, undefined)
   assert.match(recall.imageAlt, /not an app screenshot/)
+  assert.doesNotMatch(recall.details.outcome, /cover|screenshot/i)
   assert.match(recall.details.outcome, /Mixed-language transcription still needs further testing/)
   assert.doesNotMatch(JSON.stringify(recall), /Darija|confirmed weakness/i)
   const fr = localized.getLocalizedProject(recall, "fr")
+  assert.match(fr.imageAlt, /pas une capture de l’application/)
+  assert.doesNotMatch(fr.details.outcome, /visuel|capture de l’application/i)
   assert.match(fr.details.outcome, /plusieurs langues nécessite encore des tests/)
   assert.doesNotMatch(JSON.stringify(fr), /darija|faiblesse confirmée/i)
 })
