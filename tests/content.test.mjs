@@ -188,7 +188,10 @@ test("metadata keeps existing route URLs and localized descriptions", () => {
   }
 })
 
-test("the review branch alone is excluded from automatic Vercel deployment", () => {
+test("only the two review branches are excluded from automatic Vercel deployment", () => {
   const config = JSON.parse(readFileSync(path.join(root, "vercel.json"), "utf8"))
-  assert.deepEqual(config.git.deploymentEnabled, { "codex/portfolio-content-2027": false })
+  assert.deepEqual(config.git.deploymentEnabled, {
+    "codex/portfolio-content-2027": false,
+    "codex/portfolio-security-ci": false,
+  })
 })
