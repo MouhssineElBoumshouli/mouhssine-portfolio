@@ -273,6 +273,25 @@
     box-shadow: var(--inset-shadow);
   }
 
+  .recall-wave-bar {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .recall-cover[data-animated="true"] .recall-wave-bar {
+    animation: recall-wave 1600ms ease-in-out infinite;
+    animation-delay: var(--wave-delay);
+  }
+  @keyframes recall-wave {
+    0%, 100% { transform: scaleY(0.9); }
+    50% { transform: scaleY(1.12); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .recall-wave-bar {
+      animation: none !important;
+      transform: none !important;
+    }
+  }
+
   /* Row rules for the Connect grid: 2 columns under md, 3 from md. */
   .connect-grid li {
     position: relative;

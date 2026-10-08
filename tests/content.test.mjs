@@ -1,4 +1,5 @@
 import assert from "node:assert/strict"
+import { createHash } from "node:crypto"
 import { existsSync, readFileSync } from "node:fs"
 import { createRequire } from "node:module"
 import path from "node:path"
@@ -87,6 +88,14 @@ test("DARE findings retain success, mixed-result counts and limited scope in bot
 test("Recall is a prototype with an abstract cover and qualified mixed-language testing", () => {
   const recall = projects.find((project) => project.slug === "recall")
   assert.equal(recall.status, "prototype")
+  assert.equal(recall.preview, "waveform")
+  assert.equal(recall.image, "/projects/recall/background.png")
+  assert.equal(
+    createHash("sha256").update(readFileSync(path.join(root, "public", recall.image))).digest("hex"),
+    "23835e0af3a5ae52da84127a71fa1da258048009d25f0d8e6a34c080475fce4e",
+    "Recall must use the exact supplied blue background"
+  )
+  assert.equal(existsSync(path.join(root, "public/projects/recall/cover.svg")), false)
   assert.equal(recall.links.website, undefined)
   assert.match(recall.imageAlt, /not an app screenshot/)
   assert.match(recall.details.outcome, /Mixed-language transcription still needs further testing/)

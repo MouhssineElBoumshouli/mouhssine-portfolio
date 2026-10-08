@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { useReducedMotion } from "framer-motion"
+import { useReducedMotion } from "@/hooks/use-reduced-motion"
 import { useLocale } from "@/components/i18n/locale-provider"
 import { getMessages } from "@/lib/i18n/messages"
 

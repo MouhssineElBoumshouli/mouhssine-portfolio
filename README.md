@@ -28,8 +28,8 @@ cards; descriptions, project-specific headings and details belong to the
 shared dialog. Milestone translations use stable IDs, not array positions.
 
 DARE-Bench and SmartImport stay featured on the homepage. Recall is a
-development prototype with an abstract SVG waveform cover, not a simulated
-app screenshot. The portfolio layout is adapted from a reference template;
+development prototype with a code-native waveform over the supplied blue
+background, not a simulated app screenshot. The portfolio layout is adapted from a reference template;
 it is not presented as an original design.
 
 ## Local development
@@ -87,3 +87,8 @@ in this content update; their wording will be reviewed separately.
 Interface sound is on by default and can be disabled from the command menu.
 With prefers-reduced-motion, the dot field is static and the native pointer
 replaces the animated custom cursor.
+The role text stays on its first phrase under reduced motion. The preference
+also updates live without reloading. Recall's waveform animates only while its
+preview is hovered with a mouse or focused with the keyboard. Any optional
+project video follows the same rule and pauses off-screen; on touch, tapping a
+card opens its details, where real clips have explicit playback controls.

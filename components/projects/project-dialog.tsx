@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import Image from "next/image"
 import { ArrowUpRight, ExternalLink } from "lucide-react"
 
 import { TechIcon, slugForTech } from "@/components/common/tech-icon"
@@ -21,6 +20,7 @@ import { cn } from "@/lib/utils"
 import type { Locale } from "@/lib/i18n/config"
 import { getLocalizedProject } from "@/lib/i18n/content"
 import { getMessages } from "@/lib/i18n/messages"
+import { ProjectMedia } from "./project-media"
 
 type ProjectDialogContextValue = {
   open: boolean
@@ -72,14 +72,7 @@ function ProjectDialogBody({ project, locale }: { project: Project; locale: Loca
   return (
     <div className="flex max-h-[calc(100dvh-1rem)] min-h-0 flex-col overflow-hidden sm:max-h-[min(85dvh,52rem)]">
       <div className="border-border relative aspect-[16/9] shrink-0 overflow-hidden border-b bg-neutral-100 dark:bg-neutral-900">
-        <Image
-          src={project.image}
-          alt={copy.imageAlt}
-          fill
-          sizes="(max-width: 640px) calc(100vw - 2rem), 672px"
-          className="object-cover object-top"
-          priority
-        />
+        <ProjectMedia project={project} alt={copy.imageAlt} controls priority className="block size-full" />
       </div>
 
       <div className="min-h-0 overflow-y-auto px-5 py-5 sm:px-7 sm:py-6">

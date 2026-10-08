@@ -1,7 +1,8 @@
 "use client"
 
 import { useEffect, useMemo, useState } from "react"
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
+import { useReducedMotion } from "@/hooks/use-reduced-motion"
 
 import { cn } from "@/lib/utils"
 
@@ -43,13 +44,13 @@ export function TextCycle({
   const reduceMotion = mounted && prefersReducedMotion === true
 
   useEffect(() => {
-    if (items.length < 2) return
+    if (items.length < 2 || reduceMotion) return
     const id = window.setInterval(
       () => setIndex((value) => (value + 1) % items.length),
       holdMs
     )
     return () => window.clearInterval(id)
-  }, [items.length, holdMs])
+  }, [items.length, holdMs, reduceMotion])
 
   const widest = useMemo(
     () =>
@@ -61,7 +62,7 @@ export function TextCycle({
     [items]
   )
 
-  const item = items[index]
+  const item = items[reduceMotion ? 0 : index]
   const spoken = srText ?? items.map((entry) => entry.text).join(" · ")
 
   return (
@@ -92,7 +93,7 @@ export function TextCycle({
             exit={reduceMotion ? { opacity: 0 } : { y: "-100%" }}
             transition={
               reduceMotion
-                ? { duration: 0.2 }
+                ? { duration: 0 }
                 : // Slightly overdamped: it arrives without wobbling,
                   // which a spring this fast otherwise does at the stop.
                   { type: "spring", stiffness: 220, damping: 30, mass: 0.9 }

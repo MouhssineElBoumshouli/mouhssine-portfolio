@@ -11,6 +11,8 @@ export type Project = {
   imageAlt: string
   /** Optional clip played on hover, with image as the poster frame. */
   video?: string
+  /** Code-native project illustration layered over the supplied image. */
+  preview?: "waveform"
   links: { website?: string; github?: string }
   technologies: string[]
   status: "live" | "building" | "research" | "internship" | "prototype"
@@ -87,7 +89,8 @@ export const projects: Project[] = [
     subheading: "Recording, transcription, and notes",
     summary: "A mobile prototype for recording conversations and creating notes.",
     description: "I’m building Recall to make recorded conversations easier to revisit. It combines local recordings, transcription, bookmarks, and notes generated from the transcript.",
-    image: "/projects/recall/cover.svg",
+    image: "/projects/recall/background.png",
+    preview: "waveform",
     imageAlt: "Recall project cover with an abstract audio waveform, not an app screenshot",
     links: { github: "https://github.com/MouhssineElBoumshouli/recall" },
     technologies: ["React Native", "Expo", "TypeScript", "SQLite", "Node.js", "Gemini API", "Vitest"],

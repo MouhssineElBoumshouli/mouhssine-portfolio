@@ -1,7 +1,8 @@
 "use client"
 
 import { useEffect, useMemo, useRef, useState } from "react"
-import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from "framer-motion"
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
+import { useReducedMotion } from "@/hooks/use-reduced-motion"
 
 type UserCursorProps = {
   name?: string
