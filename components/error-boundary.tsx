@@ -42,17 +42,17 @@ export class ErrorBoundary extends React.Component<
       }
 
       return (
-        <div className="bg-background text-foreground flex min-h-screen items-center justify-center p-6">
+        <div className="min-h-screen flex items-center justify-center bg-gray-50">
           <div className="text-center">
-            <h2 className="mb-4 text-2xl font-semibold">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">
               {copy.title}
             </h2>
-            <p className="text-muted-foreground mb-4">
+            <p className="text-gray-600 mb-4">
               {copy.description}
             </p>
             <button
               onClick={() => this.setState({ hasError: false })}
-              className="bg-foreground text-background focus-visible:ring-ring rounded border px-4 py-2 outline-none hover:opacity-90 focus-visible:ring-2"
+              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
             >
               {copy.retry}
             </button>

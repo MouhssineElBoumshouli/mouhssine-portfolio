@@ -173,13 +173,7 @@ export const AnimatedThemeToggler = ({
   }, [])
 
   useEffect(() => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)")
-    const syncMotion = () => {
-      if (reduced.matches) cancelAnim()
-    }
-    reduced.addEventListener("change", syncMotion)
     return () => {
-      reduced.removeEventListener("change", syncMotion)
       cancelAnim()
       const root = document.documentElement
       if (root.dataset.magicuiThemeVt !== "active") return
@@ -250,10 +244,7 @@ export const AnimatedThemeToggler = ({
       }
     }
 
-    if (
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
-      typeof document.startViewTransition !== "function"
-    ) {
+    if (typeof document.startViewTransition !== "function") {
       applyTheme()
       return
     }
@@ -298,7 +289,6 @@ export const AnimatedThemeToggler = ({
     if (ready && typeof ready.then === "function") {
       ready
         .then(() => {
-          if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
           const anim = document.documentElement.animate(
             {
               clipPath,

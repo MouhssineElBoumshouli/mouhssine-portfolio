@@ -1,0 +1,40 @@
+[
+  {
+    "port": 3007,
+    "before": 0,
+    "after": 349,
+    "wheel": [
+      {
+        "prevented": true,
+        "delta": 400,
+        "target": "P"
+      },
+      {
+        "prevented": false,
+        "delta": 400,
+        "target": "P"
+      }
+    ],
+    "lenisStopped": true,
+    "bodyLock": true
+  },
+  {
+    "port": 3008,
+    "before": 0,
+    "after": 349,
+    "wheel": [
+      {
+        "prevented": true,
+        "delta": 400,
+        "target": "H3"
+      },
+      {
+        "prevented": false,
+        "delta": 400,
+        "target": "H3"
+      }
+    ],
+    "lenisStopped": true,
+    "bodyLock": true
+  }
+]

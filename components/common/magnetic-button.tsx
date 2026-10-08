@@ -88,7 +88,6 @@ export function MagneticButton({
     }
 
     const home = () => {
-      if (reduced.matches) return
       targetX = 0
       targetY = 0
       start()
@@ -125,19 +124,10 @@ export function MagneticButton({
     }
 
     window.addEventListener("pointermove", onMove, { passive: true })
-    const syncMotion = () => {
-      if (!reduced.matches) return
-      cancelAnimationFrame(frame)
-      frame = 0
-      x = y = vx = vy = targetX = targetY = 0
-      content.style.transform = "translate3d(0, 0, 0)"
-    }
-    reduced.addEventListener("change", syncMotion)
     window.addEventListener("blur", home)
     return () => {
       cancelAnimationFrame(frame)
       window.removeEventListener("pointermove", onMove)
-      reduced.removeEventListener("change", syncMotion)
       window.removeEventListener("blur", home)
     }
   }, [])

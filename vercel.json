@@ -4,7 +4,8 @@
     "deploymentEnabled": {
       "codex/portfolio-content-2027": false,
       "codex/portfolio-security-ci": false,
-      "codex/portfolio-release-review": false
+      "codex/portfolio-release-review": false,
+      "codex/portfolio-ui-restore": false
     }
   }
 }
