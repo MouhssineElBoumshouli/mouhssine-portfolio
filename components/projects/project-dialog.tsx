@@ -74,7 +74,7 @@ function ProjectDialogBody({ project, locale }: { project: Project; locale: Loca
       <div className="border-border relative aspect-[16/9] shrink-0 overflow-hidden border-b bg-neutral-100 dark:bg-neutral-900">
         <Image
           src={project.image}
-          alt={messages.projectDialog.previewAlt(copy.title)}
+          alt={copy.imageAlt}
           fill
           sizes="(max-width: 640px) calc(100vw - 2rem), 672px"
           className="object-cover object-top"
@@ -91,7 +91,7 @@ function ProjectDialogBody({ project, locale }: { project: Project; locale: Loca
                 "font-mono text-[10px] tracking-wide uppercase",
                 copy.status === "live" &&
                   "border-live/40 text-live dark:border-live/50",
-                copy.status === "building" &&
+                (copy.status === "building" || copy.status === "prototype") &&
                   "border-building/50 text-building dark:border-building/60",
                 copy.status === "research" &&
                   "text-muted-foreground border-border"
@@ -114,15 +114,15 @@ function ProjectDialogBody({ project, locale }: { project: Project; locale: Loca
         </DialogHeader>
 
         <div className="mt-6 space-y-5">
-          <ProjectSection label={messages.projectDialog.whyBuilt} text={details.motivation} />
-          <ProjectSection label={messages.projectDialog.whatBuilt} items={details.built} />
-          <ProjectSection label={messages.projectDialog.capabilities} items={details.capabilities} />
+          <ProjectSection label={details.headings?.motivation ?? messages.projectDialog.whyBuilt} text={details.motivation} />
+          <ProjectSection label={details.headings?.built ?? messages.projectDialog.whatBuilt} items={details.built} />
+          <ProjectSection label={details.headings?.capabilities ?? messages.projectDialog.capabilities} items={details.capabilities} />
           <ProjectSection
-            label={messages.projectDialog.technicalDetails}
+            label={details.headings?.technicalDetails ?? messages.projectDialog.technicalDetails}
             items={details.technicalDetails}
           />
-          <ProjectSection label={messages.projectDialog.contribution} text={details.role} />
-          <ProjectSection label={messages.projectDialog.outcome} text={details.outcome} />
+          <ProjectSection label={details.headings?.role ?? messages.projectDialog.contribution} text={details.role} />
+          <ProjectSection label={details.headings?.outcome ?? messages.projectDialog.outcome} text={details.outcome} />
 
           <section className="space-y-2">
             <h3 className="text-muted-foreground font-mono text-[11px] font-medium tracking-[0.16em] uppercase">
@@ -207,7 +207,7 @@ export function ProjectDialog({
             lastTriggerRef.current?.focus()
           }}
           closeLabel={getMessages(resolvedLocale).accessibility.closeDialog}
-          className="max-h-[calc(100dvh-1rem)] max-w-[calc(100%-1rem)] overflow-hidden p-0 sm:max-w-2xl"
+          className="max-h-[calc(100dvh-1rem)] max-w-[calc(100%-1rem)] overflow-hidden p-0 sm:max-w-2xl [&>[data-slot=dialog-close]]:bg-background [&>[data-slot=dialog-close]]:text-foreground"
         >
           <ProjectDialogBody project={project} locale={resolvedLocale} />
         </DialogContent>

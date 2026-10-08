@@ -138,9 +138,9 @@ export function ProjectCard({
         </div>
       </ProjectDialog>
 
-      {/* One line only - the full copy lives on the project page. */}
+      {/* One line only; the longer explanation lives in the shared dialog. */}
       <p className="text-muted-foreground truncate text-[13px] leading-snug">
-        {copy.description}
+        {copy.summary}
       </p>
 
       {/* The skill badge with its brand mark, held at the size these

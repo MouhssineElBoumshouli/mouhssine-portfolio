@@ -23,7 +23,8 @@ export function AvatarSwitch() {
         <div className="border-border relative box-border size-14 overflow-hidden rounded-[7px] border bg-neutral-200 p-0.5 select-none sm:size-20 md:size-21 dark:bg-neutral-800">
           <Image
             src={profile.avatar}
-            alt={`${profile.name} - ${profile.title}`}
+            alt={`${profile.name} — ${messages.hero.roles[0]}`}
+            aria-hidden={showGithubPhoto}
             width={120}
             height={120}
             priority
@@ -34,7 +35,7 @@ export function AvatarSwitch() {
           />
           <Image
             src={profile.avatarPhoto}
-            alt={`${profile.name} - photo`}
+            alt={locale === "fr" ? `Photo de profil GitHub de ${profile.name}` : `${profile.name}’s GitHub profile photo`}
             width={120}
             height={120}
             aria-hidden={!showGithubPhoto}

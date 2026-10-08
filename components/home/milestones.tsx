@@ -49,7 +49,7 @@ export function Achievements({ locale }: { locale: Locale }) {
       <ul className="pt-px">
         {milestones.map((item) => (
           <Row
-            key={item.title}
+            key={item.id}
             title={item.title}
             meta={item.date}
             description={item.description}

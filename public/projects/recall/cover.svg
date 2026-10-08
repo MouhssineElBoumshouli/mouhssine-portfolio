@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Recall</title>
+  <desc id="description">An abstract audio waveform on a neutral grid. This is a project cover, not an app screenshot.</desc>
+  <defs>
+    <pattern id="dots" width="18" height="18" patternUnits="userSpaceOnUse">
+      <circle cx="9" cy="9" r="1" fill="#a3a3a3" opacity=".22"/>
+    </pattern>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M-2 2 2-2M0 8 8 0M6 10 10 6" stroke="#d4d4d4" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <path fill="#fafafa" d="M0 0h1200v630H0z"/>
+  <path fill="url(#dots)" d="M0 0h1200v630H0z"/>
+  <path fill="url(#hatch)" d="M0 0h1200v12H0zM0 618h1200v12H0z"/>
+  <path d="M48 12v606M1152 12v606M48 192h1104M48 548h1104" fill="none" stroke="#d4d4d4"/>
+  <text x="80" y="137" font-family="Satoshi, Arial, sans-serif" font-size="64" font-weight="600" letter-spacing="-2" fill="#262626">Recall</text>
+  <path d="M96 370h1008" stroke="#d4d4d4" stroke-width="1"/>
+  <g stroke="#404040" stroke-width="8" stroke-linecap="round">
+    <path d="M112 359v22M136 353v34M160 348v44M184 355v30M208 339v62M232 328v84M256 315v110M280 338v64M304 319v102M328 292v156M352 268v204M376 300v140M400 321v98M424 280v180M448 254v232M472 287v166M496 310v120M520 336v68M544 319v102M568 295v150M592 275v190M616 249v242M640 277v186M664 305v130M688 328v84M712 312v116M736 289v162M760 271v198M784 307v126M808 324v92M832 341v58M856 327v86M880 310v120M904 335v70M928 346v48M952 354v32M976 348v44M1000 356v28M1024 360v20M1048 364v12M1072 360v20M1096 363v14"/>
+  </g>
+  <g fill="#737373">
+    <circle cx="86" cy="590" r="3"/>
+    <circle cx="600" cy="590" r="3"/>
+    <circle cx="1114" cy="590" r="3"/>
+  </g>
+</svg>

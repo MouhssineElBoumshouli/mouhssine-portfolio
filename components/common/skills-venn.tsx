@@ -30,8 +30,8 @@ export function SkillsVenn({
 }: SkillsVennProps) {
   const localized = getLocalizedSkillsVenn(locale)
   const messages = getMessages(locale)
-  const resolvedImage = locale === "en" && profileImage === skillsVenn.image ? localized.image : profileImage
-  const resolvedSkills = locale === "en" && skills === skillsVenn.skills ? localized.skills : skills
+  const resolvedImage = profileImage === skillsVenn.image ? localized.image : profileImage
+  const resolvedSkills = skills === skillsVenn.skills ? localized.skills : skills
 
   return (
     <div>

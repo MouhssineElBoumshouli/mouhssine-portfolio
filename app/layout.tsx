@@ -9,7 +9,7 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { UiFeedbackProvider } from "@/hooks/use-ui-feedback"
 import { MotionProvider } from "@/components/common/motion-provider"
-import { ErrorBoundary } from "@/components/error-boundary"
+import { AppErrorBoundary } from "@/components/error-boundary"
 import { LenisSmoothScroll } from "@/components/lenis-smooth-scroll"
 import { UserCursor } from "@/components/common/user-cursor"
 import { SiteShell } from "@/components/layout/site-shell"
@@ -38,12 +38,9 @@ export const metadata: Metadata = {
   description,
   keywords: [
     "AI Engineering Student",
-    "Full-Stack Developer",
-    "AI Software Developer",
-    "Python Developer",
-    "TypeScript Developer",
-    "FastAPI Developer",
-    "React Developer",
+    "Summer 2027 Internship",
+    "Software Engineering",
+    "AI Evaluation",
     "Computer Vision",
     "LLM Agents",
     "Portfolio",
@@ -53,8 +50,7 @@ export const metadata: Metadata = {
     "DARE-Bench",
     "SmartImport",
     "medskel",
-    "Developer Portfolio",
-    "Personal Website",
+    "Recall",
   ],
   authors: [{ name: profile.name }],
   creator: profile.name,
@@ -151,7 +147,7 @@ export default async function RootLayout({
         />
       </head>
       <body className="min-h-dvh font-sans antialiased">
-        <ErrorBoundary>
+        <AppErrorBoundary>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -166,7 +162,7 @@ export default async function RootLayout({
               </UiFeedbackProvider>
             </MotionProvider>
           </ThemeProvider>
-        </ErrorBoundary>
+        </AppErrorBoundary>
         <Analytics />
         <SpeedInsights />
       </body>

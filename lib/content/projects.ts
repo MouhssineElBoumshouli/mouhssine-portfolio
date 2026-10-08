@@ -1,15 +1,21 @@
+export type ProjectSection = "motivation" | "built" | "capabilities" | "technicalDetails" | "role" | "outcome"
+
 export type Project = {
   slug: string
   title: string
   subheading?: string
+  /** Short card copy; the dialog uses the longer description. */
+  summary: string
   description: string
   image: string
+  imageAlt: string
   /** Optional clip played on hover, with image as the poster frame. */
   video?: string
   links: { website?: string; github?: string }
   technologies: string[]
-  status: "live" | "building" | "research"
+  status: "live" | "building" | "research" | "internship" | "prototype"
   details: {
+    headings?: Partial<Record<ProjectSection, string>>
     motivation?: string
     built?: string[]
     capabilities?: string[]
@@ -19,151 +25,142 @@ export type Project = {
   }
 }
 
-/**
- * Order matters: the home page shows the first two, and the projects
- * page lists all of them.
- */
+/** The first two projects remain featured on the homepage. */
 export const projects: Project[] = [
   {
     slug: "dare-agent-reliability",
-    title: "DARE-Bench Agent Reliability Study",
-    subheading: "LLM agents, evaluation & repeatability",
-    description:
-      "A reproducible 240-run study comparing agent turn budgets on a fixed DARE-Bench subset, with official rescoring and failure-taxonomy analysis.",
+    title: "DARE-Bench reliability study",
+    subheading: "Repeated tests of a data-science agent",
+    summary: "Testing whether an AI agent completes the same task consistently.",
+    description: "An average score can hide inconsistent results. I studied whether giving a data-science agent more turns improves both its success rate and its consistency.",
     image: "/projects/dare-bench/preview.webp",
-    links: {
-      github: "https://github.com/MouhssineElBoumshouli/dare-agent-reliability",
-    },
+    imageAlt: "Results from the DARE-Bench reliability study",
+    links: { github: "https://github.com/MouhssineElBoumshouli/dare-agent-reliability" },
     technologies: ["Python", "OpenAI API", "pandas", "scikit-learn", "Docker"],
     status: "research",
     details: {
-      motivation:
-        "To examine whether average agent scores hide run-to-run variation when the same instruction-following task is repeated.",
+      headings: { motivation: "Research question", built: "Study design", technicalDetails: "Evaluation setup", outcome: "Findings and limits" },
+      motivation: "Can an agent that succeeds on a task do so again? I compared repeated attempts, rather than relying on one result per task.",
       built: [
-        "A frozen 24-task Classification-IF and Regression-IF subset with five repeats under both three- and five-turn agent budgets.",
-        "Run capture, official exact-match rescoring, integrity checks, failure labels, derived tables and publication figures.",
-      ],
-      capabilities: [
-        "Reproducible experiment configuration and provenance capture",
-        "Task-level reliability and pairwise disagreement analysis",
-        "Publication-ready figures and documented limitations",
+        "A fixed set of 24 data-science tasks, each repeated five times with three-turn and five-turn limits: 240 runs in total.",
+        "Scoring with DARE-Bench’s official evaluator, followed by analysis of passing, failing, and mixed-result tasks.",
+        "Scripts for checking result files and reproducing the tables and figures.",
       ],
       technicalDetails: [
-        "The study records 240 immutable task-condition identities.",
-        "Execution uses a pinned DARE-Bench evaluator and Docker sandbox; committed result tables and hashes form the public audit layer.",
+        "The study uses DARE-Bench’s unchanged agent with a fixed GPT-4.1 mini version and a Docker sandbox.",
+        "The model and task subset stay the same across both turn limits.",
       ],
-      role: "Independent study implementation, experiment execution and analysis.",
-      outcome:
-        "On this fixed subset, five turns raised mean exact-match success from 34.2% to 50.0%, while mean pairwise disagreement rose from 15.0% to 21.7%. These are descriptive study results, not a general performance claim.",
+      role: "I designed and ran this independent study, analysed the results, and documented the experiment.",
+      outcome: "Success increased from 34.2% with three turns to 50% with five. Tasks with mixed results—some repeats passed and others failed—also increased from 7 to 10 out of 24. More turns improved average success without making every task consistent; some previously unsuccessful tasks began passing occasionally. This does not show that more turns always make agents less reliable. The findings concern one model and a fixed task subset.",
     },
   },
   {
     slug: "smartimport",
     title: "SmartImport",
-    subheading: "Procurement decision support",
-    description:
-      "A full-stack platform that compares international automotive supplier quotations, landed costs and purchase completeness with human-reviewed AI assistance.",
+    subheading: "Comparing supplier quotations",
+    summary: "Comparing quotations, missing items, and the full cost of a purchase.",
+    description: "The cheapest quotation may leave out products or additional costs. During my internship at Bounaim Auto, I built SmartImport to make those differences visible before a purchasing decision.",
     image: "/projects/smartimport/preview.webp",
-    links: {
-      github: "https://github.com/MouhssineElBoumshouli/smartimport-procurement",
-    },
-    technologies: ["React", "TypeScript", "FastAPI", "PostgreSQL", "Docker"],
-    status: "building",
+    imageAlt: "SmartImport quotation comparison interface",
+    links: { github: "https://github.com/MouhssineElBoumshouli/smartimport-procurement" },
+    technologies: ["React", "TypeScript", "FastAPI", "PostgreSQL", "SQLAlchemy", "Pydantic", "Docker", "Nginx", "pytest", "Vitest", "Ruff", "mypy", "ESLint"],
+    status: "internship",
     details: {
-      motivation:
-        "Supplier totals are difficult to compare fairly when quotations contain different products, quantities, currencies and additional costs.",
+      headings: { motivation: "The problem", built: "What I built", technicalDetails: "How it works", outcome: "Evaluation and scope" },
+      motivation: "Supplier totals are difficult to compare fairly when the offers include different items, quantities, currencies, and fees.",
       built: [
-        "Requirement management and completeness-aware supplier comparison.",
-        "PDF/XLSX quotation ingestion through a staged preview before records are created.",
-        "Multi-currency normalization, landed-cost calculation, cash-out estimates and saved analysis snapshots.",
-        "Human-reviewed AI extraction and requirement matching, with PDF/XLSX analysis exports.",
-      ],
-      capabilities: [
-        "Keeps incomplete offers visible while limiting factual findings to calculation-ready offers",
-        "Separates quoted goods, additional costs and exchange-rate assumptions",
-        "Keeps deterministic backend calculations authoritative when AI assistance is enabled",
+        "Purchasing requirements and quotation comparison, including missing items.",
+        "Currency conversion, additional-cost calculations, and saved analyses.",
+        "PDF and spreadsheet imports with human review of AI-extracted information, plus analysis exports.",
       ],
       technicalDetails: [
-        "The React/TypeScript frontend communicates with a FastAPI service through Nginx.",
-        "PostgreSQL, SQLAlchemy and Alembic support persistence, while an optional AI provider is isolated behind a backend interface.",
+        "Financial calculations run in the FastAPI backend. AI suggests extracted information and product matches; people review those suggestions before saving them.",
+        "A React interface connects to PostgreSQL-backed records through the API. Tests cover backend rules and frontend behaviour.",
       ],
-      outcome:
-        "The public repository includes synthetic evaluation artifacts and documents their limits; the project remains marked as building.",
+      role: "I developed the application during my software and AI engineering internship at Bounaim Auto.",
+      outcome: "On synthetic evaluation data, the matching system found the correct purchasing requirement in 12 of 13 scored cases (92.31%). This measures item matching—not supplier quality, selection of the best supplier, or production-wide accuracy. The public repository contains the implementation and evaluation materials; there is no public live demo.",
+    },
+  },
+  {
+    slug: "recall",
+    title: "Recall",
+    subheading: "Recording, transcription, and notes",
+    summary: "A mobile prototype for recording conversations and creating notes.",
+    description: "I’m building Recall to make recorded conversations easier to revisit. It combines local recordings, transcription, bookmarks, and notes generated from the transcript.",
+    image: "/projects/recall/cover.svg",
+    imageAlt: "Recall project cover with an abstract audio waveform, not an app screenshot",
+    links: { github: "https://github.com/MouhssineElBoumshouli/recall" },
+    technologies: ["React Native", "Expo", "TypeScript", "SQLite", "Node.js", "Gemini API", "Vitest"],
+    status: "prototype",
+    details: {
+      headings: { motivation: "What I’m exploring", built: "Implemented so far", technicalDetails: "How sessions are stored", outcome: "Current status" },
+      motivation: "A recording should remain useful even when an AI service is unavailable. I’m separating reliable local capture from transcription and note generation.",
+      built: [
+        "Recording and live transcription, with saved sessions, playback, and bookmarks.",
+        "Summaries, key points, action items, and topic chapters generated from the transcript.",
+        "Retryable processing that preserves saved audio and transcripts when a request fails.",
+      ],
+      technicalDetails: [
+        "Original and AI-repaired transcripts remain separate. The selected transcript is a processing input, not guaranteed ground truth.",
+        "Sessions and generated notes use SQLite. Long-lived API credentials stay on the server.",
+        "Notes are marked as outdated when their source transcript changes.",
+      ],
+      role: "I’m developing the mobile app, server, storage, and processing workflows.",
+      outcome: "This is a development prototype, not a released app. Saved recordings and generated notes can be opened offline; transcription and note generation require a connection. Mixed-language transcription still needs further testing, along with additional device checks. The cover is an abstract illustration, not a screenshot of the app.",
     },
   },
   {
     slug: "medskel",
     title: "medskel",
-    subheading: "Medical-image skeletonisation",
-    description:
-      "A Python implementation and evaluation of bisector skeletonisation for 2D medical segmentations, compared with pixel thinning on 28 retinal images.",
+    subheading: "Measuring blood vessels from images",
+    summary: "Testing a published method for measuring blood-vessel centerlines.",
+    description: "Two people can trace the same blood vessel differently. I investigated how those differences affect measurements after reducing the traced vessels to centerlines.",
     image: "/projects/medskel/preview.webp",
-    links: {
-      github: "https://github.com/MouhssineElBoumshouli/medskel",
-    },
-    technologies: [
-      "Python",
-      "OpenCV",
-      "NumPy",
-      "SciPy",
-      "scikit-image",
-      "NetworkX",
-    ],
+    imageAlt: "medskel skeletonization experiments and vessel measurements",
+    links: { github: "https://github.com/MouhssineElBoumshouli/medskel" },
+    technologies: ["Python", "OpenCV", "NumPy", "SciPy", "scikit-image", "NetworkX"],
     status: "research",
     details: {
-      motivation:
-        "To test a polygon-first bisector skeletonization method for 2D medical segmentations against the standard pixel-thinning baseline.",
+      headings: { motivation: "Research question", built: "Implementation and experiments", technicalDetails: "Measurement approach", outcome: "Findings and limits" },
+      motivation: "Does simplifying a vessel boundary make measurements less sensitive to differences between two people’s tracings?",
       built: [
-        "Polygon simplification, Voronoi/bisector skeletonization and measurement utilities for 2D masks.",
-        "An independent wavefront construction to cross-check the Voronoi implementation.",
-        "Controlled phantom, noise, transfer and two-observer retinal experiments, alongside a test suite with hand-derived checks.",
-      ],
-      capabilities: [
-        "Compares aggregate vessel measurements and centerline placement between methods",
-        "Evaluates behavior on synthetic phantoms and 28 retinal images traced by two observers",
-        "Documents the method's trade-offs and the limits of each experiment",
+        "A Python implementation of the skeletonization method published by Saidou, Zineddine, and Rhazzaf in 2024.",
+        "Measurement tools and checks against shapes with known geometry.",
+        "Experiments comparing the method with pixel thinning, including 28 retinal images traced by two observers.",
       ],
       technicalDetails: [
-        "The epsilon, theta_deg and prune parameters control boundary simplification, separation-angle filtering and scale-adaptive branch pruning.",
-        "The repository uses OpenCV, NumPy, SciPy, scikit-image and NetworkX in its experiments and implementation.",
+        "The pipeline simplifies the boundary, constructs a Voronoi-based skeleton, and measures the resulting vessel branches.",
+        "An independent wavefront construction cross-checks simple convex shapes; it does not handle every concave shape.",
       ],
-      role: "Implementation, experiment design and evaluation.",
-      outcome:
-        "The repository reports a trade-off: more reproducible aggregate vessel measurements, but less stable centerline position than pixel thinning, with higher runtime.",
+      role: "I implemented the published method, designed the experiments, and evaluated the results.",
+      outcome: "For the evaluated configuration, median relative disagreement in total vessel length was 3.2%, compared with 9.3% for thinning. However, centerline positions agreed less closely and processing was slower. Better agreement between observers does not establish greater accuracy or clinical validity.",
     },
   },
   {
     slug: "uemf-presence",
     title: "UEMF Presence",
-    subheading: "GPS + rotating QR attendance",
-    description:
-      "A deployed university attendance system with recurring schedules, GPS check-in, rotating HMAC-SHA256 QR tokens, review workflows and anomaly reporting.",
+    subheading: "University attendance tracking",
+    summary: "A university project with GPS and rotating QR attendance check-in.",
+    description: "Built for an Operations Research module at EIDIA, this system combines recurring schedules, GPS and rotating QR check-in, attendance history, and professor review.",
     image: "/projects/attendance/preview.webp",
+    imageAlt: "UEMF Presence attendance dashboard with demonstration data",
     links: {
       website: "https://student-attendance-system-amber.vercel.app",
       github: "https://github.com/MouhssineElBoumshouli/Student-Attendance-System",
     },
-    technologies: ["Next.js", "React", "PostgreSQL", "Prisma", "Vercel"],
+    technologies: ["Next.js", "React", "TypeScript", "PostgreSQL", "Prisma", "Vercel", "HTML", "CSS"],
     status: "live",
     details: {
-      motivation:
-        "To support recurring university attendance workflows with verifiable, location-aware check-in and reviewable anomaly handling.",
+      headings: { built: "Attendance workflows", technicalDetails: "Check-in and review", outcome: "Demo scope" },
       built: [
-        "Recurring timetable and semester-session management for administrators.",
-        "Student and professor attendance through GPS/device verification or rotating QR check-in.",
-        "Professor review workflows, attendance history, CSV reporting and an administrative anomaly dashboard.",
-      ],
-      capabilities: [
-        "Automatic session state derived from the schedule",
-        "Anti-fraud checks that flag suspicious attendance for review",
-        "Separate administrator, professor and student dashboard flows",
+        "Separate dashboards for students, professors, and administrators.",
+        "Recurring schedules, check-in, attendance history, and CSV reports.",
       ],
       technicalDetails: [
-        "QR tokens are protected with HMAC-SHA256 and rotate every 10 seconds.",
-        "The documented attendance model combines temporal, geographic, cryptographic and unique-device checks.",
+        "QR tokens use HMAC-SHA256 and rotate every 10 seconds.",
+        "Suspicious check-ins are flagged for review rather than treated as proof of fraud.",
       ],
-      outcome:
-        "Built as an Operations Research module project at EIDIA during the 2025–2026 academic year and deployed as a live demo using demonstration data.",
+      outcome: "The public deployment is a demonstration using sample data, not an operational university service.",
     },
   },
 ]

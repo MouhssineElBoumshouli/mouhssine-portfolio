@@ -64,6 +64,7 @@ export function CommandMenu({
     { name: messages.command.linkedin, href: profile.linkedinUrl, icon: LinkedInIcon },
     { name: messages.command.schedule, href: profile.calendlyUrl, icon: Calendar },
     { name: messages.command.resume, href: profile.resumeUrl, icon: FileText },
+    { name: messages.command.frenchResume, href: profile.frenchResumeUrl, icon: FileText },
     { name: messages.command.email, href: `mailto:${profile.email}`, icon: Mail },
   ]
   const localizedProjects = projects.map((project) => ({
