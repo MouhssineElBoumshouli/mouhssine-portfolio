@@ -38,6 +38,23 @@ Open http://localhost:3000.
     npm run typecheck
     npm run build
 
+## Pull-request checks
+
+GitHub Actions runs a clean `npm ci`, lint, typecheck, the Node test suite,
+and a production build on pull requests. Actions are pinned to commit SHAs,
+the workflow has read-only repository access, and it does not use deployment
+or SMTP secrets. Use Node.js 22 for the same environment locally; Nodemailer
+10 requires Node.js 20 or newer.
+
+Contact tests use a loopback-only SMTP capture server. They verify delivery
+to that local fixture, recipient ownership, reply-to, multipart text/HTML,
+validation, spam controls, and safe failures. They do not send external mail
+or prove delivery to a real inbox.
+
+Automatic Vercel Git deployments are disabled for the two review branches
+listed in `vercel.json`. This does not change production settings or deploy
+anything; merging and publication require separate owner approval.
+
 ## Environment variables
 
 Copy .env.example to .env.local. SMTP values are required for the contact
@@ -69,20 +86,3 @@ activity route, so Vercel is the recommended host.
 
 Interface sound is off by default and can be enabled from the command menu.
 All motion respects prefers-reduced-motion.
-
-## Pull-request checks
-
-GitHub Actions runs a clean `npm ci`, lint, typecheck, the Node test suite,
-and a production build on pull requests. Actions are pinned to commit SHAs,
-the workflow has read-only repository access, and it does not use deployment
-or SMTP secrets. Use Node.js 22 for the same environment locally; Nodemailer
-10 requires Node.js 20 or newer.
-
-Contact tests use a loopback-only SMTP capture server. They verify delivery
-to that local fixture, recipient ownership, reply-to, multipart text/HTML,
-validation, spam controls, and safe failures. They do not send external mail
-or prove delivery to a real inbox.
-
-Automatic Vercel Git deployments are disabled for the two review branches
-listed in `vercel.json`. This does not change production settings or deploy
-anything; merging and publication require separate owner approval.
