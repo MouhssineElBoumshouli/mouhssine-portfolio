@@ -13,6 +13,8 @@ export type Project = {
   video?: string
   /** Code-native project illustration layered over the supplied image. */
   preview?: "waveform"
+  /** Lossless WebP source for illustrations; image remains the original fallback. */
+  imageWebp?: string
   links: { website?: string; github?: string }
   technologies: string[]
   status: "live" | "building" | "research" | "internship" | "prototype"
@@ -90,6 +92,7 @@ export const projects: Project[] = [
     summary: "A mobile prototype for recording conversations and creating notes.",
     description: "I’m building Recall to make recorded conversations easier to revisit. It combines local recordings, transcription, bookmarks, and notes generated from the transcript.",
     image: "/projects/recall/background.png",
+    imageWebp: "/projects/recall/background-lossless.webp",
     preview: "waveform",
     imageAlt: "Recall project cover with an abstract audio waveform, not an app screenshot",
     links: { github: "https://github.com/MouhssineElBoumshouli/recall" },

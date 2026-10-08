@@ -51,7 +51,7 @@ export function ProjectMedia({
   return (
     <span ref={host} className={className} role={project.preview && alt ? "img" : undefined} aria-label={project.preview && alt ? alt : undefined}>
       {project.preview === "waveform" ? (
-        <RecallCover background={project.image} animated={playing} priority={priority} />
+        <RecallCover background={project.image} webpBackground={project.imageWebp} animated={playing} priority={priority} />
       ) : project.video ? (
         <video
           ref={video}

@@ -90,6 +90,11 @@ test("Recall is a prototype with an abstract cover and qualified mixed-language 
   assert.equal(recall.status, "prototype")
   assert.equal(recall.preview, "waveform")
   assert.equal(recall.image, "/projects/recall/background.png")
+  assert.equal(recall.imageWebp, "/projects/recall/background-lossless.webp")
+  assert.equal(
+    createHash("sha256").update(readFileSync(path.join(root, "public", recall.imageWebp))).digest("hex"),
+    "971b61fd9ca37eacefd7e88f80a4ffe93e305490abacb206ee47460eab656a16"
+  )
   assert.equal(
     createHash("sha256").update(readFileSync(path.join(root, "public", recall.image))).digest("hex"),
     "23835e0af3a5ae52da84127a71fa1da258048009d25f0d8e6a34c080475fce4e",
