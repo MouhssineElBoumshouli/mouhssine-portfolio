@@ -1,7 +1,6 @@
 "use client"
 
-import { useRef } from "react"
-import Image from "next/image"
+import { useState } from "react"
 import { GitHubIcon } from "@/components/icons/brand"
 
 import { TechIcon, slugForTech } from "@/components/common/tech-icon"
@@ -11,6 +10,7 @@ import type { Locale } from "@/lib/i18n/config"
 import { getLocalizedProject } from "@/lib/i18n/content"
 import { getMessages } from "@/lib/i18n/messages"
 import { cn } from "@/lib/utils"
+import { ProjectMedia } from "./project-media"
 import {
   ProjectDialog,
   ProjectDialogTrigger,
@@ -18,48 +18,6 @@ import {
 
 /** The skill badge, trimmed a little to sit on the title's line. */
 const projectButtonClass = cn(chipClass, "gap-1 px-1.5 py-0.5")
-
-/**
- * Projects with a clip show it in place of the still on hover or focus.
- * The still is the poster, so nothing loads until the visitor asks.
- */
-function Preview({ project, priority = false }: { project: Project; priority?: boolean }) {
-  const videoRef = useRef<HTMLVideoElement | null>(null)
-  // The frame lives on the wrapper, not here, so the border stays put
-  // while the picture inside it drifts in. 3% over half a second is
-  // enough to register as alive without reading as a zoom.
-  const shared =
-    "h-44 w-full object-cover object-top transition-transform duration-500 ease-out group-hover/media:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover/media:scale-100 sm:h-48"
-
-  if (!project.video) {
-    return (
-      <Image
-        src={project.image}
-        alt=""
-        width={1200}
-        height={630}
-        priority={priority}
-        className={shared}
-      />
-    )
-  }
-
-  return (
-    <video
-      ref={videoRef}
-      src={project.video}
-      poster={project.image}
-      muted
-      loop
-      playsInline
-      preload="none"
-      aria-hidden
-      className={shared}
-      onMouseEnter={() => void videoRef.current?.play().catch(() => {})}
-      onMouseLeave={() => videoRef.current?.pause()}
-    />
-  )
-}
 
 /**
  * Deliberately not a card: no border, no shadow, no rounded panel. The
@@ -83,6 +41,8 @@ export function ProjectCard({
   const copy = getLocalizedProject(project, resolvedLocale)
   const messages = getMessages(resolvedLocale)
   const { website, github } = project.links
+  const [hovered, setHovered] = useState(false)
+  const [focused, setFocused] = useState(false)
 
   return (
     <div className="group/card relative flex flex-1 flex-col gap-2">
@@ -91,12 +51,24 @@ export function ProjectCard({
           <button
             type="button"
             aria-label={messages.projectDialog.viewDetails(copy.title)}
+            onPointerEnter={(event) => {
+              if (event.pointerType === "mouse") setHovered(true)
+            }}
+            onPointerLeave={() => setHovered(false)}
+            onFocus={(event) => setFocused(event.currentTarget.matches(":focus-visible"))}
+            onBlur={() => setFocused(false)}
+            onClick={() => setHovered(false)}
             // `group/media` and not the card's own group: the drift should
             // answer the pointer being on the picture, not anywhere on the
             // entry. `overflow-hidden` keeps the scale inside the frame.
             className="group/media border-border focus-visible:ring-ring/50 block w-full cursor-pointer overflow-hidden rounded-md border bg-transparent p-0 text-left outline-none focus-visible:ring-[3px]"
           >
-            <Preview project={project} priority={priority} />
+            <ProjectMedia
+              project={project}
+              priority={priority}
+              active={hovered || focused}
+              className="block h-44 w-full transition-transform duration-500 ease-out group-hover/media:scale-[1.03] group-focus-visible/media:scale-[1.03] motion-reduce:transform-none motion-reduce:transition-none sm:h-48"
+            />
           </button>
         </ProjectDialogTrigger>
 
@@ -138,9 +110,9 @@ export function ProjectCard({
         </div>
       </ProjectDialog>
 
-      {/* One line only - the full copy lives on the project page. */}
+      {/* One line only; the longer explanation lives in the shared dialog. */}
       <p className="text-muted-foreground truncate text-[13px] leading-snug">
-        {copy.description}
+        {copy.summary}
       </p>
 
       {/* The skill badge with its brand mark, held at the size these

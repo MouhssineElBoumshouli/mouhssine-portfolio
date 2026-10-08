@@ -90,6 +90,8 @@ export type LocaleMessages = {
       live: string
       building: string
       research: string
+      internship: string
+      prototype: string
     }
     whyBuilt: string
     whatBuilt: string
@@ -131,6 +133,11 @@ export type LocaleMessages = {
     description: string
     backHome: string
   }
+  errorBoundary: {
+    title: string
+    description: string
+    retry: string
+  }
   pageHeader: {
     home: string
   }
@@ -147,6 +154,7 @@ export type LocaleMessages = {
     linkedin: string
     schedule: string
     resume: string
+    frenchResume: string
     email: string
     switchToTheme: (theme: string) => string
     light: string
@@ -201,10 +209,10 @@ const english: LocaleMessages = {
   hero: {
     roles: [
       "AI Engineering Student",
-      "Full-Stack & AI Developer",
-      "Applied AI & Computer Vision",
+      "Building web and mobile software",
+      "Studying AI agent reliability",
     ],
-    bookCall: "Book a call",
+    bookCall: "Schedule a call",
     sendEmail: "Send an email",
   },
   home: {
@@ -217,24 +225,19 @@ const english: LocaleMessages = {
     milestones: "Milestones",
     bio: [
       {
-        text: "I’m Mouhssine, an AI engineering student at EIDIA - Université Euromed de Fès, working across full-stack software, LLM agents and computer vision.",
+        text: "I’m Mouhssine, an AI engineering student at EIDIA, Université Euromed de Fès. I’m based in Morocco and expect to graduate in 2028.",
       },
       {
-        text: "I build end-to-end systems with Python, FastAPI, React, TypeScript, PostgreSQL and Docker - from data and API design through to usable interfaces.",
-        strong: ["Python, FastAPI, React, TypeScript, PostgreSQL and Docker"],
+        text: "I like taking a practical problem, building something around it, and testing the parts I’m not sure about. Sometimes that means a web or mobile app; sometimes it means an experiment to understand an AI system.",
       },
       {
-        text: "Recent work includes a reproducible DARE-Bench agent reliability study, SmartImport procurement decision support, and medical-image skeletonisation research.",
-        strong: [
-          "DARE-Bench agent reliability study",
-          "SmartImport procurement decision support",
-          "medical-image skeletonisation research",
-        ],
+        text: "I’m looking for a summer 2027 internship in AI engineering, software engineering, or research.",
+        strong: ["summer 2027 internship"],
       },
     ],
     seeAllProjects: "See all projects",
-    stillReading: "Still reading? That means something clicked. Let’s talk.",
-    startConversation: "Start a conversation",
+    stillReading: "Have an internship opportunity, a research project, or a question about my work? Get in touch.",
+    startConversation: "Send a message",
     you: "You",
     loadingContributions: "Loading contributions",
     contribution: (count) => (count === 1 ? "1 contribution" : `${count} contributions`),
@@ -242,15 +245,15 @@ const english: LocaleMessages = {
     totalContributions: (range) => `{{count}} contributions in ${range}`,
     present: "Present",
     venn: {
-      top: "AI Engineering",
-      left: "Systems Thinking",
-      right: "Applied Research",
-      bottom: "Product Delivery\n& User Empathy",
+      top: "AI applications",
+      left: "Web & mobile",
+      right: "Evaluation",
+      bottom: "Computer\nvision",
     },
   },
   connect: {
     links: {
-      resume: "Resume",
+      resume: "Resume (EN)",
       contact: "Contact",
       github: "GitHub",
       linkedin: "LinkedIn",
@@ -260,9 +263,9 @@ const english: LocaleMessages = {
   },
   projectsPage: {
     eyebrow: "Projects",
-    title: "Everything I’ve shipped",
+    title: "Selected projects",
     description:
-      "Selected AI and full-stack projects built by Mouhssine El Boumshouli - from reproducible research and computer vision to deployed web systems.",
+      "Research studies, an internship project, and web and mobile software. Open a project to see what I built, how it works, and its limitations.",
     searchPlaceholder: "Search projects…",
     searchLabel: "Search projects",
     clearSearch: "Clear search",
@@ -273,20 +276,20 @@ const english: LocaleMessages = {
     live: "Live",
     code: "Code",
     previewAlt: (title) => `${title} project preview`,
-    status: { live: "Live", building: "In progress", research: "Research" },
-    whyBuilt: "Why I built it",
+    status: { live: "Live demo", building: "In progress", research: "Research", internship: "Internship project", prototype: "Prototype" },
+    whyBuilt: "The problem",
     whatBuilt: "What I built",
     capabilities: "Key capabilities",
     technicalDetails: "Technical details",
     contribution: "My contribution",
-    outcome: "Outcome / current status",
+    outcome: "Results and limitations",
     technologies: "Technologies",
     liveDemo: "Live Demo",
     viewCode: "View Code",
   },
   contactPage: {
     eyebrow: "Contact",
-    title: "Let’s talk about what you’re building",
+    title: "Let’s talk",
     basedIn: "Based in Fès",
     fastestRoutes: "Fastest routes",
     scheduleCall: "Schedule a 30-minute call",
@@ -295,22 +298,23 @@ const english: LocaleMessages = {
     linkedInDetail: "mouhssine-bms",
     sendMessage: "Send a message",
     intro:
-      "Write here and it lands in my inbox. Roles, collaboration, research, or a question about something I’ve built - all welcome.",
+      "I’m looking for a summer 2027 internship. If you have an opportunity in AI engineering, software engineering, or research—or a question about one of my projects—send me a message.",
   },
   contactForm: {
     emailLabel: "Your email",
     emailPlaceholder: "you@example.com",
     messageLabel: "Your message",
-    messagePlaceholder: "What are you building, and where do you want help?",
-    minimumMessage: (count) => `At least ${count} characters so I know what you need.`,
+    messagePlaceholder: "Tell me about the opportunity or what you’d like to discuss.",
+    minimumMessage: (count) => `At least ${count} characters so I can understand your message.`,
     sending: "Sending",
     sendMessage: "Send message",
     sent: "Message sent. I’ll get back to you soon.",
     connectionError: "No connection. Check your network and try again.",
     genericError: "That didn’t send. Try again in a moment.",
-    goesStraightTo: "Goes straight to",
+    goesStraightTo: "Sent directly to",
   },
   pageHeader: { home: "Home" },
+  errorBoundary: { title: "Something went wrong", description: "Try again or reload the page.", retry: "Try again" },
   notFound: {
     title: "This page doesn’t exist",
     description: "The link may be out of date. Everything lives on the home page - start there, or search with ⌘K.",
@@ -328,7 +332,8 @@ const english: LocaleMessages = {
     github: "GitHub",
     linkedin: "LinkedIn",
     schedule: "Schedule a call",
-    resume: "Resume",
+    resume: "Resume (EN)",
+    frenchResume: "CV (FR)",
     email: "Email",
     switchToTheme: (theme) => `Switch to ${theme} theme`,
     light: "light",
@@ -338,16 +343,16 @@ const english: LocaleMessages = {
     search: "Search",
     themeTooltip: "Toggle theme (D)",
   },
-  footer: { text: "Designed and developed by", note: "Built in the open." },
+  footer: { text: "Developed by", note: "Source on GitHub." },
   metadata: {
     description:
-      "Portfolio of Mouhssine El Boumshouli, an AI engineering student building full-stack software, LLM agent evaluations, procurement systems and computer-vision research tools.",
+      "Mouhssine El Boumshouli, AI engineering student at EIDIA. Projects in AI evaluation, software and computer vision. Seeking a summer 2027 internship.",
     projectsDescription:
-      "Selected AI and full-stack projects built by Mouhssine El Boumshouli - from reproducible research and computer vision to deployed web systems.",
+      "Explore Mouhssine El Boumshouli’s AI research, internship work, and web and mobile projects, including DARE-Bench, SmartImport, Recall, and medskel.",
     contactDescription:
-      "Get in touch with Mouhssine El Boumshouli about AI engineering, full-stack software, research, or anything he has built.",
+      "Contact Mouhssine El Boumshouli about summer 2027 internships in AI engineering, software engineering, or research, and questions about his projects.",
     previewTitle:
-      "Mouhssine El Boumshouli - AI engineering, full-stack systems, and applied AI.",
+      "Mouhssine El Boumshouli — AI Engineering Student",
   },
 }
 
@@ -384,8 +389,8 @@ const french: LocaleMessages = {
   hero: {
     roles: [
       "Étudiant en ingénierie de l’IA",
-      "Développeur full-stack et IA",
-      "IA appliquée et vision par ordinateur",
+      "Développement web et mobile",
+      "Étude de la fiabilité des agents IA",
     ],
     bookCall: "Planifier un appel",
     sendEmail: "Envoyer un e-mail",
@@ -400,40 +405,35 @@ const french: LocaleMessages = {
     milestones: "Étapes clés",
     bio: [
       {
-        text: "Je suis Mouhssine, étudiant en ingénierie de l’IA à l’EIDIA - Université Euromed de Fès. Je travaille sur des logiciels full-stack, des agents LLM et la vision par ordinateur.",
+        text: "Je suis Mouhssine, étudiant en ingénierie de l’IA à l’EIDIA, Université Euromed de Fès. Je suis basé au Maroc et prévois d’obtenir mon diplôme en 2028.",
       },
       {
-        text: "Je construis des systèmes de bout en bout avec Python, FastAPI, React, TypeScript, PostgreSQL et Docker, de la conception des données et des API jusqu’aux interfaces utilisables.",
-        strong: ["Python, FastAPI, React, TypeScript, PostgreSQL et Docker"],
+        text: "J’aime partir d’un problème concret, développer une solution et tester les points qui me posent question. Cela peut prendre la forme d’une application web ou mobile, ou d’une expérience pour comprendre le comportement d’un système d’IA.",
       },
       {
-        text: "Mes travaux récents comprennent une étude reproductible de la fiabilité des agents DARE-Bench, l’outil d’aide à la décision d’achat SmartImport et des recherches sur la squelettisation d’images médicales.",
-        strong: [
-          "étude reproductible de la fiabilité des agents DARE-Bench",
-          "outil d’aide à la décision d’achat SmartImport",
-          "recherches sur la squelettisation d’images médicales",
-        ],
+        text: "Je recherche un stage pour l’été 2027 en ingénierie de l’IA, en développement logiciel ou en recherche.",
+        strong: ["stage pour l’été 2027"],
       },
     ],
     seeAllProjects: "Voir tous les projets",
-    stillReading: "Vous êtes toujours là ? C’est que quelque chose vous a parlé. Parlons-en.",
-    startConversation: "Entamer une conversation",
+    stillReading: "Vous avez une opportunité de stage, un projet de recherche ou une question sur mon travail ? Contactez-moi.",
+    startConversation: "Envoyer un message",
     you: "Vous",
     loadingContributions: "Chargement des contributions",
     contribution: (count) => (count === 1 ? "1 contribution" : `${count} contributions`),
     contributionsOn: (label) => `le ${label}`,
     totalContributions: (range) => `{{count}} contributions sur ${range}`,
-    present: "Présent",
+    present: "aujourd’hui",
     venn: {
-      top: "Ingénierie de l’IA",
-      left: "Pensée systémique",
-      right: "Recherche appliquée",
-      bottom: "Livraison produit\n& écoute utilisateur",
+      top: "Applications d’IA",
+      left: "Web et mobile",
+      right: "Évaluation",
+      bottom: "Vision par\nordinateur",
     },
   },
   connect: {
     links: {
-      resume: "CV",
+      resume: "CV (EN)",
       contact: "Contact",
       github: "GitHub",
       linkedin: "LinkedIn",
@@ -443,9 +443,9 @@ const french: LocaleMessages = {
   },
   projectsPage: {
     eyebrow: "Projets",
-    title: "Tout ce que j’ai livré",
+    title: "Projets sélectionnés",
     description:
-      "Une sélection de projets d’IA et full-stack réalisés par Mouhssine El Boumshouli : recherche reproductible, vision par ordinateur et systèmes web déployés.",
+      "Des études de recherche, un projet de stage et des applications web et mobiles. Ouvrez un projet pour découvrir ce que j’ai réalisé, son fonctionnement et ses limites.",
     searchPlaceholder: "Rechercher un projet…",
     searchLabel: "Rechercher un projet",
     clearSearch: "Effacer la recherche",
@@ -456,20 +456,20 @@ const french: LocaleMessages = {
     live: "En ligne",
     code: "Code",
     previewAlt: (title) => `Aperçu du projet ${title}`,
-    status: { live: "En ligne", building: "En cours", research: "Recherche" },
-    whyBuilt: "Pourquoi je l’ai construit",
-    whatBuilt: "Ce que j’ai construit",
+    status: { live: "Démo en ligne", building: "En cours", research: "Recherche", internship: "Projet de stage", prototype: "Prototype" },
+    whyBuilt: "Le problème",
+    whatBuilt: "Ce que j’ai réalisé",
     capabilities: "Fonctionnalités clés",
     technicalDetails: "Détails techniques",
     contribution: "Ma contribution",
-    outcome: "Résultat / état actuel",
+    outcome: "Résultats et limites",
     technologies: "Technologies",
     liveDemo: "Démo en ligne",
     viewCode: "Voir le code",
   },
   contactPage: {
     eyebrow: "Contact",
-    title: "Parlons de ce que vous construisez",
+    title: "Échangeons",
     basedIn: "Basé à Fès",
     fastestRoutes: "Les moyens les plus rapides",
     scheduleCall: "Planifier un appel de 30 minutes",
@@ -478,22 +478,23 @@ const french: LocaleMessages = {
     linkedInDetail: "mouhssine-bms",
     sendMessage: "Envoyer un message",
     intro:
-      "Écrivez ici et votre message arrivera dans ma boîte de réception. Opportunité, collaboration, recherche ou question sur un projet : tout est bienvenu.",
+      "Je recherche un stage pour l’été 2027. Si vous avez une opportunité en ingénierie de l’IA, en développement logiciel ou en recherche, ou une question sur l’un de mes projets, envoyez-moi un message.",
   },
   contactForm: {
     emailLabel: "Votre e-mail",
     emailPlaceholder: "vous@exemple.com",
     messageLabel: "Votre message",
-    messagePlaceholder: "Que construisez-vous et sur quoi souhaitez-vous échanger ?",
+    messagePlaceholder: "Présentez l’opportunité ou le sujet dont vous souhaitez discuter.",
     minimumMessage: (count) => `Au moins ${count} caractères pour comprendre votre demande.`,
     sending: "Envoi",
     sendMessage: "Envoyer le message",
     sent: "Message envoyé. Je vous répondrai bientôt.",
     connectionError: "Aucune connexion. Vérifiez votre réseau puis réessayez.",
     genericError: "L’envoi a échoué. Réessayez dans un instant.",
-    goesStraightTo: "Arrive directement chez",
+    goesStraightTo: "Envoyé directement à",
   },
   pageHeader: { home: "Accueil" },
+  errorBoundary: { title: "Une erreur est survenue", description: "Réessayez ou rechargez la page.", retry: "Réessayer" },
   notFound: {
     title: "Cette page n’existe pas",
     description: "Le lien est peut-être obsolète. Tout se trouve sur la page d’accueil : commencez ici ou recherchez avec ⌘K.",
@@ -511,7 +512,8 @@ const french: LocaleMessages = {
     github: "GitHub",
     linkedin: "LinkedIn",
     schedule: "Planifier un appel",
-    resume: "CV",
+    resume: "CV (EN)",
+    frenchResume: "CV (FR)",
     email: "E-mail",
     switchToTheme: (theme) => `Passer au thème ${theme}`,
     light: "clair",
@@ -521,16 +523,16 @@ const french: LocaleMessages = {
     search: "Rechercher",
     themeTooltip: "Changer de thème (D)",
   },
-  footer: { text: "Conçu et développé par", note: "Construit au grand jour." },
+  footer: { text: "Développé par", note: "Code source sur GitHub." },
   metadata: {
     description:
-      "Portfolio de Mouhssine El Boumshouli, étudiant en ingénierie de l’IA qui construit des logiciels full-stack, des évaluations d’agents LLM, des systèmes d’achat et des outils de recherche en vision par ordinateur.",
+      "Mouhssine El Boumshouli, étudiant en IA à l’EIDIA. Projets logiciels et de recherche. À la recherche d’un stage pour l’été 2027.",
     projectsDescription:
-      "Une sélection de projets d’IA et full-stack réalisés par Mouhssine El Boumshouli : recherche reproductible, vision par ordinateur et systèmes web déployés.",
+      "Découvrez les projets de recherche, de stage, web et mobiles de Mouhssine El Boumshouli : DARE-Bench, SmartImport, Recall et medskel.",
     contactDescription:
-      "Contactez Mouhssine El Boumshouli au sujet de l’ingénierie de l’IA, du développement full-stack, de la recherche ou de ses projets.",
+      "Contactez Mouhssine El Boumshouli pour un stage à l’été 2027 en IA, en développement logiciel ou en recherche, ou pour échanger sur ses projets.",
     previewTitle:
-      "Mouhssine El Boumshouli - ingénierie de l’IA, systèmes full-stack et IA appliquée.",
+      "Mouhssine El Boumshouli — Étudiant en ingénierie de l’IA",
   },
 }
 

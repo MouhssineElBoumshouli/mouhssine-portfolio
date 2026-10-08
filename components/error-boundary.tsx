@@ -1,6 +1,9 @@
 "use client";
 
 import React from "react";
+import { usePathname } from "next/navigation";
+import { getLocaleFromPathname, type Locale } from "@/lib/i18n/config";
+import { getMessages } from "@/lib/i18n/messages";
 
 interface ErrorBoundaryState {
   hasError: boolean;
@@ -10,6 +13,7 @@ interface ErrorBoundaryState {
 interface ErrorBoundaryProps {
   children: React.ReactNode;
   fallback?: React.ComponentType<{ error?: Error }>;
+  locale?: Locale;
 }
 
 export class ErrorBoundary extends React.Component<
@@ -31,25 +35,26 @@ export class ErrorBoundary extends React.Component<
 
   render() {
     if (this.state.hasError) {
+      const copy = getMessages(this.props.locale ?? "en").errorBoundary;
       const FallbackComponent = this.props.fallback;
       if (FallbackComponent) {
         return <FallbackComponent error={this.state.error} />;
       }
 
       return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="bg-background text-foreground flex min-h-screen items-center justify-center p-6">
           <div className="text-center">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              Something went wrong
+            <h2 className="mb-4 text-2xl font-semibold">
+              {copy.title}
             </h2>
-            <p className="text-gray-600 mb-4">
-              We&apos;re sorry, but something unexpected happened.
+            <p className="text-muted-foreground mb-4">
+              {copy.description}
             </p>
             <button
               onClick={() => this.setState({ hasError: false })}
-              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+              className="bg-foreground text-background focus-visible:ring-ring rounded border px-4 py-2 outline-none hover:opacity-90 focus-visible:ring-2"
             >
-              Try again
+              {copy.retry}
             </button>
           </div>
         </div>
@@ -58,4 +63,14 @@ export class ErrorBoundary extends React.Component<
 
     return this.props.children;
   }
+}
+
+/** Root layouts persist during navigation; derive fallback language from the current route. */
+export function AppErrorBoundary({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  return (
+    <ErrorBoundary locale={getLocaleFromPathname(pathname)}>
+      {children}
+    </ErrorBoundary>
+  );
 }

@@ -16,7 +16,7 @@ export const experiences: Experience[] = [
   {
     id: "convoroute",
     company: "Convoroute LLC",
-    role: "Founder & Developer",
+    role: "Founder & Software Developer",
     location: "United States · Remote",
     period: { start: "Jun 2026" },
     logo: "/logos/convoroute-logo.png",

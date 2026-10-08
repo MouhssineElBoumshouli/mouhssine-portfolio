@@ -1,28 +1,42 @@
 export type Milestone = {
+  id: string
   title: string
   date: string
   description: string
 }
 
-export const milestones: Milestone[] = [
+/** Dates stay year-only unless the source establishes a more precise period. */
+export const milestones = [
   {
-    title: "Started an AI engineering degree",
-    date: "2025",
-    description: "Joined EIDIA at Université Euromed de Fès after completing the preparatory cycle.",
-  },
-  {
+    id: "convoroute",
     title: "Founded Convoroute LLC",
     date: "Jun 2026",
-    description: "Started building a B2B SaaS for embedded AI customer-service chatbots.",
+    description: "Began developing AI customer-service chatbots that can be integrated into websites.",
   },
   {
-    title: "Started building SmartImport",
-    date: "2026",
-    description: "Started building an auditable procurement decision-support platform during a software and AI engineering internship.",
+    id: "smartimport",
+    title: "Built SmartImport during my internship",
+    date: "Jul–Aug 2026",
+    description: "Developed quotation comparison, cost calculations, and human-reviewed document extraction at Bounaim Auto.",
   },
   {
-    title: "Completed a DARE-Bench reliability study",
+    id: "dare-agent-reliability",
+    title: "Completed the DARE-Bench study",
     date: "2026",
-    description: "Ran a reproducible 240-run study of LLM agent capability and repeatability.",
+    description: "Ran 240 experiments and published the analysis and reproducibility materials.",
   },
-]
+  {
+    id: "medskel",
+    title: "Evaluated medskel",
+    date: "2026",
+    description: "Compared a published skeletonization method with thinning on synthetic shapes and retinal images.",
+  },
+  {
+    id: "recall",
+    title: "Added saved sessions and notes to Recall",
+    date: "2026",
+    description: "Implemented persistent recordings, transcripts, bookmarks, and structured notes.",
+  },
+] as const satisfies readonly Milestone[]
+
+export type MilestoneId = (typeof milestones)[number]["id"]

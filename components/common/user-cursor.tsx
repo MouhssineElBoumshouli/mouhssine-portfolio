@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react"
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
+import { useReducedMotion } from "@/hooks/use-reduced-motion"
 
 type UserCursorProps = {
   name?: string
@@ -39,6 +40,11 @@ export function UserCursor({
   const [isCoarsePointer, setIsCoarsePointer] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
   const [isPressed, setIsPressed] = useState(false)
+  const reducedMotion = useReducedMotion()
+  const [mounted, setMounted] = useState(false)
+  const reduceMotion = mounted && reducedMotion === true
+
+  useEffect(() => setMounted(true), [])
 
   useEffect(() => {
     if (typeof window === "undefined" || !window.matchMedia) return
@@ -88,7 +94,7 @@ export function UserCursor({
   }, [isPressed, pressScale, scale])
 
   useEffect(() => {
-    if (isCoarsePointer) return
+    if (isCoarsePointer || reduceMotion) return
 
     document.documentElement.classList.add("custom-cursor")
 
@@ -141,7 +147,7 @@ export function UserCursor({
       document.removeEventListener("mouseleave", onLeave)
       setIsPressed(false)
     }
-  }, [isCoarsePointer, labelTiltStrength, pointerX, pointerY, tilt])
+  }, [isCoarsePointer, reduceMotion, labelTiltStrength, pointerX, pointerY, tilt])
 
   // Sits off the arrow's tip rather than under it.
   const labelOffset = useMemo(
@@ -151,7 +157,7 @@ export function UserCursor({
   const labelOffsetX = useTransform(labelX, (value) => value + labelOffset.x)
   const labelOffsetY = useTransform(labelY, (value) => value + labelOffset.y)
 
-  if (isCoarsePointer) return null
+  if (isCoarsePointer || reduceMotion) return null
 
   return (
     <div

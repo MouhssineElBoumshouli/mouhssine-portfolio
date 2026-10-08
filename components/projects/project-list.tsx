@@ -23,6 +23,7 @@ export function ProjectList({ locale }: { locale: Locale }) {
       return [
         copy.title,
         copy.subheading ?? "",
+        copy.summary,
         copy.description,
         ...copy.technologies,
       ]
@@ -67,6 +68,9 @@ export function ProjectList({ locale }: { locale: Locale }) {
         }
       />
 
+      <p className="screen-line-bottom text-muted-foreground relative px-4 py-3 text-sm leading-relaxed">
+        {messages.projectsPage.description}
+      </p>
       <ProjectGrid projects={filtered} locale={locale} />
     </main>
   )

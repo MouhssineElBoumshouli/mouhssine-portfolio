@@ -46,7 +46,7 @@ export function getLocalizedMetadata(locale: Locale, kind: PageKind): Metadata {
       url: canonical,
       type: "website",
       locale: locale === "fr" ? "fr_FR" : "en_US",
-      images: [{ ...socialPreviewImage, type: "image/png" }],
+      images: [{ ...socialPreviewImage, alt: locale === "fr" ? "Page d’accueil du portfolio de Mouhssine El Boumshouli" : socialPreviewImage.alt, type: "image/png" }],
     },
     twitter: {
       card: "summary_large_image",

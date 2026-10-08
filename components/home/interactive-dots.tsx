@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
+import { useReducedMotion } from "@/hooks/use-reduced-motion"
 import { useLocale } from "@/components/i18n/locale-provider"
 import { getMessages } from "@/lib/i18n/messages"
 
@@ -46,6 +47,7 @@ type Ripple = { x: number; y: number; time: number }
  */
 export function InteractiveDots({ className }: { className?: string }) {
   const messages = getMessages(useLocale())
+  const reducedMotion = useReducedMotion()
   const hostRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -125,6 +127,16 @@ export function InteractiveDots({ className }: { className?: string }) {
         }
       }
       buildSprites()
+      if (reducedMotion) drawStatic()
+    }
+
+    const drawStatic = () => {
+      ctx.clearRect(0, 0, width, height)
+      ctx.globalAlpha = 0.48
+      for (const dot of dots) {
+        ctx.drawImage(sprites[0], dot.ox - DOT_SIZE / 2, dot.oy - DOT_SIZE / 2, DOT_SIZE, DOT_SIZE)
+      }
+      ctx.globalAlpha = 1
     }
 
     const tick = (now: number) => {
@@ -239,17 +251,22 @@ export function InteractiveDots({ className }: { className?: string }) {
       { threshold: 0 }
     )
     viewWatcher.observe(host)
-    const themeWatcher = new MutationObserver(buildSprites)
+    const themeWatcher = new MutationObserver(() => {
+      buildSprites()
+      if (reducedMotion) drawStatic()
+    })
     themeWatcher.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ["class"],
     })
 
-    host.addEventListener("pointermove", onMove, { passive: true })
-    host.addEventListener("pointerdown", onDown)
-    host.addEventListener("pointerleave", onLeave)
-    host.addEventListener("pointercancel", onLeave)
-    frame = requestAnimationFrame(tick)
+    if (!reducedMotion) {
+      host.addEventListener("pointermove", onMove, { passive: true })
+      host.addEventListener("pointerdown", onDown)
+      host.addEventListener("pointerleave", onLeave)
+      host.addEventListener("pointercancel", onLeave)
+      frame = requestAnimationFrame(tick)
+    }
 
     return () => {
       cancelAnimationFrame(frame)
@@ -261,7 +278,7 @@ export function InteractiveDots({ className }: { className?: string }) {
       host.removeEventListener("pointerleave", onLeave)
       host.removeEventListener("pointercancel", onLeave)
     }
-  }, [])
+  }, [reducedMotion])
 
   return (
     <div ref={hostRef} className={className} aria-label={messages.accessibility.interactiveDots}>
