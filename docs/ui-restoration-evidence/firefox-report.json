@@ -1,0 +1,1416 @@
+{
+  "routes": 62,
+  "dialogs": [
+    {
+      "width": 1440,
+      "locale": "en",
+      "theme": "light",
+      "reduced": false,
+      "homepage": false,
+      "name": "View details for DARE-Bench reliability study",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 558
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "theme": "light",
+      "reduced": false,
+      "homepage": false,
+      "name": "View details for SmartImport",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 567
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "theme": "light",
+      "reduced": false,
+      "homepage": false,
+      "name": "View details for Recall",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 474
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "theme": "light",
+      "reduced": false,
+      "homepage": false,
+      "name": "View details for medskel",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 535
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "theme": "light",
+      "reduced": false,
+      "homepage": false,
+      "name": "View details for UEMF Presence",
+      "wheelTop": 222,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        222
+      ],
+      "max": 222
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "theme": "light",
+      "reduced": true,
+      "homepage": false,
+      "name": "View details for DARE-Bench reliability study",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 558
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "theme": "light",
+      "reduced": true,
+      "homepage": false,
+      "name": "View details for SmartImport",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 567
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "theme": "light",
+      "reduced": true,
+      "homepage": false,
+      "name": "View details for Recall",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 474
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "theme": "light",
+      "reduced": true,
+      "homepage": false,
+      "name": "View details for medskel",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 535
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "theme": "light",
+      "reduced": true,
+      "homepage": false,
+      "name": "View details for UEMF Presence",
+      "wheelTop": 222,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        222
+      ],
+      "max": 222
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "theme": "dark",
+      "reduced": false,
+      "homepage": false,
+      "name": "View details for DARE-Bench reliability study",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 558
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "theme": "dark",
+      "reduced": false,
+      "homepage": false,
+      "name": "View details for SmartImport",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 567
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "theme": "dark",
+      "reduced": false,
+      "homepage": false,
+      "name": "View details for Recall",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 474
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "theme": "dark",
+      "reduced": false,
+      "homepage": false,
+      "name": "View details for medskel",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 535
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "theme": "dark",
+      "reduced": false,
+      "homepage": false,
+      "name": "View details for UEMF Presence",
+      "wheelTop": 222,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        222
+      ],
+      "max": 222
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "theme": "dark",
+      "reduced": true,
+      "homepage": false,
+      "name": "View details for DARE-Bench reliability study",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 558
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "theme": "dark",
+      "reduced": true,
+      "homepage": false,
+      "name": "View details for SmartImport",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 567
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "theme": "dark",
+      "reduced": true,
+      "homepage": false,
+      "name": "View details for Recall",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 474
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "theme": "dark",
+      "reduced": true,
+      "homepage": false,
+      "name": "View details for medskel",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 535
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "theme": "dark",
+      "reduced": true,
+      "homepage": false,
+      "name": "View details for UEMF Presence",
+      "wheelTop": 222,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        222
+      ],
+      "max": 222
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "theme": "light",
+      "reduced": false,
+      "homepage": false,
+      "name": "Voir les détails de Étude de fiabilité DARE-Bench",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 604
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "theme": "light",
+      "reduced": false,
+      "homepage": false,
+      "name": "Voir les détails de SmartImport",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 590
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "theme": "light",
+      "reduced": false,
+      "homepage": false,
+      "name": "Voir les détails de Recall",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 587
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "theme": "light",
+      "reduced": false,
+      "homepage": false,
+      "name": "Voir les détails de medskel",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 558
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "theme": "light",
+      "reduced": false,
+      "homepage": false,
+      "name": "Voir les détails de UEMF Presence",
+      "wheelTop": 290,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        290
+      ],
+      "max": 290
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "theme": "light",
+      "reduced": true,
+      "homepage": false,
+      "name": "Voir les détails de Étude de fiabilité DARE-Bench",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 604
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "theme": "light",
+      "reduced": true,
+      "homepage": false,
+      "name": "Voir les détails de SmartImport",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 590
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "theme": "light",
+      "reduced": true,
+      "homepage": false,
+      "name": "Voir les détails de Recall",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 587
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "theme": "light",
+      "reduced": true,
+      "homepage": false,
+      "name": "Voir les détails de medskel",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 558
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "theme": "light",
+      "reduced": true,
+      "homepage": false,
+      "name": "Voir les détails de UEMF Presence",
+      "wheelTop": 290,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        290
+      ],
+      "max": 290
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "theme": "dark",
+      "reduced": false,
+      "homepage": false,
+      "name": "Voir les détails de Étude de fiabilité DARE-Bench",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 604
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "theme": "dark",
+      "reduced": false,
+      "homepage": false,
+      "name": "Voir les détails de SmartImport",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 590
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "theme": "dark",
+      "reduced": false,
+      "homepage": false,
+      "name": "Voir les détails de Recall",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 587
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "theme": "dark",
+      "reduced": false,
+      "homepage": false,
+      "name": "Voir les détails de medskel",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 558
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "theme": "dark",
+      "reduced": false,
+      "homepage": false,
+      "name": "Voir les détails de UEMF Presence",
+      "wheelTop": 290,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        290
+      ],
+      "max": 290
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "theme": "dark",
+      "reduced": true,
+      "homepage": false,
+      "name": "Voir les détails de Étude de fiabilité DARE-Bench",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 604
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "theme": "dark",
+      "reduced": true,
+      "homepage": false,
+      "name": "Voir les détails de SmartImport",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 590
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "theme": "dark",
+      "reduced": true,
+      "homepage": false,
+      "name": "Voir les détails de Recall",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 587
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "theme": "dark",
+      "reduced": true,
+      "homepage": false,
+      "name": "Voir les détails de medskel",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 558
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "theme": "dark",
+      "reduced": true,
+      "homepage": false,
+      "name": "Voir les détails de UEMF Presence",
+      "wheelTop": 290,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        290
+      ],
+      "max": 290
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "theme": "light",
+      "reduced": false,
+      "homepage": false,
+      "name": "View details for DARE-Bench reliability study",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        579
+      ],
+      "max": 642
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "theme": "light",
+      "reduced": false,
+      "homepage": false,
+      "name": "View details for SmartImport",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        579
+      ],
+      "max": 662
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "theme": "light",
+      "reduced": false,
+      "homepage": false,
+      "name": "View details for Recall",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        558
+      ],
+      "max": 558
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "theme": "light",
+      "reduced": false,
+      "homepage": false,
+      "name": "View details for medskel",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        574
+      ],
+      "max": 574
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "theme": "light",
+      "reduced": false,
+      "homepage": false,
+      "name": "View details for UEMF Presence",
+      "wheelTop": 232,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        232
+      ],
+      "max": 232
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "theme": "light",
+      "reduced": true,
+      "homepage": false,
+      "name": "View details for DARE-Bench reliability study",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        579
+      ],
+      "max": 642
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "theme": "light",
+      "reduced": true,
+      "homepage": false,
+      "name": "View details for SmartImport",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        579
+      ],
+      "max": 662
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "theme": "light",
+      "reduced": true,
+      "homepage": false,
+      "name": "View details for Recall",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        558
+      ],
+      "max": 558
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "theme": "light",
+      "reduced": true,
+      "homepage": false,
+      "name": "View details for medskel",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        574
+      ],
+      "max": 574
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "theme": "light",
+      "reduced": true,
+      "homepage": false,
+      "name": "View details for UEMF Presence",
+      "wheelTop": 232,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        232
+      ],
+      "max": 232
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "theme": "dark",
+      "reduced": false,
+      "homepage": false,
+      "name": "View details for DARE-Bench reliability study",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        579
+      ],
+      "max": 642
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "theme": "dark",
+      "reduced": false,
+      "homepage": false,
+      "name": "View details for SmartImport",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        579
+      ],
+      "max": 662
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "theme": "dark",
+      "reduced": false,
+      "homepage": false,
+      "name": "View details for Recall",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        558
+      ],
+      "max": 558
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "theme": "dark",
+      "reduced": false,
+      "homepage": false,
+      "name": "View details for medskel",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        574
+      ],
+      "max": 574
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "theme": "dark",
+      "reduced": false,
+      "homepage": false,
+      "name": "View details for UEMF Presence",
+      "wheelTop": 232,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        232
+      ],
+      "max": 232
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "theme": "dark",
+      "reduced": true,
+      "homepage": false,
+      "name": "View details for DARE-Bench reliability study",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        579
+      ],
+      "max": 642
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "theme": "dark",
+      "reduced": true,
+      "homepage": false,
+      "name": "View details for SmartImport",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        579
+      ],
+      "max": 662
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "theme": "dark",
+      "reduced": true,
+      "homepage": false,
+      "name": "View details for Recall",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        558
+      ],
+      "max": 558
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "theme": "dark",
+      "reduced": true,
+      "homepage": false,
+      "name": "View details for medskel",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        574
+      ],
+      "max": 574
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "theme": "dark",
+      "reduced": true,
+      "homepage": false,
+      "name": "View details for UEMF Presence",
+      "wheelTop": 232,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        232
+      ],
+      "max": 232
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "theme": "light",
+      "reduced": false,
+      "homepage": false,
+      "name": "Voir les détails de Étude de fiabilité DARE-Bench",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        579
+      ],
+      "max": 757
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "theme": "light",
+      "reduced": false,
+      "homepage": false,
+      "name": "Voir les détails de SmartImport",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        579
+      ],
+      "max": 730
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "theme": "light",
+      "reduced": false,
+      "homepage": false,
+      "name": "Voir les détails de Recall",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        579
+      ],
+      "max": 718
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "theme": "light",
+      "reduced": false,
+      "homepage": false,
+      "name": "Voir les détails de medskel",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        579
+      ],
+      "max": 666
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "theme": "light",
+      "reduced": false,
+      "homepage": false,
+      "name": "Voir les détails de UEMF Presence",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        300
+      ],
+      "max": 300
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "theme": "light",
+      "reduced": true,
+      "homepage": false,
+      "name": "Voir les détails de Étude de fiabilité DARE-Bench",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        579
+      ],
+      "max": 757
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "theme": "light",
+      "reduced": true,
+      "homepage": false,
+      "name": "Voir les détails de SmartImport",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        579
+      ],
+      "max": 730
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "theme": "light",
+      "reduced": true,
+      "homepage": false,
+      "name": "Voir les détails de Recall",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        579
+      ],
+      "max": 718
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "theme": "light",
+      "reduced": true,
+      "homepage": false,
+      "name": "Voir les détails de medskel",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        579
+      ],
+      "max": 666
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "theme": "light",
+      "reduced": true,
+      "homepage": false,
+      "name": "Voir les détails de UEMF Presence",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        300
+      ],
+      "max": 300
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "theme": "dark",
+      "reduced": false,
+      "homepage": false,
+      "name": "Voir les détails de Étude de fiabilité DARE-Bench",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        579
+      ],
+      "max": 757
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "theme": "dark",
+      "reduced": false,
+      "homepage": false,
+      "name": "Voir les détails de SmartImport",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        579
+      ],
+      "max": 730
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "theme": "dark",
+      "reduced": false,
+      "homepage": false,
+      "name": "Voir les détails de Recall",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        579
+      ],
+      "max": 718
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "theme": "dark",
+      "reduced": false,
+      "homepage": false,
+      "name": "Voir les détails de medskel",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        579
+      ],
+      "max": 666
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "theme": "dark",
+      "reduced": false,
+      "homepage": false,
+      "name": "Voir les détails de UEMF Presence",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        300
+      ],
+      "max": 300
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "theme": "dark",
+      "reduced": true,
+      "homepage": false,
+      "name": "Voir les détails de Étude de fiabilité DARE-Bench",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        579
+      ],
+      "max": 757
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "theme": "dark",
+      "reduced": true,
+      "homepage": false,
+      "name": "Voir les détails de SmartImport",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        579
+      ],
+      "max": 730
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "theme": "dark",
+      "reduced": true,
+      "homepage": false,
+      "name": "Voir les détails de Recall",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        579
+      ],
+      "max": 718
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "theme": "dark",
+      "reduced": true,
+      "homepage": false,
+      "name": "Voir les détails de medskel",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        579
+      ],
+      "max": 666
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "theme": "dark",
+      "reduced": true,
+      "homepage": false,
+      "name": "Voir les détails de UEMF Presence",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        300
+      ],
+      "max": 300
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "theme": "light",
+      "reduced": false,
+      "homepage": true,
+      "name": "View details for DARE-Bench reliability study",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 558
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "theme": "light",
+      "reduced": false,
+      "homepage": true,
+      "name": "View details for SmartImport",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 567
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "theme": "light",
+      "reduced": false,
+      "homepage": true,
+      "name": "Voir les détails de Étude de fiabilité DARE-Bench",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 604
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "theme": "light",
+      "reduced": false,
+      "homepage": true,
+      "name": "Voir les détails de SmartImport",
+      "wheelTop": 300,
+      "smallDeltaTop": 168,
+      "keyboard": [
+        0,
+        349
+      ],
+      "max": 590
+    }
+  ],
+  "animations": [
+    {
+      "base": "http://127.0.0.1:3007",
+      "theme": "light",
+      "reduced": false,
+      "cycle": true,
+      "dots": true,
+      "cursor": true,
+      "magnetic": "matrix(1, 0, 0, 1, 7.2, 0)",
+      "viewTransitions": true
+    },
+    {
+      "base": "http://127.0.0.1:3007",
+      "theme": "light",
+      "reduced": true,
+      "cycle": true,
+      "dots": true,
+      "cursor": true,
+      "magnetic": "matrix(1, 0, 0, 1, 0, 0)",
+      "viewTransitions": true
+    },
+    {
+      "base": "http://127.0.0.1:3007",
+      "theme": "dark",
+      "reduced": false,
+      "cycle": true,
+      "dots": true,
+      "cursor": true,
+      "magnetic": "matrix(1, 0, 0, 1, 7.27, 0.01)",
+      "viewTransitions": true
+    },
+    {
+      "base": "http://127.0.0.1:3007",
+      "theme": "dark",
+      "reduced": true,
+      "cycle": true,
+      "dots": true,
+      "cursor": true,
+      "magnetic": "matrix(1, 0, 0, 1, 0, 0)",
+      "viewTransitions": true
+    },
+    {
+      "base": "http://127.0.0.1:3009",
+      "theme": "light",
+      "reduced": false,
+      "cycle": true,
+      "dots": true,
+      "cursor": true,
+      "magnetic": "matrix(1, 0, 0, 1, 7.22, 0.01)",
+      "viewTransitions": true
+    },
+    {
+      "base": "http://127.0.0.1:3009",
+      "theme": "light",
+      "reduced": true,
+      "cycle": true,
+      "dots": true,
+      "cursor": true,
+      "magnetic": "matrix(1, 0, 0, 1, 0, 0)",
+      "viewTransitions": true
+    },
+    {
+      "base": "http://127.0.0.1:3009",
+      "theme": "dark",
+      "reduced": false,
+      "cycle": true,
+      "dots": true,
+      "cursor": true,
+      "magnetic": "matrix(1, 0, 0, 1, 7.32, 0)",
+      "viewTransitions": true
+    },
+    {
+      "base": "http://127.0.0.1:3009",
+      "theme": "dark",
+      "reduced": true,
+      "cycle": true,
+      "dots": true,
+      "cursor": true,
+      "magnetic": "matrix(1, 0, 0, 1, 0, 0)",
+      "viewTransitions": true
+    }
+  ],
+  "consoleErrors": [],
+  "expectedLocalErrors": [],
+  "cvs": {
+    "EN": "e43d43d0bafc477387b1e9c3b7d17377ed702ae038ea41fa3f8e58db892fd771",
+    "FR": "539c846d51bf1a4366ffcb6290a308588657d2d7fce7f3392c3c1c2041fbc4e7"
+  },
+  "screenshots": [
+    "fixed-1440-en-light-dialog-0-top.png",
+    "fixed-1440-en-light-dialog-0-end.png",
+    "fixed-1440-en-light-dialog-1-top.png",
+    "fixed-1440-en-light-dialog-1-end.png",
+    "fixed-1440-en-light-dialog-2-top.png",
+    "fixed-1440-en-light-dialog-2-end.png",
+    "fixed-1440-en-light-dialog-3-top.png",
+    "fixed-1440-en-light-dialog-3-end.png",
+    "fixed-1440-en-light-dialog-4-top.png",
+    "fixed-1440-en-light-dialog-4-end.png",
+    "fixed-1440-en-light-projects.png",
+    "fixed-1440-en-dark-dialog-0-top.png",
+    "fixed-1440-en-dark-dialog-0-end.png",
+    "fixed-1440-en-dark-dialog-1-top.png",
+    "fixed-1440-en-dark-dialog-1-end.png",
+    "fixed-1440-en-dark-dialog-2-top.png",
+    "fixed-1440-en-dark-dialog-2-end.png",
+    "fixed-1440-en-dark-dialog-3-top.png",
+    "fixed-1440-en-dark-dialog-3-end.png",
+    "fixed-1440-en-dark-dialog-4-top.png",
+    "fixed-1440-en-dark-dialog-4-end.png",
+    "fixed-1440-en-dark-projects.png",
+    "fixed-1440-fr-light-projects.png",
+    "fixed-1440-fr-dark-projects.png",
+    "fixed-390-en-light-projects.png",
+    "fixed-390-en-dark-projects.png",
+    "fixed-390-fr-light-dialog-0-top.png",
+    "fixed-390-fr-light-dialog-0-end.png",
+    "fixed-390-fr-light-dialog-1-top.png",
+    "fixed-390-fr-light-dialog-1-end.png",
+    "fixed-390-fr-light-dialog-2-top.png",
+    "fixed-390-fr-light-dialog-2-end.png",
+    "fixed-390-fr-light-dialog-3-top.png",
+    "fixed-390-fr-light-dialog-3-end.png",
+    "fixed-390-fr-light-dialog-4-top.png",
+    "fixed-390-fr-light-dialog-4-end.png",
+    "fixed-390-fr-light-projects.png",
+    "fixed-390-fr-dark-dialog-0-top.png",
+    "fixed-390-fr-dark-dialog-0-end.png",
+    "fixed-390-fr-dark-dialog-1-top.png",
+    "fixed-390-fr-dark-dialog-1-end.png",
+    "fixed-390-fr-dark-dialog-2-top.png",
+    "fixed-390-fr-dark-dialog-2-end.png",
+    "fixed-390-fr-dark-dialog-3-top.png",
+    "fixed-390-fr-dark-dialog-3-end.png",
+    "fixed-390-fr-dark-dialog-4-top.png",
+    "fixed-390-fr-dark-dialog-4-end.png",
+    "fixed-390-fr-dark-projects.png",
+    "original-1440-en-light-motion-home.png",
+    "original-1440-en-light-reduced-home.png",
+    "original-1440-en-dark-motion-home.png",
+    "original-1440-en-dark-reduced-home.png",
+    "fixed-1440-en-light-motion-home.png",
+    "fixed-1440-en-light-reduced-home.png",
+    "fixed-1440-en-dark-motion-home.png",
+    "fixed-1440-en-dark-reduced-home.png",
+    "original-1024-projects.png",
+    "fixed-1024-projects.png",
+    "original-768-projects.png",
+    "fixed-768-projects.png"
+  ],
+  "complete": true
+}

@@ -59,7 +59,7 @@ to that local fixture, recipient ownership, reply-to, multipart text/HTML,
 validation, spam controls, and safe failures. They do not send external mail
 or prove delivery to a real inbox.
 
-Automatic Vercel Git deployments are disabled for the three review branches
+Automatic Vercel Git deployments are disabled for the four review branches
 listed in `vercel.json`. This does not change production settings or deploy
 anything; merging and publication require separate owner approval.
 
@@ -88,7 +88,7 @@ GitHub Pages cannot run the Nodemailer contact route or server-side GitHub
 activity route, so Vercel is the recommended host.
 
 The review branches codex/portfolio-content-2027, codex/portfolio-security-ci,
-and codex/portfolio-release-review
+codex/portfolio-release-review, and codex/portfolio-ui-restore
 have automatic Vercel deployments disabled in vercel.json. Other branches keep their default
 deployment behaviour. Do not merge or deploy the review changes until the
 owner approves publication. The gh-pages redirect and pre-portfolio-redesign
@@ -103,10 +103,10 @@ in this content update; their wording will be reviewed separately.
 - D: toggle light and dark themes
 
 Interface sound is on by default and can be disabled from the command menu.
-With prefers-reduced-motion, the dot field is static and the native pointer
-replaces the animated custom cursor.
-The role text stays on its first phrase under reduced motion. The preference
-also updates live without reloading. Recall's waveform animates only while its
-preview is hovered with a mouse or focused with the keyboard. Any optional
-project video follows the same rule and pauses off-screen; on touch, tapping a
-card opens its details, where real clips have explicit playback controls.
+The original interaction behaviour is preserved: the role text continues to
+cycle (using a short fade under reduced motion), the dots remain interactive,
+and the custom cursor is disabled for coarse pointers. Recall's added waveform
+animates only on mouse hover and stays static under reduced motion. Existing
+video previews retain their original mouse-hover behaviour. Project dialogs
+use a native text scroller marked `data-lenis-prevent`, so wheel events reach
+the dialog while the background remains locked.
