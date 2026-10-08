@@ -70,8 +70,8 @@ Vercel:
 GitHub Pages cannot run the Nodemailer contact route or server-side GitHub
 activity route, so Vercel is the recommended host.
 
-The content-review branch codex/portfolio-content-2027 has automatic Vercel
-deployments disabled in vercel.json. Other branches keep their default
+The review branches codex/portfolio-content-2027 and codex/portfolio-security-ci
+have automatic Vercel deployments disabled in vercel.json. Other branches keep their default
 deployment behaviour. Do not merge or deploy the review changes until the
 owner approves publication. The gh-pages redirect and pre-portfolio-redesign
 backup are separate branches and must not be modified by content updates.
