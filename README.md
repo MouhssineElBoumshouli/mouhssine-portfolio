@@ -59,7 +59,7 @@ to that local fixture, recipient ownership, reply-to, multipart text/HTML,
 validation, spam controls, and safe failures. They do not send external mail
 or prove delivery to a real inbox.
 
-Automatic Vercel Git deployments are disabled for the two review branches
+Automatic Vercel Git deployments are disabled for the three review branches
 listed in `vercel.json`. This does not change production settings or deploy
 anything; merging and publication require separate owner approval.
 
@@ -87,7 +87,8 @@ Vercel:
 GitHub Pages cannot run the Nodemailer contact route or server-side GitHub
 activity route, so Vercel is the recommended host.
 
-The review branches codex/portfolio-content-2027 and codex/portfolio-security-ci
+The review branches codex/portfolio-content-2027, codex/portfolio-security-ci,
+and codex/portfolio-release-review
 have automatic Vercel deployments disabled in vercel.json. Other branches keep their default
 deployment behaviour. Do not merge or deploy the review changes until the
 owner approves publication. The gh-pages redirect and pre-portfolio-redesign

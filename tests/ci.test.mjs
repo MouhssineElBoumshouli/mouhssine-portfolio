@@ -14,8 +14,9 @@ test("PR quality workflow is read-only, SHA-pinned and runs all four checks", ()
   }
 })
 
-test("both review branches disable automatic Vercel deployment", () => {
+test("all three review branches disable automatic Vercel deployment", () => {
   const config = JSON.parse(readFileSync(new URL("../vercel.json", import.meta.url), "utf8"))
   assert.equal(config.git.deploymentEnabled["codex/portfolio-content-2027"], false)
   assert.equal(config.git.deploymentEnabled["codex/portfolio-security-ci"], false)
+  assert.equal(config.git.deploymentEnabled["codex/portfolio-release-review"], false)
 })
