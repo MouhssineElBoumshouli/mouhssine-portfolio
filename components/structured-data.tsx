@@ -29,7 +29,7 @@ export default function StructuredData({ locale }: { locale: Locale }) {
     description,
     url: siteUrl,
     inLanguage: messages.htmlLang,
-    image: siteUrl + profile.avatarPhoto,
+    image: siteUrl + profile.avatar,
     email: "mailto:" + profile.email,
     address: {
       "@type": "PostalAddress",

@@ -1,4 +1,5 @@
 import { profile } from "./profile"
+import { getMessages } from "@/lib/i18n/messages"
 
 /** NEXT_PUBLIC_SITE_URL is authoritative in deployment; localhost is safe during development. */
 export const siteUrl =
@@ -6,10 +7,10 @@ export const siteUrl =
   "http://localhost:3000"
 
 export const siteDescription =
-  "Portfolio of Mouhssine El Boumshouli, an AI engineering student building full-stack software, LLM agent evaluations, procurement systems and computer-vision research tools."
+  getMessages("en").metadata.description
 
 export const socialPreviewTitle =
-  "Mouhssine El Boumshouli - AI engineering, full-stack systems, and applied AI."
+  getMessages("en").metadata.previewTitle
 
 export const socialPreviewImage = {
   url: siteUrl + "/portfolio-web-preview.png",
@@ -31,11 +32,6 @@ export const sectionIds = {
 } as const
 
 export const skillsVenn = {
-  image: profile.avatarPhoto,
-  skills: {
-    top: "AI Engineering",
-    left: "Systems Thinking",
-    right: "Applied Research",
-    bottom: "Product Delivery\\n& User Empathy",
-  },
+  image: profile.avatar,
+  skills: getMessages("en").home.venn,
 }

@@ -12,6 +12,7 @@ type ContactPayload = {
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const MAX_EMAIL_LENGTH = 254
 const MAX_MESSAGE_LENGTH = 5000
+const MAX_BODY_BYTES = 32 * 1024
 const RATE_WINDOW_MS = 10 * 60 * 1000
 const RATE_LIMIT = 5
 
@@ -28,6 +29,32 @@ const HTML_ESCAPES: Record<string, string> = {
 
 function escapeHtml(value: string) {
   return value.replace(/[&<>"']/g, (character) => HTML_ESCAPES[character])
+}
+
+// Bound the body while reading it, including requests without Content-Length.
+async function readPayload(request: Request): Promise<ContactPayload> {
+  const declaredLength = Number(request.headers.get("content-length"))
+  if (declaredLength > MAX_BODY_BYTES) throw new RangeError("Body too large")
+  const reader = request.body?.getReader()
+  if (!reader) throw new SyntaxError("Missing body")
+  const decoder = new TextDecoder()
+  let bytes = 0
+  let body = ""
+  try {
+    while (true) {
+      const { value, done } = await reader.read()
+      if (done) break
+      bytes += value.byteLength
+      if (bytes > MAX_BODY_BYTES) {
+        await reader.cancel()
+        throw new RangeError("Body too large")
+      }
+      body += decoder.decode(value, { stream: true })
+    }
+    return JSON.parse(body + decoder.decode())
+  } finally {
+    reader.releaseLock()
+  }
 }
 
 function clientKey(request: Request) {
@@ -56,15 +83,15 @@ function isRateLimited(key: string) {
 export async function POST(request: Request) {
   let data: ContactPayload
   try {
-    data = await request.json()
-  } catch {
+    data = await readPayload(request)
+  } catch (error) {
     return NextResponse.json(
       { error: "Invalid request payload." },
-      { status: 400 }
+      { status: error instanceof RangeError ? 413 : 400 }
     )
   }
 
-  if (!data || typeof data !== "object") {
+  if (!data || typeof data !== "object" || Array.isArray(data)) {
     return NextResponse.json(
       { error: "Invalid request payload." },
       { status: 400 }
@@ -78,12 +105,13 @@ export async function POST(request: Request) {
   const email = typeof data.email === "string" ? data.email.trim() : ""
   const message = typeof data.message === "string" ? data.message.trim() : ""
 
-  if (!EMAIL_RE.test(email)) {
-    return NextResponse.json({ error: "Enter a valid email." }, { status: 400 })
-  }
-
   if (email.length > MAX_EMAIL_LENGTH) {
     return NextResponse.json({ error: "Email address is too long." }, { status: 400 })
+  }
+
+  // This form accepts one plain mailbox, not display names or address lists.
+  if (!EMAIL_RE.test(email) || /[<>()\[\],:;"\\]/.test(email)) {
+    return NextResponse.json({ error: "Enter a valid email." }, { status: 400 })
   }
 
   if (message.length < 10) {
@@ -111,7 +139,7 @@ export async function POST(request: Request) {
   const rawFrom = process.env.SMTP_FROM || user
   const to = process.env.CONTACT_TO || profile.email
   const isDev = process.env.NODE_ENV !== "production"
-  const isPortValid = Number.isFinite(port) && port > 0
+  const isPortValid = Number.isInteger(port) && port > 0 && port <= 65535
 
   const missing = [
     !host && "SMTP_HOST",
@@ -129,20 +157,24 @@ export async function POST(request: Request) {
     )
   }
 
-  const transporter = nodemailer.createTransport({
-    host,
-    port,
-    secure: port === 465,
-    auth: { user, pass },
-  })
-
   try {
+    const transporter = nodemailer.createTransport({
+      host,
+      port,
+      secure: port === 465,
+      auth: { user, pass },
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
+      socketTimeout: 20000,
+      disableFileAccess: true,
+      disableUrlAccess: true,
+    })
     if (isDev) await transporter.verify()
     const from = rawFrom && /@/.test(rawFrom) ? rawFrom : user
     await transporter.sendMail({
       from,
       to,
-      replyTo: email,
+      replyTo: { address: email },
       subject: "New portfolio message",
       text: `From: ${email}\n\n${message}`,
       html: `<p><strong>From:</strong> ${escapeHtml(email)}</p><p>${escapeHtml(
@@ -150,8 +182,9 @@ export async function POST(request: Request) {
       ).replace(/\r?\n/g, "<br />")}</p>`,
     })
     return NextResponse.json({ ok: true })
-  } catch (error) {
-    console.error("Contact email failed:", error)
+  } catch {
+    // SMTP responses can contain sensitive connection details; do not log them.
+    console.error("Contact email failed.")
     return NextResponse.json(
       { error: "Failed to send message." },
       { status: 500 }
