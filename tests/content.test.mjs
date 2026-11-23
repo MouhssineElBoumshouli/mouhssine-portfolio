@@ -123,8 +123,8 @@ test("SmartImport matching metrics and medskel authorship remain correctly scope
   for (const locale of ["en", "fr"]) {
     const list = localized.getLocalizedProjects(locale)
     const smart = list.find((project) => project.slug === "smartimport")
-    assert.equal(smart.status, "internship")
-    assert.match(smart.details.role, /Bounaim Auto/)
+    assert.equal(smart.status, "prototype")
+    assert.match(smart.details.role, locale === "en" ? /independent software project/ : /projet logiciel indépendant/)
     assert.match(smart.details.outcome, locale === "en" ? /synthetic.*12 of 13/ : /synthétiques.*12 des 13/)
     const medskel = list.find((project) => project.slug === "medskel")
     assert.match(medskel.details.built.join(" "), /Saidou, Zineddine/)

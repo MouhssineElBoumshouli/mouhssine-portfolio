@@ -16,7 +16,7 @@ const frenchExperience: Record<string, ExperienceCopy> = {
 
 const frenchMilestones: Record<MilestoneId, MilestoneCopy> = {
   convoroute: { title: "Création de Convoroute LLC", date: "juin 2026", description: "Début du développement de chatbots de service client utilisant l’IA et intégrables à des sites web." },
-  smartimport: { title: "Développement de SmartImport pendant mon stage", date: "juil.–août 2026", description: "Développement de la comparaison de devis, des calculs de coûts et de l’extraction documentaire avec vérification humaine chez Bounaim Auto." },
+  "autostock-ai": { title: "Développement d'AutoStock AI pendant mon stage", date: "juil.–août 2026", description: "Prévision des stocks et de la demande pour des magasins de pièces automobiles chez Bounaim Auto, avec un prototype Odoo allégé et un assistant IA en français et en anglais." },
   "dare-agent-reliability": { title: "Réalisation de l’étude DARE-Bench", date: "2026", description: "Réalisation de 240 expériences et publication de l’analyse et des éléments permettant de reproduire les résultats." },
   medskel: { title: "Évaluation de medskel", date: "2026", description: "Comparaison d’une méthode publiée de squelettisation avec l’amincissement sur des formes synthétiques et des images rétiniennes." },
   recall: { title: "Ajout des sessions enregistrées et des notes dans Recall", date: "2026", description: "Implémentation du stockage des enregistrements, des transcriptions, des repères et des notes structurées." },
@@ -49,7 +49,7 @@ const frenchProjects: Record<string, ProjectCopy> = {
     title: "SmartImport",
     subheading: "Comparaison de devis fournisseurs",
     summary: "Comparer les devis, les articles manquants et le coût total d’un achat.",
-    description: "Le devis le moins cher peut omettre des produits ou certains frais. Pendant mon stage chez Bounaim Auto, j’ai développé SmartImport pour rendre ces différences visibles avant une décision d’achat.",
+    description: "Le devis le moins cher peut omettre des produits ou certains frais. J’ai développé SmartImport pour rendre ces différences visibles avant une décision d’achat.",
     imageAlt: "Interface de comparaison des devis SmartImport",
     details: {
       headings: { motivation: "Le problème", built: "Ce que j’ai réalisé", technicalDetails: "Fonctionnement", outcome: "Évaluation et portée" },
@@ -63,7 +63,7 @@ const frenchProjects: Record<string, ProjectCopy> = {
         "Les calculs financiers sont effectués côté serveur avec FastAPI. L’IA propose des informations extraites et des correspondances entre articles ; une personne les vérifie avant leur enregistrement.",
         "Une interface React accède aux données PostgreSQL par l’API. Les tests couvrent les règles côté serveur et le comportement de l’interface.",
       ],
-      role: "J’ai développé l’application pendant mon stage en ingénierie logicielle et IA chez Bounaim Auto.",
+      role: "J’ai conçu et développé l’application comme un projet logiciel indépendant.",
       outcome: "Sur des données d’évaluation synthétiques, le système a retrouvé le bon besoin d’achat dans 12 des 13 cas évalués (92,31 %). Ce résultat mesure le rapprochement des articles, pas la qualité des fournisseurs, le choix du meilleur fournisseur ni la précision en production. Le dépôt public contient l’implémentation et les éléments d’évaluation ; il n’existe pas de démo publique en ligne.",
     },
   },

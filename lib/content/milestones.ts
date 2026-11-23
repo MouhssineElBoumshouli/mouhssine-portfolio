@@ -14,10 +14,10 @@ export const milestones = [
     description: "Began developing AI customer-service chatbots that can be integrated into websites.",
   },
   {
-    id: "smartimport",
-    title: "Built SmartImport during my internship",
+    id: "autostock-ai",
+    title: "Built AutoStock AI during my internship",
     date: "Jul–Aug 2026",
-    description: "Developed quotation comparison, cost calculations, and human-reviewed document extraction at Bounaim Auto.",
+    description: "Built stock and demand forecasting for auto-parts shops at Bounaim Auto, with a lighter Odoo prototype and a French/English AI assistant.",
   },
   {
     id: "dare-agent-reliability",
