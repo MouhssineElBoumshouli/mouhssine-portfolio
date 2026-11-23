@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     "EIDIA",
     "Université Euromed de Fès",
     "DARE-Bench",
-    "SmartImport",
+    "AutoStock AI",
     "medskel",
     "Recall",
   ],
