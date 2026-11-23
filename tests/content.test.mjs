@@ -45,7 +45,7 @@ const asPlain = (value) => JSON.parse(JSON.stringify(value))
 
 test("DARE-Bench and SmartImport remain the two featured projects", () => {
   assert.deepEqual(asPlain(projects.slice(0, 2).map((project) => project.slug)), ["dare-agent-reliability", "smartimport"])
-  assert.equal(projects.length, 5)
+  assert.equal(projects.length, 6)
   assert.equal(new Set(projects.map((project) => project.slug)).size, projects.length)
 })
 

@@ -67,6 +67,29 @@ const frenchProjects: Record<string, ProjectCopy> = {
       outcome: "Sur des données d’évaluation synthétiques, le système a retrouvé le bon besoin d’achat dans 12 des 13 cas évalués (92,31 %). Ce résultat mesure le rapprochement des articles, pas la qualité des fournisseurs, le choix du meilleur fournisseur ni la précision en production. Le dépôt public contient l’implémentation et les éléments d’évaluation ; il n’existe pas de démo publique en ligne.",
     },
   },
+  "medskel-ai": {
+    title: "MedSkel AI",
+    subheading: "Segmentation des vaisseaux de la rétine avec un U-Net",
+    summary: "Détecter, tracer et mesurer les vaisseaux sanguins des yeux.",
+    description: "J’ai développé une application de deep learning qui détecte, trace et mesure les vaisseaux sanguins de la rétine. C’est un prototype de recherche, pas un dispositif médical. J’ai entraîné un U-Net de zéro sur 510 images FIVES avec un GPU portable de 4 Go.",
+    imageAlt: "Courbes d’entraînement du modèle de segmentation des vaisseaux MedSkel AI",
+    details: {
+      headings: { motivation: "Question de recherche", built: "Ce que j’ai réalisé", technicalDetails: "Dispositif d’entraînement", outcome: "Résultats et limites" },
+      motivation: "Deux personnes qui tracent un même vaisseau peuvent ne pas être d’accord. Je voulais voir si un U-Net entraîné de zéro pouvait tracer les vaisseaux et les mesurer avec une constance proche de celle des experts humains.",
+      built: [
+        "Un U-Net implémenté et entraîné de zéro sur 510 images rétiniennes FIVES.",
+        "Une étape de mesure utilisant les lignes centrales MedSkel pour compter les branches des vaisseaux et mesurer leurs longueurs.",
+        "Une évaluation sur les 200 images du test officiel FIVES et sur 28 images CHASE_DB1 jamais vues par le modèle.",
+      ],
+      technicalDetails: [
+        "L’entraînement a tourné sur un GPU portable de 4 Go.",
+        "La fonction de coût combine l’entropie croisée binaire et la perte Dice douce ; le Dice de validation a été suivi sur des découpes fixes.",
+        "Les images du test et de CHASE_DB1 n’ont jamais servi à l’entraînement.",
+      ],
+      role: "J’ai conçu et entraîné le modèle, mené l’évaluation et documenté les résultats.",
+      outcome: "Le Dice a atteint 0,889 sur les 200 images du test officiel FIVES et 0,766 sur les images CHASE_DB1 jamais vues, proche de l’accord de 0,777 entre deux experts humains. La mesure avec les lignes centrales MedSkel a divisé par deux la variation du nombre de branches par rapport à l’amincissement classique (26 % contre 53 %). Ces résultats concernent des images rétiniennes de deux bases de données ; l’application est un prototype de recherche, pas un dispositif médical.",
+    },
+  },
   recall: {
     title: "Recall",
     subheading: "Enregistrement, transcription et notes",
