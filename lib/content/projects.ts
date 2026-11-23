@@ -94,7 +94,7 @@ export const projects: Project[] = [
     subheading: "Retinal vessel segmentation with a U-Net",
     summary: "Finding, tracing and measuring blood vessels in eye photos.",
     description: "I built a deep learning app that finds, traces and measures blood vessels in eye photos. It is a research prototype, not a medical device. I trained a U-Net from scratch on 510 FIVES images using a 4 GB laptop GPU.",
-    image: "/projects/medskel-ai/preview.png",
+    image: "/projects/medskel-ai/preview.webp",
     imageAlt: "Training curves for the MedSkel AI vessel-segmentation model",
     links: { github: "https://github.com/MouhssineElBoumshouli/medskel-ai" },
     technologies: ["Python", "PyTorch", "OpenCV", "NumPy"],
