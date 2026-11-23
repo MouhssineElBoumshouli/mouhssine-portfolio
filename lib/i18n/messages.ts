@@ -348,7 +348,7 @@ const english: LocaleMessages = {
     description:
       "Mouhssine El Boumshouli, AI engineering student at EIDIA. Projects in AI evaluation, software and computer vision. Seeking a summer 2027 internship.",
     projectsDescription:
-      "Explore Mouhssine El Boumshouli’s AI research, internship work, and web and mobile projects, including DARE-Bench, SmartImport, Recall, and medskel.",
+      "Explore Mouhssine El Boumshouli’s AI research, internship work, and web and mobile projects, including DARE-Bench, AutoStock AI, Recall, and medskel.",
     contactDescription:
       "Contact Mouhssine El Boumshouli about summer 2027 internships in AI engineering, software engineering, or research, and questions about his projects.",
     previewTitle:
@@ -528,7 +528,7 @@ const french: LocaleMessages = {
     description:
       "Mouhssine El Boumshouli, étudiant en IA à l’EIDIA. Projets logiciels et de recherche. À la recherche d’un stage pour l’été 2027.",
     projectsDescription:
-      "Découvrez les projets de recherche, de stage, web et mobiles de Mouhssine El Boumshouli : DARE-Bench, SmartImport, Recall et medskel.",
+      "Découvrez les projets de recherche, de stage, web et mobiles de Mouhssine El Boumshouli : DARE-Bench, AutoStock AI, Recall et medskel.",
     contactDescription:
       "Contactez Mouhssine El Boumshouli pour un stage à l’été 2027 en IA, en développement logiciel ou en recherche, ou pour échanger sur ses projets.",
     previewTitle:

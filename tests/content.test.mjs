@@ -43,8 +43,8 @@ const { getLocalizedMetadata } = load("lib/i18n/metadata.ts")
 const { siteUrl, siteDescription, skillsVenn } = load("lib/content/site.ts")
 const asPlain = (value) => JSON.parse(JSON.stringify(value))
 
-test("DARE-Bench and SmartImport remain the two featured projects", () => {
-  assert.deepEqual(asPlain(projects.slice(0, 2).map((project) => project.slug)), ["dare-agent-reliability", "smartimport"])
+test("DARE-Bench and AutoStock AI remain the two featured projects", () => {
+  assert.deepEqual(asPlain(projects.slice(0, 2).map((project) => project.slug)), ["dare-agent-reliability", "autostock-ai"])
   assert.equal(projects.length, 6)
   assert.equal(new Set(projects.map((project) => project.slug)).size, projects.length)
 })
@@ -119,13 +119,14 @@ test("Recall is a prototype with an abstract cover and qualified mixed-language 
   assert.doesNotMatch(JSON.stringify(fr), /darija|faiblesse confirmée/i)
 })
 
-test("SmartImport matching metrics and medskel authorship remain correctly scoped", () => {
+test("AutoStock AI results and medskel authorship remain correctly scoped", () => {
   for (const locale of ["en", "fr"]) {
     const list = localized.getLocalizedProjects(locale)
-    const smart = list.find((project) => project.slug === "smartimport")
-    assert.equal(smart.status, "prototype")
-    assert.match(smart.details.role, locale === "en" ? /independent software project/ : /projet logiciel indépendant/)
-    assert.match(smart.details.outcome, locale === "en" ? /synthetic.*12 of 13/ : /synthétiques.*12 des 13/)
+    const auto = list.find((project) => project.slug === "autostock-ai")
+    assert.equal(auto.status, "internship")
+    assert.match(auto.details.role, locale === "en" ? /Badr Lasri.*forecasting math/ : /Badr Lasri.*mathématiques de prévision/)
+    assert.match(auto.details.outcome, locale === "en" ? /37%.*60 days/ : /37 %.*60 jours/)
+    assert.match(auto.details.outcome, locale === "en" ? /simulated shop/ : /magasin simulé/)
     const medskel = list.find((project) => project.slug === "medskel")
     assert.match(medskel.details.built.join(" "), /Saidou, Zineddine/)
     assert.match(medskel.details.outcome, locale === "en" ? /does not establish.*clinical/ : /ne démontre.*clinique/)
@@ -161,7 +162,7 @@ test("core skills reflect the selected work without losing useful project-level 
   const names = stack.flatMap((category) => category.skills.map((skill) => skill.title))
   for (const skill of ["Python", "JavaScript", "React Native", "Expo", "SQLite", "Gemini API"]) assert.ok(names.includes(skill))
   for (const skill of ["R", "MATLAB"]) assert.equal(names.includes(skill), false)
-  for (const skill of ["SQLAlchemy", "Pydantic", "Prisma", "Nginx", "Ruff", "mypy", "ESLint", "Vercel"]) {
+  for (const skill of ["SQLAlchemy", "Pydantic", "Prisma", "Vercel"]) {
     assert.ok(projects.some((project) => project.technologies.includes(skill)), skill)
   }
 })
